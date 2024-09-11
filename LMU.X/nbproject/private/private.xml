@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/main.h</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/main.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/LED_OnBoard.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/Timers.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/System/Timers/Timers.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/AppMain_prm.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/mcc_generated_files/system/src/system.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/Timers_prm.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Lsi/LED_OnBoard/LED_OnBoard.c</file>
         </group>
     </open-files>
 </project-private>

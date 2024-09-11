@@ -1,9 +1,13 @@
-/* 
- * File:   main.h
- * Author: p.parrino
+/**
+ *  @file       main.h
+ *  @brief      main header file.
  *
- * Created on September 6, 2024, 5:05 PM
+ *  $Header: 	ver 1.0 Paolo Parrino
+ *
+ *  @copyright  *****  Copyright BRANCARO Industries.  All rights reserved - CONFIDENTIAL  *****
  */
+//---------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------
 
 #ifndef MAIN_H
 #define	MAIN_H
@@ -15,11 +19,10 @@ extern "C" {
 #include <p33CH512MP506.h>
 #include "mcc_generated_files/system/system.h"
 #include "mcc_generated_files/system/clock.h"
-#include "mcc_generated_files/system/pins.h"
-//#include "mcc_generated_files/adc/adc1.h"
 #include "mcc_generated_files/timer/tmr1.h"    
 #include "mcc_generated_files/uart/uart1.h"
-
+    
+#include "Application/ProductLibrary/ProductLibraryInclude/AppMain.h"    
 
 #ifdef	__cplusplus
 }

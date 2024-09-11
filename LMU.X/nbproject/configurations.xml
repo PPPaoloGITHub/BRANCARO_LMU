@@ -4,6 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="AppSpecificInclude"
+                     displayName="AppSpecificInclude"
+                     projectFiles="true">
+      </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
@@ -30,6 +34,17 @@
           <itemPath>mcc_generated_files/uart/uart1.h</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="ProductLibraryInclude"
+                     displayName="ProductLibraryInclude"
+                     projectFiles="true">
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/AppMain.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/AppMain_prm.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/C_extensions.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/Compiler_defs.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/Timers.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/Timers_prm.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/LED_OnBoard.h</itemPath>
+      </logicalFolder>
       <itemPath>main.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -45,6 +60,43 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="Application" displayName="Application" projectFiles="true">
+        <logicalFolder name="AppSpecific" displayName="AppSpecific" projectFiles="true">
+          <logicalFolder name="Driver" displayName="Driver" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="Lsi" displayName="Lsi" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="System" displayName="System" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="ProductLibrary"
+                       displayName="ProductLibrary"
+                       projectFiles="true">
+          <logicalFolder name="Application" displayName="Application" projectFiles="true">
+            <logicalFolder name="Main" displayName="Main" projectFiles="true">
+              <itemPath>Application/ProductLibrary/Application/Main/AppMain.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="Driver" displayName="Driver" projectFiles="true">
+            <logicalFolder name="ADC" displayName="ADC" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="EXTInt" displayName="EXTInt" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="Lsi" displayName="Lsi" projectFiles="true">
+            <logicalFolder name="LED_OnBoard" displayName="LED_OnBoard" projectFiles="true">
+              <itemPath>Application/ProductLibrary/Lsi/LED_OnBoard/LED_OnBoard.c</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="System" displayName="System" projectFiles="true">
+            <logicalFolder name="Timers" displayName="Timers" projectFiles="true">
+              <itemPath>Application/ProductLibrary/System/Timers/Timers.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="Utilities" displayName="Utilities" projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
@@ -75,6 +127,9 @@
       <itemPath>main.c</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>Application</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

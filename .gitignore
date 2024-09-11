@@ -1,3 +1,7 @@
+# Ignore entire directory with all its contents
+.generated_files/
+
+
 # Prerequisites
 *.d
 

@@ -33,16 +33,15 @@
 #include "main.h"
 
 
-
 /* Pointer of type TIMER_INTERFACE and assigned it to the address of the Timer1 TIMER_INTERFACE address */
 const struct TIMER_INTERFACE *Timer = &Timer1;
 
 /* Pointer of type UART_INTERFACE and assigned it to the address of the UART1_Drv UART_INTERFACE address */
-const struct UART_INTERFACE *UartSerial = &UART1_Drv;
+//const struct UART_INTERFACE *UartSerial = &UART1_Drv;
 
 
 /* Prototype definitions */
-void TimerCallback250us(void);
+static void TimerCallback250us(void);
 
 /*
     Main application
@@ -51,6 +50,8 @@ void TimerCallback250us(void);
 int main(void)
 {
     SYSTEM_Initialize();
+    
+    /* TimerCallback250us() function is called every 250us in ISR */
     Timer->TimeoutCallbackRegister(TimerCallback250us);
 
     /* CLOCK SETUP: 180MHz with external ceramic 8MHz oscillator with PLL */
@@ -62,40 +63,22 @@ int main(void)
     printf("Peripheral Clock (FP) Frequency = %dMHz\r\n", fpValue);
     printf("Instruction Clock (FCY) Frequency = %dMHz\r\n", fcyValue);
     
+    AppMain__TimeSlotInitialize();
+     
     while(1)
     {
+        App__Main();
     }    
 }
 
-
-/* 250us handler generate from Timer1 ISR */
-void TimerCallback250us(void)
+//=====================================================================================================================
+//---------------------------------------- MAIN SCHEDULER GENERATOR ---------------------------------------------------
+//-------------------------------- 250us handler generates from Timer1 ISR --------------------------------------------
+//=====================================================================================================================
+static void TimerCallback250us(void)
 {
     /* Here every 250us */
-    
-    #define TIMER_CNT_1S    4000
-    #define TIMER_CNT_01S   400
-    #define TIMER_CNT_09S   3600
-    
-    static uint16_t timerCnt;
-     
-    /* Heart beat board signal on Green_LED */
-    /* Toggle LED1: 0.1s ON, 0.9s OFF */
-    if(timerCnt++ < TIMER_CNT_09S)
-    {
-        Green_LED_SetLow();
-    }
-    else
-    {
-        Green_LED_SetHigh();
-        if(timerCnt >= TIMER_CNT_1S)
-        {
-            /* Here every 1s */
-            timerCnt = 0;
-            
-            //adc->SoftwareTriggerEnable();   //Trigger the ADC conversion via software
-            //AN0Value = adc->ConversionResultGet(AN0_Pot);
-            //printf("ADC acquired: %d\r\n", AN0Value);
-        }
-    }
+   
+    /* Execute AppMain__TimerISR() function every 250us !!! */
+	AppMain__TimerISR();
 }
