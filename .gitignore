@@ -1,6 +1,7 @@
 # Ignore entire directory with all its contents
 .generated_files/
-
+nbproject/
+dist/
 
 # Prerequisites
 *.d

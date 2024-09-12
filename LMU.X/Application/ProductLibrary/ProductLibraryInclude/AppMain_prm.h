@@ -22,6 +22,7 @@
 //! Others
 #include "Timers.h"
 #include "LED_OnBoard.h"
+#include "../../AppSpecific/AppSpecificInclude/Version.h"
 
 
 
@@ -139,6 +140,7 @@ TASK_TYPE Initialization_Tasks[] =
     //ModuleName__Initialize,
 	TIMERS__Initialize,
 	LED_ONB__Initialize,
+    VERSION__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)

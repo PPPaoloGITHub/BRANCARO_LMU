@@ -59,7 +59,7 @@ int main(void)
     fpValue  = CLOCK_PeripheralFrequencyGet() / (uint32_t)1000000;
     fcyValue = CLOCK_InstructionFrequencyGet() / (uint32_t)1000000;
 
-    printf("Start Program!\r\n");
+    printf("***** Start LMU Program *****\r\n");
     printf("Peripheral Clock (FP) Frequency = %dMHz\r\n", fpValue);
     printf("Instruction Clock (FCY) Frequency = %dMHz\r\n", fcyValue);
     
