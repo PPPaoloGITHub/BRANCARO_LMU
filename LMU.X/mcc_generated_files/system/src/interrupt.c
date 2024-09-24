@@ -43,6 +43,10 @@
 
 void INTERRUPT_Initialize(void)
 {
+    // C1: CAN 1 Combined Error
+    // Priority: 1
+    IPC6bits.C1IP = 1;
+    
     // DMT: Dead Man Timer
     // Priority: 1
     IPC11bits.DMTIP = 1;
@@ -56,6 +60,7 @@ void INTERRUPT_Initialize(void)
 void INTERRUPT_Deinitialize(void)
 {
     //POR default value of priority
+    IPC6bits.C1IP = 4;
     IPC11bits.DMTIP = 4;
     IPC0bits.T1IP = 4;
 }

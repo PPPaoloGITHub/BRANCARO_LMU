@@ -48,8 +48,6 @@ struct VERSION_INTERFACE_STRUCT
 //-------------------------------------- PUBLIC (Function Prototypes) -------------------------------------------------
 //=====================================================================================================================
 extern const struct VERSION_INTERFACE_STRUCT VERSION_Interf;
-// Use the following line in the module that use this interface:
-// const struct VERSION_INTERFACE_STRUCT *VERSION_Interface = &VERSION_Interf;
 
 void VERSION__Initialize(void);
 

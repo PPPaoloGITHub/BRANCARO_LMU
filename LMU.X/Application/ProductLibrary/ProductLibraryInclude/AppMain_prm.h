@@ -23,7 +23,9 @@
 #include "Timers.h"
 #include "LED_OnBoard.h"
 #include "../../AppSpecific/AppSpecificInclude/Version.h"
-
+#include "CANRecvdMsgParser.h"
+#include "DigitalInput.h"
+#include "DigitalOutput.h"
 
 
 //--- include APIxxx and APIyyy diagnostic
@@ -141,6 +143,7 @@ TASK_TYPE Initialization_Tasks[] =
 	TIMERS__Initialize,
 	LED_ONB__Initialize,
     VERSION__Initialize,
+    CAN_RMP__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -176,8 +179,7 @@ TASK_TYPE Every_Loop_Tasks[] =
 TASK_TYPE Every_Slot_Tasks[] =
 {
 	//ModuleName__Handler,
-
-
+    CAN_RMP__Handler5ms,
 
 
     //Application__Handler5ms,
@@ -195,7 +197,7 @@ TASK_TYPE Main_Slot0_Tasks[] =
 {
 	//ModuleName__Handler25ms,
 	//StackIntegrity__Handler25ms,
-	//CAN__Handler25ms,
+
 
 
 	
@@ -294,7 +296,7 @@ TASK_TYPE Every_Interrupt_Tasks[] =
 {
     //NameFunction__FastHandler250us,
 	//Lsi__FastHandler,
-
+    
 
     //-------------------------------------------------------------------------
     // Mandatory NULL_TASK must be at the end of the list
@@ -312,6 +314,8 @@ TASK_TYPE Interrupt_Slot0_Tasks[] =
 	//NameFunction__FastHandler1ms,
 	TIMERS__MsTick,
 	//CAN__TX_Handler1ms,
+    
+    
 
     //-------------------------------------------------------------------------
     // Mandatory NULL_TASK must be at the end of the list
@@ -343,7 +347,7 @@ TASK_TYPE Interrupt_Slot2_Tasks[] =
 {
 	//NameFunction__FastHandler1ms,
     //CAN__HandlerProtocol,
-
+     
 
     //-------------------------------------------------------------------------
     // Mandatory NULL_TASK must be at the end of the list

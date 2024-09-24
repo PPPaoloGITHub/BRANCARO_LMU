@@ -34,6 +34,7 @@
 #include "../system_types.h"
 #include "../clock.h"
 #include "../pins.h"
+#include "../../can/can1.h"
 #include "../dmt.h"
 #include "../../timer/tmr1.h"
 #include "../../uart/uart1.h"
@@ -44,6 +45,7 @@ void SYSTEM_Initialize(void)
 {
     CLOCK_Initialize();
     PINS_Initialize();
+    CAN1_Initialize();
     DMT_Initialize();
     TMR1_Initialize();
     UART1_Initialize();

@@ -45,6 +45,57 @@
 
 /**
  * @ingroup  pinsdriver
+ * @brief    Sets the RB14 GPIO Pin which has a custom name of RGBBlue to High
+ * @pre      The RB14 must be set as Output Pin             
+ * @param    none
+ * @return   none  
+ */
+#define RGBBlue_SetHigh()          (_LATB14 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RB14 GPIO Pin which has a custom name of RGBBlue to Low
+ * @pre      The RB14 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define RGBBlue_SetLow()           (_LATB14 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RB14 GPIO Pin which has a custom name of RGBBlue
+ * @pre      The RB14 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define RGBBlue_Toggle()           (_LATB14 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RB14 GPIO Pin which has a custom name of RGBBlue
+ * @param    none
+ * @return   none  
+ */
+#define RGBBlue_GetValue()         _RB14
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RB14 GPIO Pin which has a custom name of RGBBlue as Input
+ * @param    none
+ * @return   none  
+ */
+#define RGBBlue_SetDigitalInput()  (_TRISB14 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RB14 GPIO Pin which has a custom name of RGBBlue as Output
+ * @param    none
+ * @return   none  
+ */
+#define RGBBlue_SetDigitalOutput() (_TRISB14 = 0)
+
+/**
+ * @ingroup  pinsdriver
  * @brief    Sets the RC6 GPIO Pin which has a custom name of Green_LED to High
  * @pre      The RC6 must be set as Output Pin             
  * @param    none
@@ -93,6 +144,108 @@
  * @return   none  
  */
 #define Green_LED_SetDigitalOutput() (_TRISC6 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RD5 GPIO Pin which has a custom name of RGBRed to High
+ * @pre      The RD5 must be set as Output Pin             
+ * @param    none
+ * @return   none  
+ */
+#define RGBRed_SetHigh()          (_LATD5 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RD5 GPIO Pin which has a custom name of RGBRed to Low
+ * @pre      The RD5 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define RGBRed_SetLow()           (_LATD5 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RD5 GPIO Pin which has a custom name of RGBRed
+ * @pre      The RD5 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define RGBRed_Toggle()           (_LATD5 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RD5 GPIO Pin which has a custom name of RGBRed
+ * @param    none
+ * @return   none  
+ */
+#define RGBRed_GetValue()         _RD5
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RD5 GPIO Pin which has a custom name of RGBRed as Input
+ * @param    none
+ * @return   none  
+ */
+#define RGBRed_SetDigitalInput()  (_TRISD5 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RD5 GPIO Pin which has a custom name of RGBRed as Output
+ * @param    none
+ * @return   none  
+ */
+#define RGBRed_SetDigitalOutput() (_TRISD5 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RD7 GPIO Pin which has a custom name of RGBGreen to High
+ * @pre      The RD7 must be set as Output Pin             
+ * @param    none
+ * @return   none  
+ */
+#define RGBGreen_SetHigh()          (_LATD7 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RD7 GPIO Pin which has a custom name of RGBGreen to Low
+ * @pre      The RD7 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define RGBGreen_SetLow()           (_LATD7 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RD7 GPIO Pin which has a custom name of RGBGreen
+ * @pre      The RD7 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define RGBGreen_Toggle()           (_LATD7 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RD7 GPIO Pin which has a custom name of RGBGreen
+ * @param    none
+ * @return   none  
+ */
+#define RGBGreen_GetValue()         _RD7
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RD7 GPIO Pin which has a custom name of RGBGreen as Input
+ * @param    none
+ * @return   none  
+ */
+#define RGBGreen_SetDigitalInput()  (_TRISD7 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RD7 GPIO Pin which has a custom name of RGBGreen as Output
+ * @param    none
+ * @return   none  
+ */
+#define RGBGreen_SetDigitalOutput() (_TRISD7 = 0)
 
 /**
  * @ingroup  pinsdriver

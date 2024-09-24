@@ -50,7 +50,8 @@ typedef enum
 {
 	//Add MsTimers here
 	MS_TIMER_GREEN_LED_PULSE				= 0,
-	
+    MS_TIMER_CAN_HEARTBEAT_PERIOD           = 1,
+            
 	//MS_TIMER_NAME1,		//Add here new hms_timers labels
 
 	//MS_NUM    It was moved to a #define
@@ -61,7 +62,7 @@ typedef enum
  * \ MAKE SURE you adjust the #define MS_NUM to the appropriated number of items in MS_TIMER_LABEL list.
  *
  */
-#define MS_NUM 1
+#define MS_NUM 2
 
 /**
  * MILLISECOND TIMER TICK RESOLUTION

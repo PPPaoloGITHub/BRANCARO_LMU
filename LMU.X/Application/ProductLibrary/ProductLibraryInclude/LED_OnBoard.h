@@ -39,8 +39,6 @@ struct LED_ONB_INTRFACE_STRUCT
 //-------------------------------------- PUBLIC (Function Prototypes) -------------------------------------------------
 //=====================================================================================================================
 extern const struct LED_ONB_INTRFACE_STRUCT LED_ONB_Interf;
-// Use the following line in the module that use this interface:
-// const struct LED_ONB_INTRFACE_STRUCT *LED_ONB_Interface = &LED_ONB_Interf;
 
 void LED_ONB__Initialize(void);
 void LED_ONB__Handler25ms(void);

@@ -3,17 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/Timers.h</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/System/Timers/Timers.c</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/AppMain_prm.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/C_extensions.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/System/CAN/CANRecvdMsgParser.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/AppSpecific/AppSpecificInclude/Version_prm.h</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/mcc_generated_files/timer/src/tmr1.c</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/mcc_generated_files/system/src/system.c</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/AppSpecific/System/Version/Version.c</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/main.c</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/Timers_prm.h</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Lsi/LED_OnBoard/LED_OnBoard.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/mcc_generated_files/can/src/can1.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Application/Main/AppMain.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/mcc_generated_files/can/can_types.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser_prm.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/AppMain_prm.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/AppSpecific/System/Version/Version.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/AppSpecific/AppSpecificInclude/Version.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/mcc_generated_files/can/can_interface.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/mcc_generated_files/can/can1.h</file>
         </group>
     </open-files>
 </project-private>

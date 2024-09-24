@@ -25,8 +25,6 @@ const VERSION_INFO_STRUCT_TYPE VersionData =
      RELEASE_DATE
 };
 
-const struct VERSION_INTERFACE_STRUCT *VERSION_Interface = &VERSION_Interf;
-
 //-------------------------------------- PRIVATE (Variables, Constants & Defines) -------------------------------------
 
 //-------------------------------------- PRIVATE (Function Prototypes) ------------------------------------------------
@@ -60,29 +58,29 @@ const struct VERSION_INTERFACE_STRUCT VERSION_Interf =
  */
 void VERSION__Initialize(void)
 {
-    #define  MAX_USED_STRINGS_VERSION_LENGHT     MAX(PROJECT_NAME_LENGTH,        \
+    #define  MAX_USED_STRINGS_VERSION_LENGTH     MAX(PROJECT_NAME_LENGTH,        \
                                                      MAX(SW_PART_NUMBER_LENGTH,  \
                                                          MAX(HW_PART_NUMBER_LENGTH, RELEASE_DATE_LENGTH)))
     
-    char tempString[MAX_USED_STRINGS_VERSION_LENGHT];
+    char tempString[MAX_USED_STRINGS_VERSION_LENGTH];
     
     printf("\r\n*** VERSION module ***\r\n");
     
-    printf("Sw Version Major = %d\r\n", VERSION_Interface->SwVersionGet(VERSION_MAJOR));
-    printf("Sw Version Minor = %d\r\n", VERSION_Interface->SwVersionGet(VERSION_MINOR));
-    printf("Sw Version Test  = %d\r\n", VERSION_Interface->SwVersionGet(VERSION_TEST));
+    printf("Sw Version Major = %d\r\n", VERSION_Interf.SwVersionGet(VERSION_MAJOR));
+    printf("Sw Version Minor = %d\r\n", VERSION_Interf.SwVersionGet(VERSION_MINOR));
+    printf("Sw Version Test  = %d\r\n", VERSION_Interf.SwVersionGet(VERSION_TEST));
  
 
-    VERSION_Interface->ProjectName(tempString);         // write PROJECT_NAME string in tempString
+    VERSION_Interf.ProjectName(tempString);         // write PROJECT_NAME string in tempString
     printf("Project Name     = %s\r\n", tempString);
     
-    VERSION_Interface->SwPartNumber(tempString);        // write SW_PART_NUMBER string in tempString
+    VERSION_Interf.SwPartNumber(tempString);        // write SW_PART_NUMBER string in tempString
     printf("Sw Part Number   = %s\r\n", tempString);
     
-    VERSION_Interface->HwPartNumber(tempString);        // write HW_PART_NUMBER string in tempString
+    VERSION_Interf.HwPartNumber(tempString);        // write HW_PART_NUMBER string in tempString
     printf("Hw Part Number   = %s\r\n", tempString);
     
-    VERSION_Interface->ReleaseDate(tempString);         // write RELEASE_DATE string in tempString
+    VERSION_Interf.ReleaseDate(tempString);         // write RELEASE_DATE string in tempString
     printf("Release Date     = %s\r\n", tempString);
  }
 

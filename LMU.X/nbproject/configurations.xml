@@ -13,6 +13,12 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <logicalFolder name="can" displayName="can" projectFiles="true">
+          <itemPath>mcc_generated_files/can/can_types.h</itemPath>
+          <itemPath>mcc_generated_files/can/can_interface.h</itemPath>
+          <itemPath>mcc_generated_files/can/can_features.h</itemPath>
+          <itemPath>mcc_generated_files/can/can1.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <itemPath>mcc_generated_files/system/traps.h</itemPath>
           <itemPath>mcc_generated_files/system/system.h</itemPath>
@@ -46,6 +52,10 @@
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/Timers.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/Timers_prm.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/LED_OnBoard.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/DigitalInput.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/DigitalOutput.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser_prm.h</itemPath>
       </logicalFolder>
       <itemPath>main.h</itemPath>
     </logicalFolder>
@@ -89,11 +99,24 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="Lsi" displayName="Lsi" projectFiles="true">
+            <logicalFolder name="DigitalInput"
+                           displayName="DigitalInput"
+                           projectFiles="true">
+              <itemPath>Application/ProductLibrary/Lsi/DigitalInput/DigitalInput.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="DigitalOutput"
+                           displayName="DigitalOutput"
+                           projectFiles="true">
+              <itemPath>Application/ProductLibrary/Lsi/DigitalOutput/DigitalOutput.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="LED_OnBoard" displayName="LED_OnBoard" projectFiles="true">
               <itemPath>Application/ProductLibrary/Lsi/LED_OnBoard/LED_OnBoard.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="System" displayName="System" projectFiles="true">
+            <logicalFolder name="CAN" displayName="CAN" projectFiles="true">
+              <itemPath>Application/ProductLibrary/System/CAN/CANRecvdMsgParser.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="Timers" displayName="Timers" projectFiles="true">
               <itemPath>Application/ProductLibrary/System/Timers/Timers.c</itemPath>
             </logicalFolder>
@@ -105,6 +128,11 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <logicalFolder name="can" displayName="can" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/can/src/can1.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
             <itemPath>mcc_generated_files/system/src/interrupt.c</itemPath>
@@ -356,6 +384,7 @@
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
@@ -913,6 +942,7 @@
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>
