@@ -36,6 +36,7 @@
 #include "../pins.h"
 #include "../../can/can1.h"
 #include "../dmt.h"
+#include "../../i2c_host/i2c1.h"
 #include "../../timer/tmr1.h"
 #include "../../uart/uart1.h"
 #include "../interrupt.h"
@@ -47,6 +48,7 @@ void SYSTEM_Initialize(void)
     PINS_Initialize();
     CAN1_Initialize();
     DMT_Initialize();
+    I2C1_Initialize();
     TMR1_Initialize();
     UART1_Initialize();
     INTERRUPT_GlobalEnable();

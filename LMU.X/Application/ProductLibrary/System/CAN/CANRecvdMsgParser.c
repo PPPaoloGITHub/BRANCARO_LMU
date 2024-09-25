@@ -87,13 +87,10 @@ void CAN_RMP__Initialize(void)
   *
   * @param  None
   * @retval None
-  * @note	call this function in interrupt task every 5ms
+  * @note	call this function in the task every 5ms
   */
 void CAN_RMP__Handler5ms(void)
 {
-    /* Transmission of CAN HeartBeat messages on CAN_BUS */
-    CAN_RMP_Interf.HeartBeat();
-    
     /* Execute CAN Parser on received message */
 #ifndef CAN_TEST_EXECUTION
     /* *** ONLY ONE CANReceive FUNCTION AT A TIME CAN WORK!!! *** 
@@ -193,8 +190,7 @@ static void CAN_RMP_HeartBeat(void)
     
     uint8 txData[DLC_8];
     char str[30];  
-    
-    
+     
     if(TIMERS__MsGetStatus(MS_TIMER_CAN_HEARTBEAT_PERIOD) == TIMERS_COMPLETED)
     {
         TIMERS__MsSet(MS_TIMER_CAN_HEARTBEAT_PERIOD, CAN_HEARTBEAT_PERIOD);

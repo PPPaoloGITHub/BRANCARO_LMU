@@ -1,16 +1,16 @@
 /**
- * INTERRUPT Generated Driver Source File 
+ * I2C Generated Driver Types Header File
  * 
- * @file      interrupt.c
- *            
- * @ingroup   interruptdriver
- *            
- * @brief     This is the generated driver source file for INTERRUPT driver
- *            
- * @skipline @version   Firmware Driver Version 1.1.2
+ * @file      i2c_host_types.h
+ * 
+ * @ingroup   i2chostdriver
+ * 
+ * @brief     This is the generated driver types header file for the I2C driver using CCL
  *
- * @skipline @version   PLIB Version 1.3.1
- *            
+ * @skipline @version   Firmware Driver Version 1.1.4
+ *
+ * @skipline @version   PLIB Version 2.2.3
+ *
  * @skipline  Device : dsPIC33CH512MP506
 */
 
@@ -35,42 +35,34 @@
     THIS SOFTWARE.
 */
 
-// Section: Includes
-#include <xc.h>
-#include "../interrupt.h"
+#ifndef I2C_HOST_TYPES_H
+#define    I2C_HOST_TYPES_H
 
-// Section: Driver Interface Function Definitions
+#include <stdint.h>
 
-void INTERRUPT_Initialize(void)
+/**
+ @ingroup  i2chostdriver
+ @enum     I2C_HOST_ERROR
+ @brief    This Enum can be used to know the Host Error Status. 
+           Refer I2Cx_ErrorGet e.g. \ref I2C1_ErrorGet.
+*/
+enum I2C_HOST_ERROR
 {
-    // C1: CAN 1 Combined Error
-    // Priority: 1
-    IPC6bits.C1IP = 1;
-    
-    // DMT: Dead Man Timer
-    // Priority: 1
-    IPC11bits.DMTIP = 1;
-    
-    // I2C1BC: I2C1 Bus Collision
-    // Priority: 1
-    IPC16bits.I2C1BCIP = 1;
-    
-    // MI2C1: I2C1 Master Event
-    // Priority: 1
-    IPC4bits.MI2C1IP = 1;
-    
-    // T1: Timer 1
-    // Priority: 1
-    IPC0bits.T1IP = 1;
-    
-}
+    I2C_HOST_ERROR_NONE,             /**< No Error */
+    I2C_HOST_ERROR_NACK,             /**< Client returned NACK */
+    I2C_HOST_ERROR_BUS_COLLISION,    /**< Bus Collision Error */
+};
 
-void INTERRUPT_Deinitialize(void)
+/**
+ @ingroup  i2chostdriver
+ @struct   I2C_TRANSFER_SETUP
+ @brief    I2C Clock Speed (100KHZ to 1MHZ)
+*/
+struct I2C_TRANSFER_SETUP
 {
-    //POR default value of priority
-    IPC6bits.C1IP = 4;
-    IPC11bits.DMTIP = 4;
-    IPC16bits.I2C1BCIP = 4;
-    IPC4bits.MI2C1IP = 4;
-    IPC0bits.T1IP = 4;
-}
+  uint32_t clkSpeed;            ///< I2C Clock Speed
+};
+
+#endif
+
+

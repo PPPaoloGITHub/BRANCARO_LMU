@@ -45,8 +45,8 @@
  *    @brief   software part number string length
  *
  *    @details  Enter SW_PART_NUMBER string length, in Bytes, plus 1
- *              e.g. SW_PART_NUMBER = "BR-9074-002-xx" -->  SW_PART_NUMBER_LENGTH = 15
- *              In the SW_PART_NUMBER the xx part is the SW_VERSION_MAJOR written on 2 digit
+ *              e.g. SW_PART_NUMBER = "BR-9074-002-yx" -->  SW_PART_NUMBER_LENGTH = 15
+ *              In the SW_PART_NUMBER the yx part is the y = SW_VERSION_MAJOR and x = SW_VERSION_MINOR written on 2 bytes
  */
 //=====================================================================================================================
 #define SW_PART_NUMBER_LENGTH  15
@@ -123,6 +123,8 @@
  *              listed on the drawings for the software.  It allows a unique
  *              identifier for the software. During development this can be
  *              used as required by the engineer.
+ *              SW_PART_NUMBER = "BR-9074-002-yx"             
+ *              In the SW_PART_NUMBER the yx part is the y = SW_VERSION_MAJOR and x = SW_VERSION_MINOR written on 2 bytes
  *              Length of this string is set in SW_PART_NUMBER_LENGTH define
  */
 //=====================================================================================================================
@@ -150,7 +152,7 @@
  *             Length of this string is set in RELEASE_DATE_LENGTH define
  */
 //=====================================================================================================================
-#define RELEASE_DATE "202409231710"
+#define RELEASE_DATE "202409251550"
 
 
 //=====================================================================================================================

@@ -24,6 +24,7 @@
 #include "LED_OnBoard.h"
 #include "../../AppSpecific/AppSpecificInclude/Version.h"
 #include "CANRecvdMsgParser.h"
+#include "../../AppSpecific/AppSpecificInclude/CANFeedback.h"
 #include "DigitalInput.h"
 #include "DigitalOutput.h"
 
@@ -144,6 +145,7 @@ TASK_TYPE Initialization_Tasks[] =
 	LED_ONB__Initialize,
     VERSION__Initialize,
     CAN_RMP__Initialize,
+    CANFBK__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -180,7 +182,7 @@ TASK_TYPE Every_Slot_Tasks[] =
 {
 	//ModuleName__Handler,
     CAN_RMP__Handler5ms,
-
+    CANFBK__Handler5ms,
 
     //Application__Handler5ms,
 

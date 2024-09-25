@@ -9,6 +9,8 @@
                      projectFiles="true">
         <itemPath>Application/AppSpecific/AppSpecificInclude/Version.h</itemPath>
         <itemPath>Application/AppSpecific/AppSpecificInclude/Version_prm.h</itemPath>
+        <itemPath>Application/AppSpecific/AppSpecificInclude/CANFeedback.h</itemPath>
+        <itemPath>Application/AppSpecific/AppSpecificInclude/CANFeedback_prm.h</itemPath>
       </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
@@ -18,6 +20,11 @@
           <itemPath>mcc_generated_files/can/can_interface.h</itemPath>
           <itemPath>mcc_generated_files/can/can_features.h</itemPath>
           <itemPath>mcc_generated_files/can/can1.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="i2c_host" displayName="i2c_host" projectFiles="true">
+          <itemPath>mcc_generated_files/i2c_host/i2c_host_interface.h</itemPath>
+          <itemPath>mcc_generated_files/i2c_host/i2c1.h</itemPath>
+          <itemPath>mcc_generated_files/i2c_host/i2c_host_types.h</itemPath>
         </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
           <itemPath>mcc_generated_files/system/traps.h</itemPath>
@@ -79,6 +86,9 @@
           <logicalFolder name="Lsi" displayName="Lsi" projectFiles="true">
           </logicalFolder>
           <logicalFolder name="System" displayName="System" projectFiles="true">
+            <logicalFolder name="CAN" displayName="CAN" projectFiles="true">
+              <itemPath>Application/AppSpecific/System/CAN/CANFeedback.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="Version" displayName="Version" projectFiles="true">
               <itemPath>Application/AppSpecific/System/Version/Version.c</itemPath>
             </logicalFolder>
@@ -131,6 +141,11 @@
         <logicalFolder name="can" displayName="can" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
             <itemPath>mcc_generated_files/can/src/can1.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="i2c_host" displayName="i2c_host" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/i2c_host/src/i2c1.c</itemPath>
           </logicalFolder>
         </logicalFolder>
         <logicalFolder name="system" displayName="system" projectFiles="true">
