@@ -34,6 +34,7 @@
 #include "../system_types.h"
 #include "../clock.h"
 #include "../pins.h"
+#include "../../adc/adc1.h"
 #include "../../can/can1.h"
 #include "../dmt.h"
 #include "../../i2c_host/i2c1.h"
@@ -46,6 +47,7 @@ void SYSTEM_Initialize(void)
 {
     CLOCK_Initialize();
     PINS_Initialize();
+    ADC1_Initialize();
     CAN1_Initialize();
     DMT_Initialize();
     I2C1_Initialize();

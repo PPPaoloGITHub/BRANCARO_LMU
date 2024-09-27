@@ -52,8 +52,8 @@ const struct CAN_RMP_INTRFACE_STRUCT CAN_RMP_Interf =
 };
 
 /*********** Declaration of table-based message handlers ***********/
-static void ResponseToNameCmd1                      (uint32 msgID, uint32 length, uint8 *payload);
-static void ResponseToNameCmd2                      (uint32 msgID, uint32 length, uint8 *payload);
+static void ResponseToNameCmd1  (uint32 msgID, uint32 length, uint8 *payload);
+static void ResponseToNameCmd2  (uint32 msgID, uint32 length, uint8 *payload);
 
 
 /************************** Parser Table ***************************/

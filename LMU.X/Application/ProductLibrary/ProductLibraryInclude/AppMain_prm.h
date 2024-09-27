@@ -25,6 +25,7 @@
 #include "../../AppSpecific/AppSpecificInclude/Version.h"
 #include "CANRecvdMsgParser.h"
 #include "../../AppSpecific/AppSpecificInclude/CANFeedback.h"
+#include "ADCManager.h"
 #include "DigitalInput.h"
 #include "DigitalOutput.h"
 
@@ -146,6 +147,7 @@ TASK_TYPE Initialization_Tasks[] =
     VERSION__Initialize,
     CAN_RMP__Initialize,
     CANFBK__Initialize,
+    ADCManager__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -251,7 +253,7 @@ TASK_TYPE Main_Slot3_Tasks[] =
 {
 	//ModuleName__Handler25ms,
     //APIxxx_SMU_ACU__BackGround25ms,
-
+    ADCManager__Handler5ms,
 
 	//-------------------------------------------------------------------------
     // Mandatory NULL_TASK must be at the end of the list

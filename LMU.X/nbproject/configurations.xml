@@ -15,6 +15,12 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <logicalFolder name="adc" displayName="adc" projectFiles="true">
+          <itemPath>mcc_generated_files/adc/adc_types.h</itemPath>
+          <itemPath>mcc_generated_files/adc/adc_interface.h</itemPath>
+          <itemPath>mcc_generated_files/adc/adc_features.h</itemPath>
+          <itemPath>mcc_generated_files/adc/adc1.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="can" displayName="can" projectFiles="true">
           <itemPath>mcc_generated_files/can/can_types.h</itemPath>
           <itemPath>mcc_generated_files/can/can_interface.h</itemPath>
@@ -63,6 +69,10 @@
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/DigitalOutput.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser_prm.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/MCP23017.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/ADS7128.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/PCA9685.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/ADCManager.h</itemPath>
       </logicalFolder>
       <itemPath>main.h</itemPath>
     </logicalFolder>
@@ -104,8 +114,24 @@
           </logicalFolder>
           <logicalFolder name="Driver" displayName="Driver" projectFiles="true">
             <logicalFolder name="ADC" displayName="ADC" projectFiles="true">
+              <itemPath>Application/ProductLibrary/Driver/ADC/ADCManager.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="ADS7128_ADC_EXP"
+                           displayName="ADS7128_ADC_EXP"
+                           projectFiles="true">
+              <itemPath>Application/ProductLibrary/Driver/ADS7128_ADC_EXP/ADS7128.c</itemPath>
             </logicalFolder>
             <logicalFolder name="EXTInt" displayName="EXTInt" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="MCP23017_IO_EXP"
+                           displayName="MCP23017_IO_EXP"
+                           projectFiles="true">
+              <itemPath>Application/ProductLibrary/Driver/MCP23017_IO_EXP/MCP23017.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="PCA9685_IO_PWM"
+                           displayName="PCA9685_IO_PWM"
+                           projectFiles="true">
+              <itemPath>Application/ProductLibrary/Driver/PCA9685_IO_PWM/PCA9685.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="Lsi" displayName="Lsi" projectFiles="true">
@@ -138,6 +164,11 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <logicalFolder name="adc" displayName="adc" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+            <itemPath>mcc_generated_files/adc/src/adc1.c</itemPath>
+          </logicalFolder>
+        </logicalFolder>
         <logicalFolder name="can" displayName="can" projectFiles="true">
           <logicalFolder name="src" displayName="src" projectFiles="true">
             <itemPath>mcc_generated_files/can/src/can1.c</itemPath>
@@ -227,7 +258,7 @@
       </makeCustomizationType>
       <C30>
         <property key="cast-align" value="false"/>
-        <property key="code-model" value="default"/>
+        <property key="code-model" value="large-code"/>
         <property key="const-model" value="default"/>
         <property key="data-model" value="default"/>
         <property key="disable-instruction-scheduling" value="false"/>

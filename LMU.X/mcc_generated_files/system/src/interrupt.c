@@ -43,6 +43,42 @@
 
 void INTERRUPT_Initialize(void)
 {
+    // ADCAN11: ADC AN11 Convert Done
+    // Priority: 1
+    IPC25bits.ADCAN11IP = 1;
+    
+    // ADCAN13: ADC AN13 Convert Done
+    // Priority: 1
+    IPC26bits.ADCAN13IP = 1;
+    
+    // ADCAN15: ADC AN15 Convert Done
+    // Priority: 1
+    IPC26bits.ADCAN15IP = 1;
+    
+    // ADCAN10: ADC AN10 Convert Done
+    // Priority: 1
+    IPC25bits.ADCAN10IP = 1;
+    
+    // ADCAN12: ADC AN12 Convert Done
+    // Priority: 1
+    IPC25bits.ADCAN12IP = 1;
+    
+    // ADC: ADC Global Interrupt
+    // Priority: 1
+    IPC22bits.ADCIP = 1;
+    
+    // ADCAN7: ADC AN7 Convert Done
+    // Priority: 1
+    IPC24bits.ADCAN7IP = 1;
+    
+    // ADCAN9: ADC AN9 Convert Done
+    // Priority: 1
+    IPC25bits.ADCAN9IP = 1;
+    
+    // ADCAN4: ADC AN4 Convert Done
+    // Priority: 1
+    IPC23bits.ADCAN4IP = 1;
+    
     // C1: CAN 1 Combined Error
     // Priority: 1
     IPC6bits.C1IP = 1;
@@ -68,6 +104,15 @@ void INTERRUPT_Initialize(void)
 void INTERRUPT_Deinitialize(void)
 {
     //POR default value of priority
+    IPC25bits.ADCAN11IP = 4;
+    IPC26bits.ADCAN13IP = 4;
+    IPC26bits.ADCAN15IP = 4;
+    IPC25bits.ADCAN10IP = 4;
+    IPC25bits.ADCAN12IP = 4;
+    IPC22bits.ADCIP = 4;
+    IPC24bits.ADCAN7IP = 4;
+    IPC25bits.ADCAN9IP = 4;
+    IPC23bits.ADCAN4IP = 4;
     IPC6bits.C1IP = 4;
     IPC11bits.DMTIP = 4;
     IPC16bits.I2C1BCIP = 4;
