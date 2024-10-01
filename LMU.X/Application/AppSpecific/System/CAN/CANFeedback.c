@@ -79,11 +79,11 @@ void CANFBK__Handler5ms (void)
     {
         TIMERS__MsSet(MS_TIMER_CANFBK_PERIOD, CAN_FEEDBACK_PERIOD);
 
-        // TODO: implement functionality to transmitt more different CAN messages with a list of CAN ID...
+        // TODO: implement functionality to transmit more different CAN messages with a list of CAN ID...
         /* Transmit LSI Feedback */
-        for(k = 0; k <= CANFBK_MAX_LSI_IDs; k++)
+        for(k = 0; k < CANFBK_MAX_LSI_IDs; k++)
         {    
-            CAN_RMP_Interf.Send(CANFBK_ID_LSI1, DLC_8, lsiFbk[k].lsiFbkArray);
+            CAN_RMP_Interf.Send((CANFBK_ID_LSI0 + k), DLC_8, lsiFbk[k].lsiFbkArray);
         }
     }
 }
@@ -139,7 +139,7 @@ static uint8 GetIDEnumValue(CANFBK_IDs_LSI_TYPE lsiID)
     switch(lsiID)
     {
         default:
-            retVal = 0xFF;      // If invalid LSI ID returns invalid progressive numerical value
+            retVal = CANFBK_INVALID_ID;      // If invalid LSI ID returns invalid progressive numerical value
             break;
         
         case CANFBK_ID_LSI0:

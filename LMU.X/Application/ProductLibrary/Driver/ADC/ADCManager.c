@@ -76,10 +76,30 @@ void ADCManager__Handler5ms(void)
    lsiFbkADC = CANFBK_Interf.GETLsiFbk(CANFBK_ID_LSI0);
    lsiFbkADC.lsiFbkArray[0] = HIBYTE_WORD(adcResult[AN4_IeCB100A]);
    lsiFbkADC.lsiFbkArray[1] = LOBYTE_WORD(adcResult[AN4_IeCB100A]);
-   
-//  lsiFbkADC.lsiFbkArray[4] = HIBYTE_WORD(adcResult[AN7_I_PWR1]);
-//   lsiFbkADC.lsiFbkArray[5] = LOBYTE_WORD(adcResult[AN7_I_PWR1]);
+   lsiFbkADC.lsiFbkArray[4] = HIBYTE_WORD(adcResult[AN7_I_PWR1]);
+   lsiFbkADC.lsiFbkArray[5] = LOBYTE_WORD(adcResult[AN7_I_PWR1]);
    CANFBK_Interf.SETLsiFbk(CANFBK_ID_LSI0, &lsiFbkADC);
+   
+   lsiFbkADC = CANFBK_Interf.GETLsiFbk(CANFBK_ID_LSI1);
+   lsiFbkADC.lsiFbkArray[2] = HIBYTE_WORD(adcResult[AN9_V_GPU]);
+   lsiFbkADC.lsiFbkArray[3] = LOBYTE_WORD(adcResult[AN9_V_GPU]);
+   lsiFbkADC.lsiFbkArray[6] = HIBYTE_WORD(adcResult[AN10_I_PWR2]);
+   lsiFbkADC.lsiFbkArray[7] = LOBYTE_WORD(adcResult[AN10_I_PWR2]);
+   CANFBK_Interf.SETLsiFbk(CANFBK_ID_LSI1, &lsiFbkADC);
+   
+   lsiFbkADC = CANFBK_Interf.GETLsiFbk(CANFBK_ID_LSI2);
+   lsiFbkADC.lsiFbkArray[0] = HIBYTE_WORD(adcResult[AN11_V_PWR2]);
+   lsiFbkADC.lsiFbkArray[1] = LOBYTE_WORD(adcResult[AN11_V_PWR2]);
+   lsiFbkADC.lsiFbkArray[4] = HIBYTE_WORD(adcResult[AN12_V_PWR1]);
+   lsiFbkADC.lsiFbkArray[5] = LOBYTE_WORD(adcResult[AN12_V_PWR1]);
+   CANFBK_Interf.SETLsiFbk(CANFBK_ID_LSI2, &lsiFbkADC);
+   
+   lsiFbkADC = CANFBK_Interf.GETLsiFbk(CANFBK_ID_LSI3);
+   lsiFbkADC.lsiFbkArray[2] = HIBYTE_WORD(adcResult[AN13_V_BATTERY]);
+   lsiFbkADC.lsiFbkArray[3] = LOBYTE_WORD(adcResult[AN13_V_BATTERY]);
+   lsiFbkADC.lsiFbkArray[6] = HIBYTE_WORD(adcResult[AN15_T_LOGIC_BOARD]);
+   lsiFbkADC.lsiFbkArray[7] = LOBYTE_WORD(adcResult[AN15_T_LOGIC_BOARD]);
+   CANFBK_Interf.SETLsiFbk(CANFBK_ID_LSI3, &lsiFbkADC);
    
 }
 
