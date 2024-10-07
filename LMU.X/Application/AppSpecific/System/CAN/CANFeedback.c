@@ -29,8 +29,8 @@ const struct FBK_INTERFACE_STRUCT CANFBK_Interf =
 {
     .Initialize     = &CANFBK__Initialize,
     .Handler5ms     = &CANFBK__Handler5ms,
-    .SETLsiFbk      = &SetLsiFeedback,
-	.GETLsiFbk      = &GetLsiFeedback,
+    .SetLsiFbk      = &SetLsiFeedback,
+	.GetLsiFbk      = &GetLsiFeedback,
 };
 
 static uint8        GetIDEnumValue(CANFBK_IDs_LSI_TYPE lsiID);

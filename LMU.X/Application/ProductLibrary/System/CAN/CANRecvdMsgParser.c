@@ -14,6 +14,7 @@
 #include "../../../AppSpecific/AppSpecificInclude/Version.h"
 #include "../../ProductLibraryInclude/Timers.h"
 #include "../../../../mcc_generated_files/system/pins.h"
+#include "../../ProductLibraryInclude/ADCManager.h"
 
 #include "../../ProductLibraryInclude/CANRecvdMsgParser.h"
 
@@ -173,8 +174,8 @@ static void CAN_RMP_HeartBeat(void)
      * First message sent:
      * MsgID:   CAN_MSG_ID_HEARTBEAT_FIRST
      * DLC:     8 Bytes
-     * Payload: Byte0 ÷ Byte2 => HWNumberFromList
-     *          Byte3 ÷ Byte5 => SWNumberFromList
+     * Payload: Byte0 ÷ Byte2 => Last 3 digit from the LMU HW Part Number BR-9070-013
+     *          Byte3 ÷ Byte5 => Last 3 digit from the LMU SW Part Number BR-9074-002
      *          Byte6         => Version From MAJOR SW Version
      *          Byte7         => Version From MINOR SW Version
      * 
@@ -182,7 +183,9 @@ static void CAN_RMP_HeartBeat(void)
      * MsgID:   CAN_MSG_ID_HEARTBEAT_SECOND
      * DLC:     8 Bytes
      * Payload: Byte0         => LMU Unit Number
-     *          Byte1 ÷ Byte7 => not used
+     *          Byte1 ÷ Byte3 => not used
+     *          Byte4 ÷ Byte5 => Logic Board Temperature
+     *          Byte6 ÷ Byte7 => Power Board Temperature
      *    
      * NOTE: LMU Unit Number is external programmable with external CAN message
      * 
@@ -200,7 +203,7 @@ static void CAN_RMP_HeartBeat(void)
         txData[1] = str[9]  - '0';              // ASCII code offset
         txData[2] = str[10] - '0';              // ASCII code offset
         
-        VERSION_Interf.HwPartNumber(str);
+        VERSION_Interf.SwPartNumber(str);
         txData[3] = str[8]  - '0';              // ASCII code offset
         txData[4] = str[9]  - '0';              // ASCII code offset
         txData[5] = str[10] - '0';              // ASCII code offset
@@ -213,10 +216,10 @@ static void CAN_RMP_HeartBeat(void)
         txData[1] = 0;  // 
         txData[2] = 0;  //
         txData[3] = 0;  //
-        txData[4] = 0;  //
-        txData[5] = 0;  //
-        txData[6] = 0;  //
-        txData[7] = 0;  //
+        txData[4] = HIBYTE_WORD(ADCManager_Interf.GetT_LOGICBoard());  //
+        txData[5] = LOBYTE_WORD(ADCManager_Interf.GetT_LOGICBoard());  //
+        txData[6] = HIBYTE_WORD(ADCManager_Interf.GetT_PWRBoard());  //
+        txData[7] = LOBYTE_WORD(ADCManager_Interf.GetT_PWRBoard());  //
         CAN_RMP_Interf.Send(CAN_MSG_ID_HEARTBEAT_SECOND, DLC_8, txData);
     }
 }
@@ -318,29 +321,29 @@ static void ResponseToNameCmd1(uint32 msgID, uint32 length, uint8 *payload)
 {
     if(payload[0] == 1)
     {
-        RGBBlue_SetHigh();
+        //RGBBlue_SetHigh();
     }
     else
     {
-        RGBBlue_SetLow();
+        //RGBBlue_SetLow();
     }
     
     if(payload[1] == 1)
     {
-        RGBGreen_SetHigh();
+        //RGBGreen_SetHigh();
     }
     else
     {
-        RGBGreen_SetLow();
+        //RGBGreen_SetLow();
     }
     
     if(payload[2] == 1)
     {
-        RGBRed_SetHigh();
+        //RGBRed_SetHigh();
     }
     else
     {
-        RGBRed_SetLow();
+       //RGBRed_SetLow();
     }
 }
 

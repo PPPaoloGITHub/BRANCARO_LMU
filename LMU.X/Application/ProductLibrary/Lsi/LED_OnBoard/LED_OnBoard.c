@@ -50,6 +50,11 @@ void LED_ONB__Initialize(void)
     Green_LED_SetLow();
     Red_LED_SetLow();
     
+    /* TODO: Put this pins in the appropriate module handler */
+    MAINTENANCE_SetHigh();
+    CONFIRM_MAINTENANCE_SetHigh();
+    /* END TODO! */
+    
     TIMERS__MsSet(MS_TIMER_GREEN_LED_PULSE, GREEN_LED_TIME_1s);
 }
 

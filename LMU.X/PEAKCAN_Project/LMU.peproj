@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PCANExplorerProject Version="6.0" AppVersion="6.7.0" Name="LMU">
+    <Connections AutoReset="0" IgnoreRTRLength="0" ProcessRTR="1">
+        <Connection Name="PEAKCAN_Connection" Bus="1" Enabled="1" Protocol="0" SymbolsFileName="LMU_Symbols.sym" BitRate="28" Connection="CAN_Test@pcan_usb"/>
+    </Connections>
+    <Files>
+        <File RelativePath="Symbols\LMU_Symbols.sym"/>
+    </Files>
+</PCANExplorerProject>

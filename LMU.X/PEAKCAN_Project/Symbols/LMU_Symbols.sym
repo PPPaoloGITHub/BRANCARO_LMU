@@ -1,0 +1,25 @@
+FormatVersion=6.0 // Do not edit this line!
+Title="Untitled"
+
+{SENDRECEIVE}
+
+[HeartBeat0]
+ID=00002000h // LMU HeartBeat sent every 1s - Part1
+Type=Extended
+Len=8
+Var="HW_P/N_Digit1" unsigned 0,8 /ln:"Hardware Part Number" // Last 3 digit from the LMU HW Part Number BR-9070-013
+Var="HW_P/N_Digit2" unsigned 8,8 /ln:"Hardware Part Number" // Last 3 digit from the LMU HW Part Number BR-9070-013
+Var="HW_P/N_Digit3" unsigned 16,8 /ln:"Hardware Part Number" // Last 3 digit from the LMU HW Part Number BR-9070-013
+Var="SW_P/N_Digit1" unsigned 24,8 -m /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-002
+Var="SW_P/N_Digit2" unsigned 32,8 -m /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-002
+Var="SW_P/N_Digit3" unsigned 40,8 -m /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-002
+Var=SW_Version_Major unsigned 48,8 -m /ln:"Software Version Major"
+Var=SW_Version_Minor unsigned 56,8 -m /ln:"Software Version Minor"
+
+[HeartBeat1]
+ID=00002001h // LMU HeartBeat sent every 1s - Part2
+Type=Extended
+Len=8
+Var=LMU_Unit_Number unsigned 0,8 -m /ln:"LMU Unit Number"
+Var="Logic Board Temp" signed 32,16 -m /u:°C /f:0.1 /ln:"Logic Board Temperature" // Value multiplied by 10 to have 1 decimal temperature
+Var="Power Board Temp" signed 48,16 -m /u:°C /f:0.1 /ln:"Power Board Temperature" // Value multiplied by 10 to have 1 decimal temperature

@@ -253,7 +253,7 @@ TASK_TYPE Main_Slot3_Tasks[] =
 {
 	//ModuleName__Handler25ms,
     //APIxxx_SMU_ACU__BackGround25ms,
-    ADCManager__Handler5ms,
+    ADCManager__Handler25ms,
 
 	//-------------------------------------------------------------------------
     // Mandatory NULL_TASK must be at the end of the list

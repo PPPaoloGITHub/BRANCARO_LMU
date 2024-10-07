@@ -115,8 +115,8 @@ struct FBK_INTERFACE_STRUCT
 {
     void         (*Initialize) (void);
     void         (*Handler5ms) (void);
-    void 		 (*SETLsiFbk)  (CANFBK_IDs_LSI_TYPE lsiID, LSI_FBK_TYPE *lsiFeedback);
-    LSI_FBK_TYPE (*GETLsiFbk)  (CANFBK_IDs_LSI_TYPE lsiID);
+    void 		 (*SetLsiFbk)  (CANFBK_IDs_LSI_TYPE lsiID, LSI_FBK_TYPE *lsiFeedback);
+    LSI_FBK_TYPE (*GetLsiFbk)  (CANFBK_IDs_LSI_TYPE lsiID);
 };
 
 //=====================================================================================================================

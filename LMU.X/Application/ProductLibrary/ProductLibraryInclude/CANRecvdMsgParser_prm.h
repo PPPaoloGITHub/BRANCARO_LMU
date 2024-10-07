@@ -16,8 +16,8 @@
 //=====================================================================================================================
 //-------------------------------------- PUBLIC (Constants & Defines) -------------------------------------------------
 //=====================================================================================================================
-#define CAN_MSG_ID_LMU_START_ADDR   0x00001000                      // CAN messages ID LMU range:
-#define CAN_MSG_ID_LMU_END_ADDR     0x00001200                      // [0x00001000 ÷ 0x00001200] => 512 different messages available
+#define CAN_MSG_ID_LMU_START_ADDR   0x00002000                      // CAN messages ID LMU range:
+#define CAN_MSG_ID_LMU_END_ADDR     0x00002200                      // [0x00002000 ÷ 0x00002200] => 512 different messages available
 
 #define CAN_MSG_ID_HEARTBEAT_FIRST  CAN_MSG_ID_LMU_START_ADDR       // First Heartbeat CAN message ID
 #define CAN_MSG_ID_HEARTBEAT_SECOND (CAN_MSG_ID_LMU_START_ADDR + 1) // Second Heartbeat CAN message ID
@@ -31,8 +31,8 @@
 // can messages ID to Program internal LMU variables //
 
 // can messages ID commands //
-#define NAME_CMD1                   0x00001005
-#define NAME_CMD2                   0x00001006
+#define NAME_CMD1                   0x00002005
+#define NAME_CMD2                   0x00002006
 
 
 #endif /* __CAN_RECVD_MSG_PARSER_PRM_H__ */
