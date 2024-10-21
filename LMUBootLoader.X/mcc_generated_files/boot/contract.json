@@ -1,0 +1,1454 @@
+{
+  "deviceName": "dsPIC33CH512MP506",
+  "communicationProtocol": {
+    "name": "Add New UART"
+  },
+  "memoryPartition": 0,
+  "applicationResetAddress": 10240,
+  "maxPayloadSize": 256,
+  "version": "1.6",
+  "bootloaderEndAddressExclusive": 10240,
+  "applicationStartAddress": 10240,
+  "applicationEndAddress": 358398,
+  "userIvtTableAddress": 10752,
+  "interrupts": [
+    {
+      "name": "OscillatorFail",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "AddressError",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "HardTrapError",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "StackError",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MathError",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ReservedTrap5",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "SoftTrapError",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ReservedTrap7",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "INT0Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "T1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CNAInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CNBInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "DMA0Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt5",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "CCP1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCT1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "DMA1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SPI1RXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SPI1TXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "U1RXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "U1TXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ECCSBEInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "NVMInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "INT1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SI2C1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MI2C1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "DMA2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CNCInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "INT2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "DMA3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "DMA4Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCP2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCT2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "C1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "INT3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "U2RXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "U2TXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SPI2RXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SPI2TXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "C1RXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "C2RXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "C2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "DMA5Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCP3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCT3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SI2C2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MI2C2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt39",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "CCP4Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCT4Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt42",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "CCP5Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCT5Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "DMTInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCP6Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCT6Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "QEI1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "U1EInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "U2EInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CRCInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "C1TXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "C2TXInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt54",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt55",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt56",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt57",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt58",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt59",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt60",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "ICDInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "JTAGInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PTGSTEPInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "I2C1BCInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "I2C2BCInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt66",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "PWM1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PWM2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PWM3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PWM4Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt71",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt72",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt73",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt74",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "CNDInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt76",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "CMP1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt78",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt79",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt80",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "PTGWDTInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PTG0Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PTG1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PTG2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PTG3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SENT1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SENT1EInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SENT2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SENT2EInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN0Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN4Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN5Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN6Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN7Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN8Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN9Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN10Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN11Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN12Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN13Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN14Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN15Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN16Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN17Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN18Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN19Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCAN20Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt112",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt113",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt114",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "ADCFLTInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCMP0Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCMP1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCMP2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADCMP3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADFLTR0Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADFLTR1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADFLTR2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "ADFLTR3Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CLC1PInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CLC2PInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SPI1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "SPI2Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt128",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "MSIS1Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIAInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIBInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSICInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIDInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIEInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIFInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIGInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIHInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIDTInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIWFEInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "MSIFLTInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "S1RSTInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt142",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt143",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt144",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt145",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "S1BRKInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt147",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt148",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "CCP7Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCT7Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt151",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "CCP8Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CCT8Interrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt154",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt155",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt156",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "S1CLKFInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt158",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt159",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt160",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt161",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt162",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt163",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt164",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt165",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt166",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt167",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "ADFIFOInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PEVTAInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PEVTBInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PEVTCInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PEVTDInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PEVTEInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "PEVTFInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CLC3PInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CLC4PInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CLC1NInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CLC2NInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CLC3NInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "CLC4NInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt181",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt182",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt183",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt184",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt185",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt186",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt187",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt188",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "U1EVTInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "U2EVTInterrupt",
+      "mappingOption": "REMAP_TO_APPLICATION"
+    },
+    {
+      "name": "Interrupt191",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt192",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt193",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt194",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt195",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt196",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt197",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt198",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt199",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt200",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt201",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt202",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt203",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt204",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt205",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt206",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt207",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt208",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt209",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt210",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt211",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt212",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt213",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt214",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt215",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt216",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt217",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt218",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt219",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt220",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt221",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt222",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt223",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt224",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt225",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt226",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt227",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt228",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt229",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt230",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt231",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt232",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt233",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt234",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt235",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt236",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt237",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt238",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt239",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt240",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt241",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt242",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt243",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt244",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    },
+    {
+      "name": "Interrupt245",
+      "mappingOption": "REMAP_TO_APPLICATION_DEFAULT"
+    }
+  ],
+  "disabledCommands": [],
+  "configurationBitSettings": [
+    {
+      "key": "PLLKEN",
+      "value": "PLLKEN_ON"
+    },
+    {
+      "key": "CPRE3",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB5",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRA3",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD9",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC7",
+      "value": "MAIN"
+    },
+    {
+      "key": "SPI2PIN",
+      "value": "PPS"
+    },
+    {
+      "key": "ALTI2C1",
+      "value": "OFF"
+    },
+    {
+      "key": "JTAGEN",
+      "value": "OFF"
+    },
+    {
+      "key": "CPRD1",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC14",
+      "value": "MAIN"
+    },
+    {
+      "key": "CTXT2",
+      "value": "OFF"
+    },
+    {
+      "key": "CPRD11",
+      "value": "MAIN"
+    },
+    {
+      "key": "ICS",
+      "value": "PGx1"
+    },
+    {
+      "key": "CPRE4",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD2",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRA4",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC8",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB6",
+      "value": "MAIN"
+    },
+    {
+      "key": "XTCFG",
+      "value": "G3"
+    },
+    {
+      "key": "CPRC0",
+      "value": "MAIN"
+    },
+    {
+      "key": "FCKSM",
+      "value": "CSDCMD"
+    },
+    {
+      "key": "CPRC15",
+      "value": "MAIN"
+    },
+    {
+      "key": "CTXT3",
+      "value": "OFF"
+    },
+    {
+      "key": "CPRB10",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD12",
+      "value": "MAIN"
+    },
+    {
+      "key": "SWDTPS",
+      "value": "PS1"
+    },
+    {
+      "key": "CPRC9",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD3",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC1",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRE5",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB7",
+      "value": "MAIN"
+    },
+    {
+      "key": "DMTIVTL",
+      "value": "0x0"
+    },
+    {
+      "key": "CPRD13",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB11",
+      "value": "MAIN"
+    },
+    {
+      "key": "CTXT4",
+      "value": "OFF"
+    },
+    {
+      "key": "CPRE10",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB8",
+      "value": "MAIN"
+    },
+    {
+      "key": "FNOSC",
+      "value": "FRCDIV"
+    },
+    {
+      "key": "CPRC2",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB0",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRE6",
+      "value": "MAIN"
+    },
+    {
+      "key": "POSCMOD",
+      "value": "NONE"
+    },
+    {
+      "key": "DMTCNTH",
+      "value": "0x0"
+    },
+    {
+      "key": "CPRD4",
+      "value": "MAIN"
+    },
+    {
+      "key": "SMBEN",
+      "value": "SMBUS"
+    },
+    {
+      "key": "BTMODE",
+      "value": "SINGLE"
+    },
+    {
+      "key": "XTBST",
+      "value": "ENABLE"
+    },
+    {
+      "key": "IBSEQ",
+      "value": "0xfff"
+    },
+    {
+      "key": "WDTCLK",
+      "value": "LPRC"
+    },
+    {
+      "key": "CPRD14",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRE11",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB12",
+      "value": "MAIN"
+    },
+    {
+      "key": "NOBTSWP",
+      "value": "OFF"
+    },
+    {
+      "key": "CPRB9",
+      "value": "MAIN"
+    },
+    {
+      "key": "WDTPS",
+      "value": "PS1"
+    },
+    {
+      "key": "DMTDIS",
+      "value": "OFF"
+    },
+    {
+      "key": "CPRB1",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD5",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC3",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRE7",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB13",
+      "value": "MAIN"
+    },
+    {
+      "key": "WINDIS",
+      "value": "ON"
+    },
+    {
+      "key": "BISTDIS",
+      "value": "DISABLED"
+    },
+    {
+      "key": "CPRE12",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC10",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD15",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRA0",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC4",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB2",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRE8",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD6",
+      "value": "MAIN"
+    },
+    {
+      "key": "BSEQ",
+      "value": "0xfff"
+    },
+    {
+      "key": "OSCIOFCN",
+      "value": "OFF"
+    },
+    {
+      "key": "CPRE0",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB14",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRE13",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC11",
+      "value": "MAIN"
+    },
+    {
+      "key": "IESO",
+      "value": "OFF"
+    },
+    {
+      "key": "CPRB3",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRA1",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD7",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC5",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRE9",
+      "value": "MAIN"
+    },
+    {
+      "key": "DMTIVTH",
+      "value": "0x0"
+    },
+    {
+      "key": "CPRE1",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC12",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB15",
+      "value": "MAIN"
+    },
+    {
+      "key": "WDTWIN",
+      "value": "WIN25"
+    },
+    {
+      "key": "CPRE14",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRA2",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC6",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRB4",
+      "value": "MAIN"
+    },
+    {
+      "key": "DMTCNTL",
+      "value": "0x0"
+    },
+    {
+      "key": "CPRD8",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRE2",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD0",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRD10",
+      "value": "MAIN"
+    },
+    {
+      "key": "CPRC13",
+      "value": "MAIN"
+    },
+    {
+      "key": "CTXT1",
+      "value": "OFF"
+    },
+    {
+      "key": "ALTI2C2",
+      "value": "OFF"
+    },
+    {
+      "key": "FWDTEN",
+      "value": "ON_SW"
+    },
+    {
+      "key": "CPRE15",
+      "value": "MAIN"
+    }
+  ],
+  "verification": "CRC32",
+  "bootloaderFoscValue": 90000000,
+  "isCodeProtectEnabled": false,
+  "isAntiRollBackEnabled": false,
+  "downloadStartAddress": 10240,
+  "downloadEndAddress": 358398,
+  "flashErasePageSizeInInstructions": 1024
+}

@@ -2,7 +2,7 @@
 
 manifest_file_version: 1.0.0
 project: LMU
-creation_date: 2024-10-04T12:28:06.152+02:00[Europe/Berlin]
+creation_date: 2024-10-18T16:33:33.822+02:00[Europe/Berlin]
 operating_system: Windows 10
 mcc_mode: IDE
 mcc_mode_version: v6.20
@@ -14,9 +14,10 @@ content_manager_version: 5.0.1
 is_mcc_offline: false
 is_using_prerelease_versions: false
 mcc_content_registries: https://registry.npmjs.org/
-device_library: {library_class: com.microchip.mcc.melody.Library, name: Melody, version: 2.7.1}
+device_library: {library_class: com.microchip.mcc.melody.Library, name: Melody, version: 2.8.0}
 packs: {name: dsPIC33CH-MP_DFP, version: 1.15.378}
 modules:
+- {name: com.microchip.bootloader16.mcc.Library, type: CLASSIC, version: 1.25.0}
 - {name: '@mchp-mcc/adc-multicore-driver', type: MELODY, version: 2.1.4}
 - {name: '@mchp-mcc/can-fd-2-0-driver', type: MELODY, version: 1.2.1}
 - {name: '@mchp-mcc/clock-16bit-driver', type: MELODY, version: 1.2.1}
