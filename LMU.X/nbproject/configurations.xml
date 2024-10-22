@@ -77,6 +77,7 @@
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/PCA9685.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/ADCManager.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/ADCManager_prm.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/HW_HeartBeat.h</itemPath>
       </logicalFolder>
       <itemPath>main.h</itemPath>
     </logicalFolder>
@@ -156,6 +157,11 @@
                            displayName="DigitalOutput"
                            projectFiles="true">
               <itemPath>Application/ProductLibrary/Lsi/DigitalOutput/DigitalOutput.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="HW_HeartBeat"
+                           displayName="HW_HeartBeat"
+                           projectFiles="true">
+              <itemPath>Application/ProductLibrary/Lsi/HW_HeartBeat/HW_HeartBeat.c</itemPath>
             </logicalFolder>
             <logicalFolder name="LED_OnBoard" displayName="LED_OnBoard" projectFiles="true">
               <itemPath>Application/ProductLibrary/Lsi/LED_OnBoard/LED_OnBoard.c</itemPath>

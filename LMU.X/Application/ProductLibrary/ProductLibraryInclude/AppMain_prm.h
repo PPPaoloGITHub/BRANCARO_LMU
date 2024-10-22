@@ -22,6 +22,7 @@
 //! Others
 #include "Timers.h"
 #include "LED_OnBoard.h"
+#include "HW_HeartBeat.h"
 #include "../../AppSpecific/AppSpecificInclude/Version.h"
 #include "CANRecvdMsgParser.h"
 #include "../../AppSpecific/AppSpecificInclude/CANFeedback.h"
@@ -144,6 +145,7 @@ TASK_TYPE Initialization_Tasks[] =
     //ModuleName__Initialize,
 	TIMERS__Initialize,
 	LED_ONB__Initialize,
+    HW_HEARTBEAT__Initialize,
     VERSION__Initialize,
     CAN_RMP__Initialize,
     CANFBK__Initialize,
@@ -267,6 +269,7 @@ TASK_TYPE Main_Slot4_Tasks[] =
 {
 	//ModuleName__Handler25ms,
 	LED_ONB__Handler25ms,
+    HW_HEARTBEAT__Handler25ms,
 
 	//-------------------------------------------------------------------------
     // Mandatory NULL_TASK must be at the end of the list

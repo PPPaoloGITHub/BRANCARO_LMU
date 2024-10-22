@@ -2,6 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/LED_OnBoard.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/HW_HeartBeat.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/AppMain_prm.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Lsi/HW_HeartBeat/HW_HeartBeat.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Lsi/LED_OnBoard/LED_OnBoard.c</file>
+        </group>
     </open-files>
 </project-private>

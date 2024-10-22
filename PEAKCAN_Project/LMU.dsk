@@ -130,16 +130,6 @@ Width=1065
 Height=495
 
 [Closed1]
-Ident=Symbols\LMU_Symbols.sym
-Left=234
-Top=234
-Width=1404
-Height=479
-SelCol=0
-SelLine=0
-FirstVisibleLine=0
-
-[Closed2]
 Ident=Panels\LMU_Panel.ipf
 Left=52
 Top=52
@@ -150,6 +140,16 @@ StructureLastVisible=0
 StructureDocked=0
 StructureFloatingWidth=200
 StructureDockingWidth=200
+
+[Closed2]
+Ident=Symbols\LMU_Symbols.sym
+Left=234
+Top=234
+Width=1404
+Height=479
+SelCol=0
+SelLine=0
+FirstVisibleLine=0
 
 [WatchWindow]
 Watch0=LMU_Symbols.HeartBeat0.SW_Version_Minor,0

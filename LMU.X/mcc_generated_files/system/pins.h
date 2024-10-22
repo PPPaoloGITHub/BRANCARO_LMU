@@ -45,258 +45,258 @@
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RC6 GPIO Pin which has a custom name of Green_LED to High
+ * @brief    Sets the RC6 GPIO Pin which has a custom name of DO_Green_LED to High
  * @pre      The RC6 must be set as Output Pin             
  * @param    none
  * @return   none  
  */
-#define Green_LED_SetHigh()          (_LATC6 = 1)
+#define DO_Green_LED_SetHigh()          (_LATC6 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RC6 GPIO Pin which has a custom name of Green_LED to Low
+ * @brief    Sets the RC6 GPIO Pin which has a custom name of DO_Green_LED to Low
  * @pre      The RC6 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define Green_LED_SetLow()           (_LATC6 = 0)
+#define DO_Green_LED_SetLow()           (_LATC6 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Toggles the RC6 GPIO Pin which has a custom name of Green_LED
+ * @brief    Toggles the RC6 GPIO Pin which has a custom name of DO_Green_LED
  * @pre      The RC6 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define Green_LED_Toggle()           (_LATC6 ^= 1)
+#define DO_Green_LED_Toggle()           (_LATC6 ^= 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Reads the value of the RC6 GPIO Pin which has a custom name of Green_LED
+ * @brief    Reads the value of the RC6 GPIO Pin which has a custom name of DO_Green_LED
  * @param    none
  * @return   none  
  */
-#define Green_LED_GetValue()         _RC6
+#define DO_Green_LED_GetValue()         _RC6
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RC6 GPIO Pin which has a custom name of Green_LED as Input
+ * @brief    Configures the RC6 GPIO Pin which has a custom name of DO_Green_LED as Input
  * @param    none
  * @return   none  
  */
-#define Green_LED_SetDigitalInput()  (_TRISC6 = 1)
+#define DO_Green_LED_SetDigitalInput()  (_TRISC6 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RC6 GPIO Pin which has a custom name of Green_LED as Output
+ * @brief    Configures the RC6 GPIO Pin which has a custom name of DO_Green_LED as Output
  * @param    none
  * @return   none  
  */
-#define Green_LED_SetDigitalOutput() (_TRISC6 = 0)
+#define DO_Green_LED_SetDigitalOutput() (_TRISC6 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RD5 GPIO Pin which has a custom name of CONFIRM_MAINTENANCE to High
+ * @brief    Sets the RD5 GPIO Pin which has a custom name of DO_CONFIRM_MAINTENANCE to High
  * @pre      The RD5 must be set as Output Pin             
  * @param    none
  * @return   none  
  */
-#define CONFIRM_MAINTENANCE_SetHigh()          (_LATD5 = 1)
+#define DO_CONFIRM_MAINTENANCE_SetHigh()          (_LATD5 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RD5 GPIO Pin which has a custom name of CONFIRM_MAINTENANCE to Low
+ * @brief    Sets the RD5 GPIO Pin which has a custom name of DO_CONFIRM_MAINTENANCE to Low
  * @pre      The RD5 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define CONFIRM_MAINTENANCE_SetLow()           (_LATD5 = 0)
+#define DO_CONFIRM_MAINTENANCE_SetLow()           (_LATD5 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Toggles the RD5 GPIO Pin which has a custom name of CONFIRM_MAINTENANCE
+ * @brief    Toggles the RD5 GPIO Pin which has a custom name of DO_CONFIRM_MAINTENANCE
  * @pre      The RD5 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define CONFIRM_MAINTENANCE_Toggle()           (_LATD5 ^= 1)
+#define DO_CONFIRM_MAINTENANCE_Toggle()           (_LATD5 ^= 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Reads the value of the RD5 GPIO Pin which has a custom name of CONFIRM_MAINTENANCE
+ * @brief    Reads the value of the RD5 GPIO Pin which has a custom name of DO_CONFIRM_MAINTENANCE
  * @param    none
  * @return   none  
  */
-#define CONFIRM_MAINTENANCE_GetValue()         _RD5
+#define DO_CONFIRM_MAINTENANCE_GetValue()         _RD5
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RD5 GPIO Pin which has a custom name of CONFIRM_MAINTENANCE as Input
+ * @brief    Configures the RD5 GPIO Pin which has a custom name of DO_CONFIRM_MAINTENANCE as Input
  * @param    none
  * @return   none  
  */
-#define CONFIRM_MAINTENANCE_SetDigitalInput()  (_TRISD5 = 1)
+#define DO_CONFIRM_MAINTENANCE_SetDigitalInput()  (_TRISD5 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RD5 GPIO Pin which has a custom name of CONFIRM_MAINTENANCE as Output
+ * @brief    Configures the RD5 GPIO Pin which has a custom name of DO_CONFIRM_MAINTENANCE as Output
  * @param    none
  * @return   none  
  */
-#define CONFIRM_MAINTENANCE_SetDigitalOutput() (_TRISD5 = 0)
+#define DO_CONFIRM_MAINTENANCE_SetDigitalOutput() (_TRISD5 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RD12 GPIO Pin which has a custom name of Red_LED to High
+ * @brief    Sets the RD12 GPIO Pin which has a custom name of DO_Red_LED to High
  * @pre      The RD12 must be set as Output Pin             
  * @param    none
  * @return   none  
  */
-#define Red_LED_SetHigh()          (_LATD12 = 1)
+#define DO_Red_LED_SetHigh()          (_LATD12 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RD12 GPIO Pin which has a custom name of Red_LED to Low
+ * @brief    Sets the RD12 GPIO Pin which has a custom name of DO_Red_LED to Low
  * @pre      The RD12 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define Red_LED_SetLow()           (_LATD12 = 0)
+#define DO_Red_LED_SetLow()           (_LATD12 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Toggles the RD12 GPIO Pin which has a custom name of Red_LED
+ * @brief    Toggles the RD12 GPIO Pin which has a custom name of DO_Red_LED
  * @pre      The RD12 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define Red_LED_Toggle()           (_LATD12 ^= 1)
+#define DO_Red_LED_Toggle()           (_LATD12 ^= 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Reads the value of the RD12 GPIO Pin which has a custom name of Red_LED
+ * @brief    Reads the value of the RD12 GPIO Pin which has a custom name of DO_Red_LED
  * @param    none
  * @return   none  
  */
-#define Red_LED_GetValue()         _RD12
+#define DO_Red_LED_GetValue()         _RD12
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RD12 GPIO Pin which has a custom name of Red_LED as Input
+ * @brief    Configures the RD12 GPIO Pin which has a custom name of DO_Red_LED as Input
  * @param    none
  * @return   none  
  */
-#define Red_LED_SetDigitalInput()  (_TRISD12 = 1)
+#define DO_Red_LED_SetDigitalInput()  (_TRISD12 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RD12 GPIO Pin which has a custom name of Red_LED as Output
+ * @brief    Configures the RD12 GPIO Pin which has a custom name of DO_Red_LED as Output
  * @param    none
  * @return   none  
  */
-#define Red_LED_SetDigitalOutput() (_TRISD12 = 0)
+#define DO_Red_LED_SetDigitalOutput() (_TRISD12 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RD14 GPIO Pin which has a custom name of MAINTENANCE to High
+ * @brief    Sets the RD14 GPIO Pin which has a custom name of DI_MAINTENANCE to High
  * @pre      The RD14 must be set as Output Pin             
  * @param    none
  * @return   none  
  */
-#define MAINTENANCE_SetHigh()          (_LATD14 = 1)
+#define DI_MAINTENANCE_SetHigh()          (_LATD14 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RD14 GPIO Pin which has a custom name of MAINTENANCE to Low
+ * @brief    Sets the RD14 GPIO Pin which has a custom name of DI_MAINTENANCE to Low
  * @pre      The RD14 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define MAINTENANCE_SetLow()           (_LATD14 = 0)
+#define DI_MAINTENANCE_SetLow()           (_LATD14 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Toggles the RD14 GPIO Pin which has a custom name of MAINTENANCE
+ * @brief    Toggles the RD14 GPIO Pin which has a custom name of DI_MAINTENANCE
  * @pre      The RD14 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define MAINTENANCE_Toggle()           (_LATD14 ^= 1)
+#define DI_MAINTENANCE_Toggle()           (_LATD14 ^= 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Reads the value of the RD14 GPIO Pin which has a custom name of MAINTENANCE
+ * @brief    Reads the value of the RD14 GPIO Pin which has a custom name of DI_MAINTENANCE
  * @param    none
  * @return   none  
  */
-#define MAINTENANCE_GetValue()         _RD14
+#define DI_MAINTENANCE_GetValue()         _RD14
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RD14 GPIO Pin which has a custom name of MAINTENANCE as Input
+ * @brief    Configures the RD14 GPIO Pin which has a custom name of DI_MAINTENANCE as Input
  * @param    none
  * @return   none  
  */
-#define MAINTENANCE_SetDigitalInput()  (_TRISD14 = 1)
+#define DI_MAINTENANCE_SetDigitalInput()  (_TRISD14 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RD14 GPIO Pin which has a custom name of MAINTENANCE as Output
+ * @brief    Configures the RD14 GPIO Pin which has a custom name of DI_MAINTENANCE as Output
  * @param    none
  * @return   none  
  */
-#define MAINTENANCE_SetDigitalOutput() (_TRISD14 = 0)
+#define DI_MAINTENANCE_SetDigitalOutput() (_TRISD14 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RD15 GPIO Pin which has a custom name of HEARTBEAT to High
+ * @brief    Sets the RD15 GPIO Pin which has a custom name of DO_HEARTBEAT to High
  * @pre      The RD15 must be set as Output Pin             
  * @param    none
  * @return   none  
  */
-#define HEARTBEAT_SetHigh()          (_LATD15 = 1)
+#define DO_HEARTBEAT_SetHigh()          (_LATD15 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Sets the RD15 GPIO Pin which has a custom name of HEARTBEAT to Low
+ * @brief    Sets the RD15 GPIO Pin which has a custom name of DO_HEARTBEAT to Low
  * @pre      The RD15 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define HEARTBEAT_SetLow()           (_LATD15 = 0)
+#define DO_HEARTBEAT_SetLow()           (_LATD15 = 0)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Toggles the RD15 GPIO Pin which has a custom name of HEARTBEAT
+ * @brief    Toggles the RD15 GPIO Pin which has a custom name of DO_HEARTBEAT
  * @pre      The RD15 must be set as Output Pin
  * @param    none
  * @return   none  
  */
-#define HEARTBEAT_Toggle()           (_LATD15 ^= 1)
+#define DO_HEARTBEAT_Toggle()           (_LATD15 ^= 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Reads the value of the RD15 GPIO Pin which has a custom name of HEARTBEAT
+ * @brief    Reads the value of the RD15 GPIO Pin which has a custom name of DO_HEARTBEAT
  * @param    none
  * @return   none  
  */
-#define HEARTBEAT_GetValue()         _RD15
+#define DO_HEARTBEAT_GetValue()         _RD15
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RD15 GPIO Pin which has a custom name of HEARTBEAT as Input
+ * @brief    Configures the RD15 GPIO Pin which has a custom name of DO_HEARTBEAT as Input
  * @param    none
  * @return   none  
  */
-#define HEARTBEAT_SetDigitalInput()  (_TRISD15 = 1)
+#define DO_HEARTBEAT_SetDigitalInput()  (_TRISD15 = 1)
 
 /**
  * @ingroup  pinsdriver
- * @brief    Configures the RD15 GPIO Pin which has a custom name of HEARTBEAT as Output
+ * @brief    Configures the RD15 GPIO Pin which has a custom name of DO_HEARTBEAT as Output
  * @param    none
  * @return   none  
  */
-#define HEARTBEAT_SetDigitalOutput() (_TRISD15 = 0)
+#define DO_HEARTBEAT_SetDigitalOutput() (_TRISD15 = 0)
 
 /**
  * @ingroup  pinsdriver

@@ -40,21 +40,16 @@ const struct LED_ONB_INTRFACE_STRUCT LED_ONB_Interf =
 //=====================================================================================================================
 /**
   * @brief  This function initializes LED On Board module
-   *
+  *
   * @param  None
   * @retval None
   * @note	None
   */
 void LED_ONB__Initialize(void)
 {
-    Green_LED_SetLow();
-    Red_LED_SetLow();
-    
-    /* TODO: Put this pins in the appropriate module handler */
-    MAINTENANCE_SetHigh();
-    CONFIRM_MAINTENANCE_SetHigh();
-    /* END TODO! */
-    
+    DO_Green_LED_SetLow();
+    DO_Red_LED_SetLow();
+ 
     TIMERS__MsSet(MS_TIMER_GREEN_LED_PULSE, GREEN_LED_TIME_1s);
 }
 
@@ -70,11 +65,11 @@ void LED_ONB__Handler25ms(void)
  	/* Heartbeat implementation for Green LED: it pulses 100ms ON and 900ms OFF */
     if(TIMERS__MsGetTime(MS_TIMER_GREEN_LED_PULSE) <= GREEN_LED_TIME_100ms)
     {
-        Green_LED_SetHigh();
+        DO_Green_LED_SetHigh();
     }
     else
     {
-        Green_LED_SetLow();
+        DO_Green_LED_SetLow();
     }
     
     if(TIMERS__MsGetStatus(MS_TIMER_GREEN_LED_PULSE) == TIMERS_COMPLETED)
@@ -103,12 +98,12 @@ static void LED_ONB_TurnOff(LED_ONB_INSTANCE_TYPE led)
 		{
 		case LED_ONB_GREEN:
 
-			Green_LED_SetLow();
+			DO_Green_LED_SetLow();
 			break;
 
 		case LED_ONB_RED:
 
-			Red_LED_SetLow();
+			DO_Red_LED_SetLow();
 			break;
             
 		default:
@@ -137,12 +132,12 @@ static void LED_ONB_TurnOn(LED_ONB_INSTANCE_TYPE led)
 		{
 		case LED_ONB_GREEN:
 
-			Green_LED_SetHigh();
+			DO_Green_LED_SetHigh();
 			break;
 
 		case LED_ONB_RED:
 
-			Red_LED_SetHigh();
+			DO_Red_LED_SetHigh();
 			break;
             
 		default:
@@ -172,12 +167,12 @@ static void LED_ONB_Toggle(LED_ONB_INSTANCE_TYPE led)
 		{
 		case LED_ONB_GREEN:
 
-			Green_LED_Toggle();
+			DO_Green_LED_Toggle();
 			break;
 
 		case LED_ONB_RED:
 
-			Red_LED_Toggle();
+			DO_Red_LED_Toggle();
 			break;
             
 		default:
