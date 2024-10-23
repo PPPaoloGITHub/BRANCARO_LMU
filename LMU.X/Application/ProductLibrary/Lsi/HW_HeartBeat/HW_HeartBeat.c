@@ -1,6 +1,6 @@
 /**
- *  @file       LED_OnBoard.c
- *  @brief      On board leds driver
+ *  @file       HW_HearBeat.c
+ *  @brief      Hardware HeartBeat driver
  *
  *  @details    ---
  *
@@ -57,11 +57,11 @@ void HW_HEARTBEAT__Initialize(void)
 }
 
 /**
-  * @brief  LED On Board module handler. It manages all the module functionalities
+  * @brief  Hardware HeartBeat module handler. It manages all the module functionalities
   * 
   * @param  None
   * @retval None
-  * @note	call this function in interrupt task every 25ms
+  * @note	call this function in the task every 25ms
   */
 void HW_HEARTBEAT__Handler25ms(void)
 {
@@ -72,7 +72,7 @@ void HW_HEARTBEAT__Handler25ms(void)
         heartBeatStatus = HW_HEARTBEAT_NORMAL_OPERATION;
         
         /* Here we are in NORMAL OPERATION STATUS: HW HeartBeat have to be generated with a pulse on DO_HEARTBEAT pin every 200ms */
-        /* Heartbeat pulse implementation: it pulses 20ms ON and 180ms OFF on a 200ms period */
+        /* Heartbeat pulse implementation: it pulses 100ms ON and 100ms OFF on a 200ms period */
         if(TIMERS__MsGetTime(MS_TIMER_HW_HEARBEAT) <= HW_HEARTBEAT_PULSE)
         {
             DO_HEARTBEAT_SetHigh();
@@ -102,11 +102,11 @@ void HW_HEARTBEAT__Handler25ms(void)
 //-------------------------------------- Private Functions ------------------------------------------------------------
 //=====================================================================================================================
 /**
-  * @brief  LED On Board module handler. It manages all the module functionalities
+  * @brief  Hardware Heartbeat get status function. It gives back the Hw Heartbeat status
   * 
   * @param  None
   * @retval None
-  * @note	call this function in interrupt task every 25ms
+  * @note	None
   */
 static HW_HEARTBEAT_STATUS_TYPE HW_HEARTBEAT_GetStatus(void)
 {

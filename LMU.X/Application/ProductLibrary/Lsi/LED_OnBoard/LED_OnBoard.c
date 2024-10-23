@@ -58,7 +58,7 @@ void LED_ONB__Initialize(void)
    *
   * @param  None
   * @retval None
-  * @note	call this function in interrupt task every 25ms
+  * @note	call this function in the task every 25ms
   */
 void LED_ONB__Handler25ms(void)
 {
