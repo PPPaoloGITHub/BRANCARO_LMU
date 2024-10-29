@@ -188,18 +188,23 @@ static uint16 ADCManager_GetI_eCB100A(void)
   */
 static uint16 ADCManager_GetI_PWR1(void)
 {
-    uint16 retVal;
+    sint16 retVal;
     
     if(I_PWR1_R2 == ADC_INFINITE_VALUE)
     {
-        retVal = (uint16)(((I_PWR1Value * ADC_VOLTAGE) / ADC_STEPS) / I_PWR1_SENSIVITY);
+        retVal = (uint16)(((I_PWR1Value * ADC_VOLTAGE) / ADC_STEPS - I_PWR1_OFFSET) / I_PWR1_SENSIVITY);
     }
     else
     {
-        retVal = (uint16)(((I_PWR1Value * ADC_VOLTAGE) / ADC_STEPS) * I_PWR1_DIVIDER / I_PWR1_SENSIVITY);
+        retVal = (uint16)((((I_PWR1Value * ADC_VOLTAGE) / ADC_STEPS) * I_PWR1_DIVIDER - I_PWR1_OFFSET) / I_PWR1_SENSIVITY);
     }
     
-    return (retVal);   
+    if(retVal < 0)
+    {
+        retVal = 0;
+    }    
+    
+    return ((uint16)retVal);   
 }
 
 /**
@@ -257,18 +262,23 @@ static uint16 ADCManager_GetV_GPU(void)
   */
 static uint16 ADCManager_GetI_PWR2(void)
 {
-    uint16 retVal;
+    sint16 retVal;
     
     if(I_PWR2_R2 == ADC_INFINITE_VALUE)
     {
-        retVal = (uint16)(((I_PWR2Value * ADC_VOLTAGE) / ADC_STEPS) / I_PWR2_SENSIVITY);
+        retVal = (uint16)(((I_PWR2Value * ADC_VOLTAGE) / ADC_STEPS - I_PWR2_OFFSET) / I_PWR2_SENSIVITY);
     }
     else
     {
-        retVal = (uint16)(((I_PWR2Value * ADC_VOLTAGE) / ADC_STEPS) * I_PWR2_DIVIDER / I_PWR2_SENSIVITY);
+        retVal = (uint16)((((I_PWR2Value * ADC_VOLTAGE) / ADC_STEPS) * I_PWR2_DIVIDER - I_PWR2_OFFSET)/ I_PWR2_SENSIVITY);
     }
     
-    return (retVal);
+    if(retVal < 0)
+    {
+        retVal = 0;
+    } 
+    
+    return ((uint16)retVal);
 }
 
 /**

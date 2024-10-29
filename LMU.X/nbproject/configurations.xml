@@ -78,6 +78,9 @@
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/ADCManager.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/ADCManager_prm.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/HW_HeartBeat.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/EEPROM24LC512.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/EEPROM24LC512_prm.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/MCP23017_prm.h</itemPath>
       </logicalFolder>
       <itemPath>main.h</itemPath>
     </logicalFolder>
@@ -133,6 +136,11 @@
                            displayName="ADS7128_ADC_EXP"
                            projectFiles="true">
               <itemPath>Application/ProductLibrary/Driver/ADS7128_ADC_EXP/ADS7128.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="EEPROM24LC512"
+                           displayName="EEPROM24LC512"
+                           projectFiles="true">
+              <itemPath>Application/ProductLibrary/Driver/EEPROM24LC512/EEPROM24LC512.c</itemPath>
             </logicalFolder>
             <logicalFolder name="EXTInt" displayName="EXTInt" projectFiles="true">
             </logicalFolder>
@@ -533,6 +541,7 @@
         <property key="event.recorder.debugger.behavior" value="Running"/>
         <property key="event.recorder.enabled" value="false"/>
         <property key="event.recorder.scvd.files" value=""/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="lastid" value=""/>
         <property key="memories.aux" value="false"/>

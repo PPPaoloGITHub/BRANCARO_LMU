@@ -44,8 +44,9 @@
 /*********************************************************/
 #define I_PWR1_R1              9400.0F     // [Ohm]
 #define I_PWR1_R2              24900.0F    // [Ohm]
-#define I_PWR1_DIVIDER        ((I_PWR1_R1 + I_PWR1_R2) / I_PWR1_R2) 
-#define I_PWR1_SENSIVITY       0.02666F    // [V/A] Current sensor sensivity 
+#define I_PWR1_DIVIDER         ((I_PWR1_R1 + I_PWR1_R2) / I_PWR1_R2) 
+#define I_PWR1_SENSIVITY       0.02666F    // [V/A] Current sensor sensivity
+#define I_PWR1_OFFSET          0.499F      // [V] measured offset @0A
 #define I_PWR1_LP_FT           0.2F        // Cut Frequency of Low Pass filter. Use 1.0F to not use Low Pass Filter
 
 
@@ -75,7 +76,8 @@
 #define I_PWR2_R1              9400.0F     // [Ohm]
 #define I_PWR2_R2              24900.0F    // [Ohm]
 #define I_PWR2_DIVIDER         ((I_PWR2_R1 + I_PWR2_R2) / I_PWR2_R2)
-#define I_PWR2_SENSIVITY       0.02666F    // [V/A] Current sensor sensivity 
+#define I_PWR2_SENSIVITY       0.02666F    // [V/A] Current sensor sensivity
+#define I_PWR2_OFFSET          0.499F      // [V] measured offset @0A
 #define I_PWR2_LP_FT           0.2F        // Cut Frequency of Low Pass filter. Use 1.0F to not use Low Pass Filter
 
 

@@ -29,6 +29,7 @@
 #include "ADCManager.h"
 #include "DigitalInput.h"
 #include "DigitalOutput.h"
+#include "EEPROM24LC512.h"
 
 
 //--- include APIxxx and APIyyy diagnostic
@@ -150,6 +151,7 @@ TASK_TYPE Initialization_Tasks[] =
     CAN_RMP__Initialize,
     CANFBK__Initialize,
     ADCManager__Initialize,
+    EEPROM24LC512__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -239,8 +241,7 @@ TASK_TYPE Main_Slot2_Tasks[] =
 {
 	//ModuleName__Handler25ms,
     //APIxxx_Message_Background25ms,
-
-//	SPI_Request,
+    EEPROM24LC512__Handler25ms,
 	
     
     //-------------------------------------------------------------------------
