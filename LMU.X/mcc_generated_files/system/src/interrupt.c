@@ -43,10 +43,6 @@
 
 void INTERRUPT_Initialize(void)
 {
-    // ADCAN11: ADC AN11 Convert Done
-    // Priority: 1
-    IPC25bits.ADCAN11IP = 1;
-    
     // ADCAN13: ADC AN13 Convert Done
     // Priority: 1
     IPC26bits.ADCAN13IP = 1;
@@ -54,10 +50,6 @@ void INTERRUPT_Initialize(void)
     // ADCAN15: ADC AN15 Convert Done
     // Priority: 1
     IPC26bits.ADCAN15IP = 1;
-    
-    // ADCAN10: ADC AN10 Convert Done
-    // Priority: 1
-    IPC25bits.ADCAN10IP = 1;
     
     // ADCAN12: ADC AN12 Convert Done
     // Priority: 1
@@ -104,10 +96,8 @@ void INTERRUPT_Initialize(void)
 void INTERRUPT_Deinitialize(void)
 {
     //POR default value of priority
-    IPC25bits.ADCAN11IP = 4;
     IPC26bits.ADCAN13IP = 4;
     IPC26bits.ADCAN15IP = 4;
-    IPC25bits.ADCAN10IP = 4;
     IPC25bits.ADCAN12IP = 4;
     IPC22bits.ADCIP = 4;
     IPC24bits.ADCAN7IP = 4;

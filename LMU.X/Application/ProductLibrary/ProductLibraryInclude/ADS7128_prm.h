@@ -1,38 +1,25 @@
 /**
- *  @file		PCA9685.h
- *  @brief      Driver for PCA9685 16 bit PWM I/O Expander with I2C Serial Interface 
+ *  @file		ADS7128.h
+ *  @brief      Driver for ADS7128 12-bit, 8-channel Sampling ADC with I2C Serial Interface 
  *
  *  $Header: 	ver 1.0 Paolo Parrino
  *
  *  @copyright  *****  Copyright BRANCARO Industries.  All rights reserved - CONFIDENTIAL  *****
  *
  */
-#ifndef __PCA9685_H__
-#define __PCA9685_H__
+#ifndef __ADS7128_H__
+#define __ADS7128_H__
 
 #include "C_Extensions.h"
 #include "../../../mcc_generated_files/i2c_host/i2c1.h"
-
-#include "PCA9685_prm.h"
 
 
 //=====================================================================================================================
 //-------------------------------------- PUBLIC (Constants & Defines) -------------------------------------------------
 //=====================================================================================================================
-/* Base address of I/O EXPANDER PWM (7 bits, shifted left by 1bit) */
-typedef enum
-{
-    IO_EXP_PWM0_I2C_ADDR = 0x40,
-    IO_EXP_PWM1_I2C_ADDR = 0x41,
-    IO_EXP_PWM2_I2C_ADDR = 0x42,
-    IO_EXP_PWM3_I2C_ADDR = 0x43,
-    IO_EXP_PWM4_I2C_ADDR = 0x44,
-    IO_EXP_PWM5_I2C_ADDR = 0x45,
-    IO_EXP_PWM6_I2C_ADDR = 0x46,
-    IO_EXP_PWM7_I2C_ADDR = 0x47,            
-} MCP23017_I2C_ADDR_TYPE;
 
-struct PCA9685_INTRFACE_STRUCT
+
+struct ADS7128_INTRFACE_STRUCT
 {
     void (*Initialize)     (void);
     void (*Handler5ms)     (void);
@@ -43,9 +30,9 @@ struct PCA9685_INTRFACE_STRUCT
 //=====================================================================================================================
 //-------------------------------------- PUBLIC (Function Prototypes) -------------------------------------------------
 //=====================================================================================================================
-extern const struct PCA9685_INTRFACE_STRUCT PCA96857_Interf;
+extern const struct ADS7128_INTRFACE_STRUCT ADS7128_Interf;
 
-void PCA9685__Initialize(void);
-void PCA9685__Handler5ms(void);
+void ADS7128__Initialize(void);
+void ADS7128__Handler5ms(void);
 
-#endif /* __PCA9685_H__ */
+#endif /* __ADS7128_H__ */

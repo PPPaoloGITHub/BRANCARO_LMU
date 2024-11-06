@@ -182,10 +182,10 @@ void EEPROM24LC512__Initialize(void)
 {
     /* Set I2C Clock frequency at 400KHz */
     /* EEPROM 24LC512 has Max Clock Frequency = 400KHz */
-    struct I2C_TRANSFER_SETUP tempVar;
+    //struct I2C_TRANSFER_SETUP tempVar;
     
-    tempVar.clkSpeed = 400000UL;
-    I2C1_Host.TransferSetup(&tempVar, 0);
+    //tempVar.clkSpeed = 400000UL;
+    //I2C1_Host.TransferSetup(&tempVar, 0);
 }
 
 /**

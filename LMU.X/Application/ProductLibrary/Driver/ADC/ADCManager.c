@@ -104,8 +104,8 @@ void ADCManager__Handler25ms(void)
    LPF(I_PWR1Value,        adc->ConversionResultGet(AN7_I_PWR1),         I_PWR1_LP_FT);
    //LPF(T_PWR_BOARDValue, adc->ConversionResultGet(AN8_T_PWR_BOARD),    T_PWR_BOARD_LP_FT);
    LPF(V_GPUValue,         adc->ConversionResultGet(AN9_V_GPU),          V_GPU_LP_FT);
-   LPF(I_PWR2Value,        adc->ConversionResultGet(AN10_I_PWR2),        I_PWR2_LP_FT);
-   LPF(V_PWR2Value,        adc->ConversionResultGet(AN11_V_PWR2),        V_PWR2_LP_FT);
+   //LPF(I_PWR2Value,        adc->ConversionResultGet(AN10_I_PWR2),        I_PWR2_LP_FT);
+   //LPF(V_PWR2Value,        adc->ConversionResultGet(AN11_V_PWR2),        V_PWR2_LP_FT);
    LPF(V_PWR1Value,        adc->ConversionResultGet(AN12_V_PWR1),        V_PWR1_LP_FT);
    LPF(V_BATTERYValue,     adc->ConversionResultGet(AN13_V_BATTERY),     V_BATTERY_LP_FT);
    LPF(T_LOGIC_BOARDValue, adc->ConversionResultGet(AN15_T_LOGIC_BOARD), T_LOGIC_BOARD_LP_FT);

@@ -23,7 +23,7 @@
 #define EEPROM24LC512_MAX_BYTE_PER_PAGE     128         // [Bytes]
 
 /* ***************** PORTABILITY MODULE: ***************** */
-/* I2C function to import from microcontroller I2C module  */
+/* I2C functions to import from microcontroller I2C module  */
 #define EEPROM_I2CWrite(memoryAddress, pData, dataLength)   I2C1_Host.Write(memoryAddress, pData, dataLength)
 #define EEPROM_I2CRead(memoryAddress, pData, dataLengtht)   I2C1_Host.Read(memoryAddress, pData, dataLengtht)
 #define EEPROM_I2CIsBusy()                                  I2C1_Host.IsBusy()

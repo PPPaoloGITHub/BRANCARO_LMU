@@ -81,6 +81,8 @@
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/EEPROM24LC512.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/EEPROM24LC512_prm.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/MCP23017_prm.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/ADS7128_prm.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/PCA9685_prm.h</itemPath>
       </logicalFolder>
       <itemPath>main.h</itemPath>
     </logicalFolder>

@@ -30,6 +30,7 @@
 #include "DigitalInput.h"
 #include "DigitalOutput.h"
 #include "EEPROM24LC512.h"
+#include "MCP23017.h"
 
 
 //--- include APIxxx and APIyyy diagnostic
@@ -152,6 +153,7 @@ TASK_TYPE Initialization_Tasks[] =
     CANFBK__Initialize,
     ADCManager__Initialize,
     EEPROM24LC512__Initialize,
+    MCP23017__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -189,7 +191,8 @@ TASK_TYPE Every_Slot_Tasks[] =
 	//ModuleName__Handler,
     CAN_RMP__Handler5ms,
     CANFBK__Handler5ms,
-
+    MCP23017__Handler5ms,
+    
     //Application__Handler5ms,
 
 

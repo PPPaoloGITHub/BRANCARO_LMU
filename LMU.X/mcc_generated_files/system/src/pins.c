@@ -88,7 +88,7 @@ void PINS_Initialize(void)
      * Setting the Analog/Digital Configuration SFR(s)
      ***************************************************************************/
     ANSELA = 0x001F;
-    ANSELB = 0x039C;
+    ANSELB = 0x0084;
     ANSELC = 0x008F;
     ANSELD = 0x2C00;
 
