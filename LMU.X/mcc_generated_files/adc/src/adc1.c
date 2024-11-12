@@ -126,8 +126,8 @@ void ADC1_Initialize (void)
     ADMOD0H = 0x0;
     // SIGN16 disabled; SIGN17 disabled; SIGN18 disabled; SIGN19 disabled; SIGN20 disabled; 
     ADMOD1L = 0x0;
-    // IE0 disabled; IE1 disabled; IE2 disabled; IE3 disabled; IE4 enabled; IE5 disabled; IE6 disabled; IE7 enabled; IE8 disabled; IE9 enabled; IE10 disabled; IE11 disabled; IE12 enabled; IE13 enabled; IE14 disabled; IE15 enabled; 
-    ADIEL = 0xB290;
+    // IE0 disabled; IE1 disabled; IE2 disabled; IE3 disabled; IE4 enabled; IE5 disabled; IE6 disabled; IE7 enabled; IE8 enabled; IE9 enabled; IE10 enabled; IE11 enabled; IE12 enabled; IE13 enabled; IE14 disabled; IE15 enabled; 
+    ADIEL = 0xBF90;
     // IE16 disabled; IE17 disabled; IE18 disabled; IE19 disabled; IE20 disabled; 
     ADIEH = 0x0;
     // 
@@ -263,10 +263,22 @@ void ADC1_Initialize (void)
     IFS6bits.ADCAN7IF = 0;
     // Enabling AN7_I_PWR1 interrupt.
     IEC6bits.ADCAN7IE = 1;
+    // Clearing AN8_T_PWR_BOARD interrupt flag.
+    IFS6bits.ADCAN8IF = 0;
+    // Enabling AN8_T_PWR_BOARD interrupt.
+    IEC6bits.ADCAN8IE = 1;
     // Clearing AN9_V_GPU interrupt flag.
     IFS6bits.ADCAN9IF = 0;
     // Enabling AN9_V_GPU interrupt.
     IEC6bits.ADCAN9IE = 1;
+    // Clearing AN10_I_PWR2 interrupt flag.
+    IFS6bits.ADCAN10IF = 0;
+    // Enabling AN10_I_PWR2 interrupt.
+    IEC6bits.ADCAN10IE = 1;
+    // Clearing AN11_V_PWR2 interrupt flag.
+    IFS6bits.ADCAN11IF = 0;
+    // Enabling AN11_V_PWR2 interrupt.
+    IEC6bits.ADCAN11IE = 1;
     // Clearing AN12_V_PWR1 interrupt flag.
     IFS6bits.ADCAN12IF = 0;
     // Enabling AN12_V_PWR1 interrupt.
@@ -295,10 +307,10 @@ void ADC1_Initialize (void)
     ADTRIG1L = 0x1;
     //TRGSRC6 None; TRGSRC7 Common Software Trigger; 
     ADTRIG1H = 0x100;
-    //TRGSRC8 None; TRGSRC9 Common Software Trigger; 
-    ADTRIG2L = 0x100;
-    //TRGSRC10 None; TRGSRC11 None; 
-    ADTRIG2H = 0x0;
+    //TRGSRC8 Common Software Trigger; TRGSRC9 Common Software Trigger; 
+    ADTRIG2L = 0x101;
+    //TRGSRC10 Common Software Trigger; TRGSRC11 Common Software Trigger; 
+    ADTRIG2H = 0x101;
     //TRGSRC12 Common Software Trigger; TRGSRC13 Common Software Trigger; 
     ADTRIG3L = 0x101;
     //TRGSRC14 None; TRGSRC15 Common Software Trigger; 
@@ -324,9 +336,21 @@ void ADC1_Deinitialize (void)
     IFS6bits.ADCAN7IF = 0;
     IEC6bits.ADCAN7IE = 0;
     
+    dummy = ADCBUF8;
+    IFS6bits.ADCAN8IF = 0;
+    IEC6bits.ADCAN8IE = 0;
+    
     dummy = ADCBUF9;
     IFS6bits.ADCAN9IF = 0;
     IEC6bits.ADCAN9IE = 0;
+    
+    dummy = ADCBUF10;
+    IFS6bits.ADCAN10IF = 0;
+    IEC6bits.ADCAN10IE = 0;
+    
+    dummy = ADCBUF11;
+    IFS6bits.ADCAN11IF = 0;
+    IEC6bits.ADCAN11IE = 0;
     
     dummy = ADCBUF12;
     IFS6bits.ADCAN12IF = 0;
@@ -523,8 +547,17 @@ void ADC1_PWMTriggerSourceSet(enum ADC_CHANNEL channel, enum ADC_PWM_INSTANCE pw
         case AN7_I_PWR1:
                 ADTRIG1Hbits.TRGSRC7 = adcTriggerValue;
                 break;
+        case AN8_T_PWR_BOARD:
+                ADTRIG2Lbits.TRGSRC8 = adcTriggerValue;
+                break;
         case AN9_V_GPU:
                 ADTRIG2Lbits.TRGSRC9 = adcTriggerValue;
+                break;
+        case AN10_I_PWR2:
+                ADTRIG2Hbits.TRGSRC10 = adcTriggerValue;
+                break;
+        case AN11_V_PWR2:
+                ADTRIG2Hbits.TRGSRC11 = adcTriggerValue;
                 break;
         case AN12_V_PWR1:
                 ADTRIG3Lbits.TRGSRC12 = adcTriggerValue;
@@ -582,6 +615,16 @@ void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCInterrupt ( void )
         }
         IFS6bits.ADCAN7IF = 0;
     }
+    if(IFS6bits.ADCAN8IF == 1)
+    {
+        //Read the ADC value from the ADCBUF before clearing interrupt
+        adcVal = ADCBUF8;
+        if(NULL != ADC1_ChannelHandler)
+        {
+            (*ADC1_ChannelHandler)(AN8_T_PWR_BOARD, adcVal);
+        }
+        IFS6bits.ADCAN8IF = 0;
+    }
     if(IFS6bits.ADCAN9IF == 1)
     {
         //Read the ADC value from the ADCBUF before clearing interrupt
@@ -591,6 +634,26 @@ void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCInterrupt ( void )
             (*ADC1_ChannelHandler)(AN9_V_GPU, adcVal);
         }
         IFS6bits.ADCAN9IF = 0;
+    }
+    if(IFS6bits.ADCAN10IF == 1)
+    {
+        //Read the ADC value from the ADCBUF before clearing interrupt
+        adcVal = ADCBUF10;
+        if(NULL != ADC1_ChannelHandler)
+        {
+            (*ADC1_ChannelHandler)(AN10_I_PWR2, adcVal);
+        }
+        IFS6bits.ADCAN10IF = 0;
+    }
+    if(IFS6bits.ADCAN11IF == 1)
+    {
+        //Read the ADC value from the ADCBUF before clearing interrupt
+        adcVal = ADCBUF11;
+        if(NULL != ADC1_ChannelHandler)
+        {
+            (*ADC1_ChannelHandler)(AN11_V_PWR2, adcVal);
+        }
+        IFS6bits.ADCAN11IF = 0;
     }
     if(IFS6bits.ADCAN12IF == 1)
     {
@@ -686,6 +749,21 @@ void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN7Interrupt ( voi
     IFS6bits.ADCAN7IF = 0;
 }
 
+void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN8Interrupt ( void )
+{
+    uint16_t valAN8_T_PWR_BOARD;
+    //Read the ADC value from the ADCBUF
+    valAN8_T_PWR_BOARD = ADCBUF8;
+
+    if(NULL != ADC1_ChannelHandler)
+    {
+        (*ADC1_ChannelHandler)(AN8_T_PWR_BOARD, valAN8_T_PWR_BOARD);
+    }
+
+    //clear the AN8_T_PWR_BOARD interrupt flag
+    IFS6bits.ADCAN8IF = 0;
+}
+
 void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN9Interrupt ( void )
 {
     uint16_t valAN9_V_GPU;
@@ -699,6 +777,36 @@ void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN9Interrupt ( voi
 
     //clear the AN9_V_GPU interrupt flag
     IFS6bits.ADCAN9IF = 0;
+}
+
+void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN10Interrupt ( void )
+{
+    uint16_t valAN10_I_PWR2;
+    //Read the ADC value from the ADCBUF
+    valAN10_I_PWR2 = ADCBUF10;
+
+    if(NULL != ADC1_ChannelHandler)
+    {
+        (*ADC1_ChannelHandler)(AN10_I_PWR2, valAN10_I_PWR2);
+    }
+
+    //clear the AN10_I_PWR2 interrupt flag
+    IFS6bits.ADCAN10IF = 0;
+}
+
+void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN11Interrupt ( void )
+{
+    uint16_t valAN11_V_PWR2;
+    //Read the ADC value from the ADCBUF
+    valAN11_V_PWR2 = ADCBUF11;
+
+    if(NULL != ADC1_ChannelHandler)
+    {
+        (*ADC1_ChannelHandler)(AN11_V_PWR2, valAN11_V_PWR2);
+    }
+
+    //clear the AN11_V_PWR2 interrupt flag
+    IFS6bits.ADCAN11IF = 0;
 }
 
 void __attribute__ ( ( __interrupt__ , auto_psv, weak ) ) _ADCAN12Interrupt ( void )
@@ -778,11 +886,47 @@ void __attribute__ ((weak)) ADC1_ChannelTasks (enum ADC_CHANNEL channel)
                 }
             }
             break;
+        case AN8_T_PWR_BOARD:
+            if((bool)ADSTATLbits.AN8RDY == 1)
+            {
+                //Read the ADC value from the ADCBUF
+                adcVal = ADCBUF8;
+
+                if(NULL != ADC1_ChannelHandler)
+                {
+                    (*ADC1_ChannelHandler)(channel, adcVal);
+                }
+            }
+            break;
         case AN9_V_GPU:
             if((bool)ADSTATLbits.AN9RDY == 1)
             {
                 //Read the ADC value from the ADCBUF
                 adcVal = ADCBUF9;
+
+                if(NULL != ADC1_ChannelHandler)
+                {
+                    (*ADC1_ChannelHandler)(channel, adcVal);
+                }
+            }
+            break;
+        case AN10_I_PWR2:
+            if((bool)ADSTATLbits.AN10RDY == 1)
+            {
+                //Read the ADC value from the ADCBUF
+                adcVal = ADCBUF10;
+
+                if(NULL != ADC1_ChannelHandler)
+                {
+                    (*ADC1_ChannelHandler)(channel, adcVal);
+                }
+            }
+            break;
+        case AN11_V_PWR2:
+            if((bool)ADSTATLbits.AN11RDY == 1)
+            {
+                //Read the ADC value from the ADCBUF
+                adcVal = ADCBUF11;
 
                 if(NULL != ADC1_ChannelHandler)
                 {

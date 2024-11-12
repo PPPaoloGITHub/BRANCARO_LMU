@@ -83,8 +83,9 @@ void MCP23017__Handler5ms(void)
 }
 
 /**
-  * @brief     Initialization of MCP23017 device. Set all pins as input for both GPIOA and GPIOB ports.
-  *
+  * @brief     Initialization of MCP23017 device. Set all pins as inputs or outputs for both GPIOA and GPIOB ports.
+  *            REMEBER: GPA7 and GPB7 can be set ONLY as Output!!! 
+  * 
   * @param[in] deviceAddr: Address I2C of MCP23017
   * @param[in] portADirection: Set all MCP23017_PORTA pins as input o output: 0 = Output; 1 = Input
   * @param[in] portBDirection: Set all MCP23017_PORTB pins as input o output: 0 = Output; 1 = Input

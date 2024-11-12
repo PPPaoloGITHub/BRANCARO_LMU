@@ -68,7 +68,8 @@ typedef enum
 
 
 /* MCP23017 registers address definition */
-typedef enum {
+typedef enum 
+{
     MCP23017_IODIR_A     = 0x00,       // Controls the direction of the data I/O for port A.
     MCP23017_IODIR_B     = 0x01,       // Controls the direction of the data I/O for port B.
     MCP23017_IPOL_A      = 0x02,       // Configures the polarity on the corresponding GPIO_ port bits for port A.

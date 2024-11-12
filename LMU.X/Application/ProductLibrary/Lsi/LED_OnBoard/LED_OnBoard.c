@@ -51,7 +51,9 @@ void LED_ONB__Initialize(void)
     DO_Red_LED_SetLow();
  
     TIMERS__MsSet(MS_TIMER_GREEN_LED_PULSE, GREEN_LED_TIME_1s);
-    DO_Green_LED_SetHigh();
+    
+    // TODO: HW Reset pinfor I/O EXPANDER: Manage it in appropriate module!!!
+    DO_RESET_SetLow();
 }
 
 /**
@@ -66,13 +68,11 @@ void LED_ONB__Handler25ms(void)
  	/* Heartbeat implementation for Green LED: it pulses 100ms ON and 900ms OFF */
     if(TIMERS__MsGetTime(MS_TIMER_GREEN_LED_PULSE) <= GREEN_LED_TIME_100ms)
     {
-        //DO_Green_LED_SetHigh();
-        DO_Red_LED_SetHigh();
+        DO_Green_LED_SetHigh();
     }
     else
     {
-        //DO_Green_LED_SetLow();
-        DO_Red_LED_SetLow();
+        DO_Green_LED_SetLow();
     }
     
     if(TIMERS__MsGetStatus(MS_TIMER_GREEN_LED_PULSE) == TIMERS_COMPLETED)

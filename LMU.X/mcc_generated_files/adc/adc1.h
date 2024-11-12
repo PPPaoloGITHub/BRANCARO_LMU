@@ -187,8 +187,17 @@ inline static uint16_t ADC1_ConversionResultGet( enum ADC_CHANNEL channel )
         case AN7_I_PWR1:
                 result = ADCBUF7;
                 break;
+        case AN8_T_PWR_BOARD:
+                result = ADCBUF8;
+                break;
         case AN9_V_GPU:
                 result = ADCBUF9;
+                break;
+        case AN10_I_PWR2:
+                result = ADCBUF10;
+                break;
+        case AN11_V_PWR2:
+                result = ADCBUF11;
                 break;
         case AN12_V_PWR1:
                 result = ADCBUF12;
@@ -229,8 +238,17 @@ inline static bool ADC1_IsConversionComplete(enum ADC_CHANNEL channel)
         case AN7_I_PWR1:
                 status = ADSTATLbits.AN7RDY;
                 break;
+        case AN8_T_PWR_BOARD:
+                status = ADSTATLbits.AN8RDY;
+                break;
         case AN9_V_GPU:
                 status = ADSTATLbits.AN9RDY;
+                break;
+        case AN10_I_PWR2:
+                status = ADSTATLbits.AN10RDY;
+                break;
+        case AN11_V_PWR2:
+                status = ADSTATLbits.AN11RDY;
                 break;
         case AN12_V_PWR1:
                 status = ADSTATLbits.AN12RDY;
@@ -354,9 +372,21 @@ inline static void ADC1_IndividualChannelInterruptEnable(enum ADC_CHANNEL channe
                 IEC6bits.ADCAN7IE = 1;
                 ADIELbits.IE7 = 1;
                 break;
+        case AN8_T_PWR_BOARD:
+                IEC6bits.ADCAN8IE = 1;
+                ADIELbits.IE8 = 1;
+                break;
         case AN9_V_GPU:
                 IEC6bits.ADCAN9IE = 1;
                 ADIELbits.IE9 = 1;
+                break;
+        case AN10_I_PWR2:
+                IEC6bits.ADCAN10IE = 1;
+                ADIELbits.IE10 = 1;
+                break;
+        case AN11_V_PWR2:
+                IEC6bits.ADCAN11IE = 1;
+                ADIELbits.IE11 = 1;
                 break;
         case AN12_V_PWR1:
                 IEC6bits.ADCAN12IE = 1;
@@ -393,9 +423,21 @@ inline static void ADC1_IndividualChannelInterruptDisable(enum ADC_CHANNEL chann
                 IEC6bits.ADCAN7IE = 0;
                 ADIELbits.IE7 = 0;
                 break;
+        case AN8_T_PWR_BOARD:
+                IEC6bits.ADCAN8IE = 0;
+                ADIELbits.IE8 = 0;
+                break;
         case AN9_V_GPU:
                 IEC6bits.ADCAN9IE = 0;
                 ADIELbits.IE9 = 0;
+                break;
+        case AN10_I_PWR2:
+                IEC6bits.ADCAN10IE = 0;
+                ADIELbits.IE10 = 0;
+                break;
+        case AN11_V_PWR2:
+                IEC6bits.ADCAN11IE = 0;
+                ADIELbits.IE11 = 0;
                 break;
         case AN12_V_PWR1:
                 IEC6bits.ADCAN12IE = 0;
@@ -430,8 +472,17 @@ inline static void ADC1_IndividualChannelInterruptFlagClear(enum ADC_CHANNEL cha
         case AN7_I_PWR1:
                 IFS6bits.ADCAN7IF = 0;
                 break;
+        case AN8_T_PWR_BOARD:
+                IFS6bits.ADCAN8IF = 0;
+                break;
         case AN9_V_GPU:
                 IFS6bits.ADCAN9IF = 0;
+                break;
+        case AN10_I_PWR2:
+                IFS6bits.ADCAN10IF = 0;
+                break;
+        case AN11_V_PWR2:
+                IFS6bits.ADCAN11IF = 0;
                 break;
         case AN12_V_PWR1:
                 IFS6bits.ADCAN12IF = 0;
@@ -464,8 +515,17 @@ inline static void ADC1_IndividualChannelInterruptPrioritySet(enum ADC_CHANNEL c
 		case AN7_I_PWR1:
 				IPC24bits.ADCAN7IP = priorityValue;
 				break;
+		case AN8_T_PWR_BOARD:
+				IPC24bits.ADCAN8IP = priorityValue;
+				break;
 		case AN9_V_GPU:
 				IPC25bits.ADCAN9IP = priorityValue;
+				break;
+		case AN10_I_PWR2:
+				IPC25bits.ADCAN10IP = priorityValue;
+				break;
+		case AN11_V_PWR2:
+				IPC25bits.ADCAN11IP = priorityValue;
 				break;
 		case AN12_V_PWR1:
 				IPC25bits.ADCAN12IP = priorityValue;

@@ -56,12 +56,15 @@ enum ADC_CHANNEL
 {
     AN4_IeCB100A,    /**<Channel Name:AN4   Assigned to:Shared Channel*/
     AN7_I_PWR1,    /**<Channel Name:AN7   Assigned to:Shared Channel*/
+    AN8_T_PWR_BOARD,    /**<Channel Name:AN8   Assigned to:Shared Channel*/
     AN9_V_GPU,    /**<Channel Name:AN9   Assigned to:Shared Channel*/
+    AN10_I_PWR2,    /**<Channel Name:AN10   Assigned to:Shared Channel*/
+    AN11_V_PWR2,    /**<Channel Name:AN11   Assigned to:Shared Channel*/
     AN12_V_PWR1,    /**<Channel Name:AN12   Assigned to:Shared Channel*/
     AN13_V_BATTERY,    /**<Channel Name:AN13   Assigned to:Shared Channel*/
     AN15_T_LOGIC_BOARD,    /**<Channel Name:AN15   Assigned to:Shared Channel*/
-    MAX_CHANNELS = 6,    /**< MAX_CHANNELS will be removed in future MCC releases. Use ADC_MAX_CHANNELS instead */
-    ADC_MAX_CHANNELS = 6    /**< Maximum number of channels configured by user in MCC Melody User Interface */
+    MAX_CHANNELS = 9,    /**< MAX_CHANNELS will be removed in future MCC releases. Use ADC_MAX_CHANNELS instead */
+    ADC_MAX_CHANNELS = 9    /**< Maximum number of channels configured by user in MCC Melody User Interface */
 };
 
 

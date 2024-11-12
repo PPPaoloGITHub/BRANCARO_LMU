@@ -45,6 +45,57 @@
 
 /**
  * @ingroup  pinsdriver
+ * @brief    Sets the RC3 GPIO Pin which has a custom name of DO_RESET to High
+ * @pre      The RC3 must be set as Output Pin             
+ * @param    none
+ * @return   none  
+ */
+#define DO_RESET_SetHigh()          (_LATC3 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RC3 GPIO Pin which has a custom name of DO_RESET to Low
+ * @pre      The RC3 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define DO_RESET_SetLow()           (_LATC3 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RC3 GPIO Pin which has a custom name of DO_RESET
+ * @pre      The RC3 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define DO_RESET_Toggle()           (_LATC3 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RC3 GPIO Pin which has a custom name of DO_RESET
+ * @param    none
+ * @return   none  
+ */
+#define DO_RESET_GetValue()         _RC3
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RC3 GPIO Pin which has a custom name of DO_RESET as Input
+ * @param    none
+ * @return   none  
+ */
+#define DO_RESET_SetDigitalInput()  (_TRISC3 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RC3 GPIO Pin which has a custom name of DO_RESET as Output
+ * @param    none
+ * @return   none  
+ */
+#define DO_RESET_SetDigitalOutput() (_TRISC3 = 0)
+
+/**
+ * @ingroup  pinsdriver
  * @brief    Sets the RC6 GPIO Pin which has a custom name of DO_Green_LED to High
  * @pre      The RC6 must be set as Output Pin             
  * @param    none

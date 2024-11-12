@@ -31,6 +31,7 @@
 #include "DigitalOutput.h"
 #include "EEPROM24LC512.h"
 #include "MCP23017.h"
+#include "PCA9685.h"
 
 
 //--- include APIxxx and APIyyy diagnostic
@@ -154,6 +155,7 @@ TASK_TYPE Initialization_Tasks[] =
     ADCManager__Initialize,
     EEPROM24LC512__Initialize,
     MCP23017__Initialize,
+    PCA9685__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -208,7 +210,7 @@ TASK_TYPE Main_Slot0_Tasks[] =
 {
 	//ModuleName__Handler25ms,
 	//StackIntegrity__Handler25ms,
-
+    PCA9685__Handler25ms,
 
 
 	
