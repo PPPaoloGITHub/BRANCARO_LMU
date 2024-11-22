@@ -7,6 +7,10 @@
  *  $Header: 	ver 1.0 Paolo Parrino
  *
  *  @copyright  *****  Copyright BRANCARO Industries.  All rights reserved - CONFIDENTIAL  *****
+ * 
+ * 
+ * !!!!*** See at the end of this file, the testing module code ***!!!!
+ * 
  */
 
 //-------------------------------------- Include Files ----------------------------------------------------------------
@@ -53,7 +57,6 @@ const struct PCA9685_INTRFACE_STRUCT PCA9685_Interf =
 };
 
 
-
 //=====================================================================================================================
 //-------------------------------------- Public Functions -------------------------------------------------------------
 //=====================================================================================================================
@@ -67,13 +70,13 @@ const struct PCA9685_INTRFACE_STRUCT PCA9685_Interf =
 void PCA9685__Initialize(void)
 {
     // Initialize PCA9685 device
-    PCA9685_Interf.InitDevice(IO_EXP_PWM_I2C_ADDR);
+    //PCA9685_Interf.InitDevice(IO_EXP_PWM_I2C_ADDR);
     
     // Set default PCA9685 PWM frequency at 200Hz
-    PCA9685_Interf.SetPWMFreq(IO_EXP_PWM_I2C_ADDR, PCA9685_DEFAULT_PWM_FREQUENCY);
+    //PCA9685_Interf.SetPWMFreq(IO_EXP_PWM_I2C_ADDR, PCA9685_DEFAULT_PWM_FREQUENCY);
     
     // Set all output channel to 0
-    PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, 0);
+    //PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, 0);
 }
 
 /**
@@ -85,35 +88,7 @@ void PCA9685__Initialize(void)
   */
 void PCA9685__Handler25ms(void)
 {
-    static uint8 counter;
- //   static uint8 dutyCycle = 0;
 
-    
-    if(counter == 10 || counter == 141)
-    {
-        // Set CH2 @PWM with D = 50%
-        PCA9685_Interf.SetPWM(IO_EXP_PWM_I2C_ADDR, CH2, 100);
-        
-//        PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, dutyCycle);
-//        
-//        dutyCycle++;
-//        if(dutyCycle >= PCA9685_MAX_DUTY_CYCLE_VALUE)
-//        {
-//            dutyCycle = 0;
-//        }
-//        
-//        printf("D= %d\r\n", dutyCycle);
-    }
- 
-    //Turn OFF the outputs for 25ms * 40 = 1s
-    if(counter >= 100 && counter <= 140)
-    {
-        PCA9685_Interf.SetPWM(IO_EXP_PWM_I2C_ADDR, CH2, 50);
-        
-//       PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, 0x00); 
-    }
- 
-    counter++;
 }
 
 /**
@@ -121,7 +96,7 @@ void PCA9685__Handler25ms(void)
   *            It sets normal mode operation, AutoIncrement register Enabled, no sleep, output with positive polarity 
   *            and the 16 channels outputs are configured with a totem pole structure. 
   *
-  * @param[in] deviceAddr: Address I2C of MCP23017
+  * @param[in] deviceAddr: Address I2C of PCA9685
   * @retval    None
   * @note	   
   */
@@ -369,3 +344,73 @@ static uint8 PCA9685_ReadRegister(PCA9685_I2C_ADDR_TYPE deviceAddr, PCA9685_REGI
     return readVariable;
 }
 
+
+
+/* ****************** TEST CODE *************** */
+ 
+//void PCA9685__Initialize(void)
+//{
+//    // Initialize PCA9685 device
+//    PCA9685_Interf.InitDevice(IO_EXP_PWM_I2C_ADDR);
+//    
+//    // Set default PCA9685 PWM frequency at 200Hz
+//    PCA9685_Interf.SetPWMFreq(IO_EXP_PWM_I2C_ADDR, PCA9685_DEFAULT_PWM_FREQUENCY);
+//    
+//    // Set all output channel to 0
+//    PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, 0);
+//}
+//
+///**
+//  * @brief  PCA9685 module handler. It manages all the module functionalities
+//  *
+//  * @param  None
+//  * @retval None
+//  * @note	call this function in the task every 25ms
+//  */
+//void PCA9685__Handler25ms(void)
+//{
+//    static uint8 counter;
+// //   static uint8 dutyCycle = 0;
+//
+//    
+//    if(counter == 10 || counter == 141)
+//    {
+//        // Set CH2 @PWM with D = 50%
+//        PCA9685_Interf.SetPWM(IO_EXP_PWM_I2C_ADDR, CH2, 100);
+//        
+////        PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, dutyCycle);
+////        
+////        dutyCycle++;
+////        if(dutyCycle >= PCA9685_MAX_DUTY_CYCLE_VALUE)
+////        {
+////            dutyCycle = 0;
+////        }
+////        
+////        printf("D= %d\r\n", dutyCycle);
+//    }
+// 
+//    //Turn OFF the outputs for 25ms * 40 = 1s
+//    if(counter >= 100 && counter <= 140)
+//    {
+//        PCA9685_Interf.SetPWM(IO_EXP_PWM_I2C_ADDR, CH2, 50);
+//        
+////       PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, 0x00); 
+//    }
+// 
+//    counter++;
+//}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

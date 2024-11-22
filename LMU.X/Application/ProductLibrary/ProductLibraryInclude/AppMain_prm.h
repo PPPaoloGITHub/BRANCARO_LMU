@@ -32,6 +32,7 @@
 #include "EEPROM24LC512.h"
 #include "MCP23017.h"
 #include "PCA9685.h"
+#include "ADS7128.h"
 
 
 //--- include APIxxx and APIyyy diagnostic
@@ -156,6 +157,7 @@ TASK_TYPE Initialization_Tasks[] =
     EEPROM24LC512__Initialize,
     MCP23017__Initialize,
     PCA9685__Initialize,
+    ADS7128__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -194,6 +196,7 @@ TASK_TYPE Every_Slot_Tasks[] =
     CAN_RMP__Handler5ms,
     CANFBK__Handler5ms,
     MCP23017__Handler5ms,
+    ADS7128__Handler5ms,
     
     //Application__Handler5ms,
 
