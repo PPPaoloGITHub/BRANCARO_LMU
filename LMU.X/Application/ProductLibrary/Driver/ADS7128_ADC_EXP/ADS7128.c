@@ -75,7 +75,23 @@ const struct ADS7128_INTRFACE_STRUCT ADS7128_Interf =
   */
 void ADS7128__Initialize(void)
 {
-
+    /* Initialization of ADC EXPANDER 1 -> Manual Mode - Read Single Channel */ 
+    ADS7128_Interf.InitDevice(ADC_EXP1_I2C_ADDR, ADS7128_MANUAL_MODE, ADS7128_MANUAL);
+    
+    /* Initialization of ADC EXPANDER 2 -> Manual Mode - Read Single Channel */ 
+    ADS7128_Interf.InitDevice(ADC_EXP2_I2C_ADDR, ADS7128_MANUAL_MODE, ADS7128_MANUAL);
+    
+    /* Initialization of ADC EXPANDER 3 -> Manual Mode - Read Single Channel */ 
+    ADS7128_Interf.InitDevice(ADC_EXP3_I2C_ADDR, ADS7128_MANUAL_MODE, ADS7128_MANUAL);
+    
+    /* Initialization of ADC EXPANDER 4 -> Manual Mode - Read Single Channel */ 
+    ADS7128_Interf.InitDevice(ADC_EXP4_I2C_ADDR, ADS7128_MANUAL_MODE, ADS7128_MANUAL);
+    
+    /* Initialization of ADC EXPANDER 5 -> Manual Mode - Read Single Channel */ 
+    ADS7128_Interf.InitDevice(ADC_EXP5_I2C_ADDR, ADS7128_MANUAL_MODE, ADS7128_MANUAL);
+    
+    /* Initialization of ADC EXPANDER 6 -> Manual Mode - Read Single Channel */ 
+    ADS7128_Interf.InitDevice(ADC_EXP6_I2C_ADDR, ADS7128_MANUAL_MODE, ADS7128_MANUAL); 
 }
 
 /**

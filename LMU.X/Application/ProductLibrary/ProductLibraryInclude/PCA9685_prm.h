@@ -20,7 +20,7 @@
 #define PCA9685_CLOCK_FREQ                 400     // [KHz] SCL I2C Clock Frequency set as Default @400KHz
                                                    // Currently this #define is not used. It's here only for reference!
 
-#define PCA9685_DEFAULT_PWM_FREQUENCY      200     // [Hz] Default PWM frequency value. Set it in the range [24Hz - 1526Hz]
+#define PCA9685_PWM_FREQUENCY              400     // [Hz] PWM frequency value. Set it in the range [24Hz - 1526Hz]
 
 #define PCA9685_NUMBER_OF_DEVICES_ON_I2C     1     // Indicate how many PCA9685 devices are connected on the I2C
 
@@ -30,6 +30,47 @@
 #define PCA9685_I2CWrite(memoryAddress, pData, dataLength)   I2C1_Host.Write(memoryAddress, pData, dataLength)
 #define PCA9685_I2CRead(memoryAddress, pData, dataLengtht)   I2C1_Host.Read(memoryAddress, pData, dataLengtht)
 #define PCA9685_I2CIsBusy()                                  I2C1_Host.IsBusy()        // true = Busy; false = Not Busy   
+
+
+/* Channels name */
+typedef enum
+{
+    CH0 = 0,
+    CH1,
+    CH2,
+    CH3,
+    CH4,
+    CH5,
+    CH6,
+    CH7,
+    CH8,
+    CH9,
+    CH10,
+    CH11,
+    CH12,
+    CH13,
+    CH14,
+    CH15
+} PCA9685_CHANNELS_TYPE;
+
+/* I/O PWM EXPANDER 6 PIN DECLARATION */
+typedef enum
+{
+    DO_PWM_PP_OUT_17 = CH0,
+    DO_PWM_PP_OUT_18 = CH5,
+    DO_PWM_PP_OUT_19 = CH11,
+    DO_PWM_PP_OUT_20 = CH6,
+    DO_PWM_PP_OUT_21 = CH4,
+    DO_PWM_PP_OUT_22 = CH3,
+    DO_PWM_PP_OUT_23 = CH7,
+    DO_PWM_PP_OUT_24 = CH13,
+    DO_PWM_PP_OUT_25 = CH1,
+    DO_PWM_PP_OUT_26 = CH2,
+    DO_PWM_PP_OUT_27 = CH8,
+    DO_PWM_PP_OUT_28 = CH10,
+    DO_PWM_PP_OUT_29 = CH9,
+    DO_PWM_PP_OUT_30 = CH12
+} PCA9685_PWM_EXP6_PIN_NAME_TYPE;
 
 
 //=====================================================================================================================

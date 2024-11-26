@@ -67,7 +67,23 @@ const struct MCP23017_INTRFACE_STRUCT MCP23017_Interf =
   */
 void MCP23017__Initialize(void)
 {
-
+    // Init I/O EXP0. Bbits: 0 = Output; 1 = Input 
+    MCP23017_Interf.InitDevice(IO_EXP0_I2C_ADDR, MCP23017_EXP0_PORTA_DIR_CFG, MCP23017_EXP0_PORTB_DIR_CFG);
+    
+    // Init I/O EXP1. Bbits: 0 = Output; 1 = Input 
+    MCP23017_Interf.InitDevice(IO_EXP1_I2C_ADDR, MCP23017_EXP1_PORTA_DIR_CFG, MCP23017_EXP1_PORTB_DIR_CFG);
+    
+    // Init I/O EXP2. Bbits: 0 = Output; 1 = Input 
+    MCP23017_Interf.InitDevice(IO_EXP2_I2C_ADDR, MCP23017_EXP2_PORTA_DIR_CFG, MCP23017_EXP2_PORTB_DIR_CFG);
+    
+    // Init I/O EXP3. Bbits: 0 = Output; 1 = Input 
+    MCP23017_Interf.InitDevice(IO_EXP3_I2C_ADDR, MCP23017_EXP3_PORTA_DIR_CFG, MCP23017_EXP3_PORTB_DIR_CFG);
+    
+    // Init I/O EXP4. Bbits: 0 = Output; 1 = Input 
+    MCP23017_Interf.InitDevice(IO_EXP4_I2C_ADDR, MCP23017_EXP4_PORTA_DIR_CFG, MCP23017_EXP4_PORTB_DIR_CFG);
+    
+    // Init I/O EXP5. Bbits: 0 = Output; 1 = Input 
+    MCP23017_Interf.InitDevice(IO_EXP5_I2C_ADDR, MCP23017_EXP5_PORTA_DIR_CFG, MCP23017_EXP5_PORTB_DIR_CFG);   
 }
 
 /**

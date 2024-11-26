@@ -33,6 +33,7 @@
 #include "MCP23017.h"
 #include "PCA9685.h"
 #include "ADS7128.h"
+#include "ResetTest.h"
 
 
 //--- include APIxxx and APIyyy diagnostic
@@ -158,6 +159,7 @@ TASK_TYPE Initialization_Tasks[] =
     MCP23017__Initialize,
     PCA9685__Initialize,
     ADS7128__Initialize,
+    RESET_TEST__Initialize,
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -279,6 +281,7 @@ TASK_TYPE Main_Slot4_Tasks[] =
 	//ModuleName__Handler25ms,
 	LED_ONB__Handler25ms,
     HW_HEARTBEAT__Handler25ms,
+    RESET_TEST__Handler25ms,
 
 	//-------------------------------------------------------------------------
     // Mandatory NULL_TASK must be at the end of the list

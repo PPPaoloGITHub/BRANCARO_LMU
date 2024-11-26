@@ -32,20 +32,6 @@ typedef enum
     ADC_EXP7_I2C_ADDR = 0x17,   // Not Used device         
 } ADS7128_I2C_ADDR_TYPE;
 
-/* Pins name */
-typedef enum
-{
-    ADS7128_CH0 = 0,
-    ADS7128_CH1,
-    ADS7128_CH2,
-    ADS7128_CH3,
-    ADS7128_CH4,
-    ADS7128_CH5,
-    ADS7128_CH6,
-    ADS7128_CH7,
-    ADS7128_MAX_CHANNELS = 8,        
-} ADS7128_CHANNEL_TYPE;
-
 /* Enabled Channels ordered in Auto-Sequence Mode */
 typedef enum
 {

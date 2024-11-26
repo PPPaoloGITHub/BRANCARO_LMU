@@ -51,9 +51,6 @@ void LED_ONB__Initialize(void)
     DO_Red_LED_SetLow();
  
     TIMERS__MsSet(MS_TIMER_GREEN_LED_PULSE, GREEN_LED_TIME_1s);
-    
-    // TODO: HW Reset pinfor I/O EXPANDER: Manage it in appropriate module!!!
-    DO_RESET_SetLow();
 }
 
 /**

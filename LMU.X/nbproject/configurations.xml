@@ -83,6 +83,7 @@
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/MCP23017_prm.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/ADS7128_prm.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/PCA9685_prm.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/ResetTest.h</itemPath>
       </logicalFolder>
       <itemPath>main.h</itemPath>
     </logicalFolder>
@@ -109,6 +110,8 @@
                    projectFiles="true">
       <logicalFolder name="Application" displayName="Application" projectFiles="true">
         <logicalFolder name="AppSpecific" displayName="AppSpecific" projectFiles="true">
+          <logicalFolder name="Application" displayName="Application" projectFiles="true">
+          </logicalFolder>
           <logicalFolder name="Driver" displayName="Driver" projectFiles="true">
           </logicalFolder>
           <logicalFolder name="Lsi" displayName="Lsi" projectFiles="true">
@@ -128,6 +131,9 @@
           <logicalFolder name="Application" displayName="Application" projectFiles="true">
             <logicalFolder name="Main" displayName="Main" projectFiles="true">
               <itemPath>Application/ProductLibrary/Application/Main/AppMain.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="ResetTest" displayName="ResetTest" projectFiles="true">
+              <itemPath>Application/ProductLibrary/Application/ResetTest/ResetTest.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="Driver" displayName="Driver" projectFiles="true">

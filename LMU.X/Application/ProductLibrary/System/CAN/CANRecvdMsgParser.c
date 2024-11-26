@@ -15,6 +15,10 @@
 #include "../../ProductLibraryInclude/Timers.h"
 #include "../../../../mcc_generated_files/system/pins.h"
 #include "../../ProductLibraryInclude/ADCManager.h"
+#include "../../ProductLibraryInclude/MCP23017.h"
+#include "../../ProductLibraryInclude/PCA9685.h"
+#include "../../ProductLibraryInclude/ADS7128.h"
+#include "../../ProductLibraryInclude/ResetTest.h"
 
 #include "../../ProductLibraryInclude/CANRecvdMsgParser.h"
 
@@ -23,6 +27,36 @@
 
 
 //-------------------------------------- PRIVATE (Variables, Constants & Defines) -------------------------------------
+#define CAN_DLC_DEFAULT     8
+#define CAN_ERROR_ANSWER    0xFF
+
+typedef enum
+{
+    CAN_COMMAND = 0x08,
+    CAN_REQUEST = 0x0A,
+    CAN_ANSWER  = 0x0E,
+    CAN_STATUS  = 0x0C,   
+}CAN_BYTE0_LIST_TYPE;
+
+typedef enum
+{
+    CAN_ON_CMD  = 0x88,
+    CAN_PWM_CMD = 0x55,
+    CAN_OFF_CMD = 0xAA,
+}CAN_CMDs_LIST_TYPE;
+
+typedef enum
+{
+    BYTE0   = 0,
+    BYTE1,
+    BYTE2,
+    BYTE3,
+    BYTE4,
+    BYTE5,
+    BYTE6,
+    BYTE7,
+    CAN_MAX_PAYLOAD = 8,
+}CAN_BYTES_NAME_LIST_TYPE;
 
 
 
@@ -53,17 +87,115 @@ const struct CAN_RMP_INTRFACE_STRUCT CAN_RMP_Interf =
 };
 
 /*********** Declaration of table-based message handlers ***********/
-static void ResponseToNameCmd1  (uint32 msgID, uint32 length, uint8 *payload);
-static void ResponseToNameCmd2  (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB1Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB2Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB3Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB4Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB5Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB6Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB7Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB8Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB9Handler             (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB10Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB11Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB12Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB13Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB14Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB15Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB16Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB17Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB18Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB19Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB20Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB21Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB22Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB23Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB24Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB25Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB26Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB27Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB28Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB29Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB30Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB31Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB32Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB33Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB34Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB35Handler            (uint32 msgID, uint32 length, uint8 *payload);
+static void eCB36Handler            (uint32 msgID, uint32 length, uint8 *payload);
 
+static void PgdInHandler            (uint32 msgID, uint32 length, uint8 *payload);
+
+static void PgdOut1Handler          (uint32 msgID, uint32 length, uint8 *payload);
+static void PgdOut2Handler          (uint32 msgID, uint32 length, uint8 *payload);
+static void PgdOut3Handler          (uint32 msgID, uint32 length, uint8 *payload);
+static void PgdOut4Handler          (uint32 msgID, uint32 length, uint8 *payload);
+
+static void TemperatureHandler      (uint32 msgID, uint32 length, uint8 *payload);
+
+static void ResetCommand            (uint32 msgID, uint32 length, uint8 *payload);
+static void SelfTestCommand         (uint32 msgID, uint32 length, uint8 *payload);
+
+static void OringHandler            (uint32 msgID, uint32 length, uint8 *payload);
+
+static void ChangeUnitNumberHandler (uint32 msgID, uint32 length, uint8 *payload);
 
 /************************** Parser Table ***************************/
 static const PARSER_TABLE_TYPE ParserTable[] =
 {
     // can message ID,                     // pointer to function handler 
-    {NAME_CMD1,                            &ResponseToNameCmd1              },
-    {NAME_CMD2,                            &ResponseToNameCmd2              },
-    
+    {eCB_PP_OUT1_ID,               &eCB1Handler            },
+    {eCB_PP_OUT2_ID,              &eCB2Handler            },         
+    {eCB_PP_OUT3_ID,              &eCB3Handler            },         
+    {eCB_PP_OUT4_ID,              &eCB4Handler            },         
+    {eCB_PP_OUT5_ID,              &eCB5Handler            },         
+    {eCB_PP_OUT6_ID,              &eCB6Handler            },         
+    {eCB_PP_OUT7_ID,              &eCB7Handler            },         
+    {eCB_PP_OUT8_ID,              &eCB8Handler            },         
+    {eCB_PP_OUT9_ID,              &eCB9Handler            },         
+    {eCB_PP_OUT10_ID,             &eCB10Handler           },         
+    {eCB_PP_OUT11_ID,             &eCB11Handler           },         
+    {eCB_PP_OUT12_ID,             &eCB12Handler           },         
+    {eCB_PP_OUT13_ID,             &eCB13Handler           },         
+    {eCB_PP_OUT14_ID,             &eCB14Handler           },         
+    {eCB_PP_OUT15_ID,             &eCB15Handler           },         
+    {eCB_PP_OUT16_ID,             &eCB16Handler           },         
+    {eCB_PP_OUT17_ID,             &eCB17Handler           },         
+    {eCB_PP_OUT18_ID,             &eCB18Handler           },         
+    {eCB_PP_OUT19_ID,             &eCB19Handler           },         
+    {eCB_PP_OUT20_ID,             &eCB20Handler           },         
+    {eCB_PP_OUT21_ID,             &eCB21Handler           },         
+    {eCB_PP_OUT22_ID,             &eCB22Handler           },         
+    {eCB_PP_OUT23_ID,             &eCB23Handler           },         
+    {eCB_PP_OUT24_ID,             &eCB24Handler           },         
+    {eCB_PP_OUT25_ID,             &eCB25Handler           },         
+    {eCB_PP_OUT26_ID,             &eCB26Handler           },         
+    {eCB_PP_OUT27_ID,             &eCB27Handler           },         
+    {eCB_PP_OUT28_ID,             &eCB28Handler           },         
+    {eCB_PP_OUT29_ID,             &eCB29Handler           },         
+    {eCB_PP_OUT30_ID,             &eCB30Handler           },         
+    {eCB_PP_OUT31_ID,             &eCB31Handler           },         
+    {eCB_PP_OUT32_ID,             &eCB32Handler           },         
+    {eCB_PP_OUT33_ID,             &eCB33Handler           },         
+    {eCB_PP_OUT34_ID,             &eCB34Handler           },         
+    {eCB_PP_OUT35_ID,             &eCB35Handler           },         
+    {eCB_PP_OUT36_ID,             &eCB36Handler           },         
+
+    {PGD_IN_ID,                   &PgdInHandler           },         
+
+    {PGD_OUT1_ID,                 &PgdOut1Handler         },         
+    {PGD_OUT2_ID,                 &PgdOut2Handler         },         
+    {PGD_OUT3_ID,                 &PgdOut3Handler         },         
+    {PGD_OUT4_ID,                 &PgdOut4Handler         },         
+
+    {TEMPERATURE_ID,              &TemperatureHandler     },         
+
+    {RESET_CMD_ID,                &ResetCommand           },         
+    {SELF_TEST_CMD_ID,            &SelfTestCommand        },         
+
+    {ORING_ID,                    &OringHandler           },         
+
+    {CHANGE_UNIT_NUMBER_CMD_ID,   &ChangeUnitNumberHandler},
 };
 #define PARSER_TABLE_SIZE (sizeof(ParserTable) / sizeof(PARSER_TABLE_TYPE))
 
@@ -308,54 +440,584 @@ void CAN_RMP_TestRx5ms(void)
 }
 #endif  /* CAN_TEST_EXECUTION */
 
-
+/**********************************************************************/
 /*********** Implementation of table-based message handlers ***********/
+/**********************************************************************/
 /**
-  * @brief  This function performs the response to command 1
+  * @brief  This function performs the response to eCB1 Command and Request
   *
   * @param  None
   * @retval None
   * @note	None
   */
-static void ResponseToNameCmd1(uint32 msgID, uint32 length, uint8 *payload)
+static void eCB1Handler(uint32 msgID, uint32 length, uint8 *payload)
 {
-    if(payload[0] == 1)
-    {
-        //RGBBlue_SetHigh();
-    }
-    else
-    {
-        //RGBBlue_SetLow();
-    }
     
-    if(payload[1] == 1)
-    {
-        //RGBGreen_SetHigh();
-    }
-    else
-    {
-        //RGBGreen_SetLow();
-    }
+}
+
+/**
+  * @brief  This function performs the response to eCB2 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB2Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
     
-    if(payload[2] == 1)
-    {
-        //RGBRed_SetHigh();
-    }
-    else
-    {
-       //RGBRed_SetLow();
-    }
+}
+
+/**
+  * @brief  This function performs the response to eCB3 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB3Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB4 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB4Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB5 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB5Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB6 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB6Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB7 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB7Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB8 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB8Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB9 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB9Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB10 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB10Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB11 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB11Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB12 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB12Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB13 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB13Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB14 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB14Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB15 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB15Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB16 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB16Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB17 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB17 has PWM
+  */
+static void eCB17Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
 }
 
 
 /**
-  * @brief  This function performs the response to command 2
+  * @brief  This function performs the response to eCB18 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB18 has PWM
+  */
+static void eCB18Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB19 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB19 has PWM
+  */
+static void eCB19Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB20 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB20 has PWM
+  */
+static void eCB20Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB21 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB21 has PWM
+  */
+static void eCB21Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB22 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB22 has PWM
+  */
+static void eCB22Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB23 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB23 has PWM
+  */
+static void eCB23Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB24 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB24 has PWM
+  */
+static void eCB24Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB25 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB25 has PWM
+  */
+static void eCB25Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB26 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB26 has PWM
+  */
+static void eCB26Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB27 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB27 has PWM
+  */
+static void eCB27Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB28 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB28 has PWM
+  */
+static void eCB28Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB29 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB29 has PWM
+  */
+static void eCB29Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB30 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	eCB30 has PWM
+  */
+static void eCB30Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB31 Command and Request
   *
   * @param  None
   * @retval None
   * @note	None
   */
-static void ResponseToNameCmd2(uint32 msgID, uint32 length, uint8 *payload)
+static void eCB31Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB32 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB32Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB33 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB33Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB34 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB34Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB35 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB35Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to eCB36 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void eCB36Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to PDG_IN Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void PgdInHandler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to PDG_OUT1 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void PgdOut1Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to PDG_OUT2 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void PgdOut2Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to PDG_OUT3 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void PgdOut3Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to PDG_OUT4 Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void PgdOut4Handler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to Temperature Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void TemperatureHandler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to Reset Command
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void ResetCommand(uint32 msgID, uint32 length, uint8 *payload)
+{
+    uint8 txBuff[CAN_MAX_PAYLOAD];
+    uint8 k;
+    
+    for(k=0; k < CAN_MAX_PAYLOAD; k++)
+    {
+        txBuff[k] = 0;
+    }
+    
+    txBuff[BYTE0] = CAN_ANSWER;
+    if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_COMMAND))
+    {
+        if(payload[BYTE1] == CAN_ON_CMD)
+        {
+            // CAN Command OK:
+            txBuff[BYTE1] = CAN_ON_CMD;
+            RESET_TEST_Interf.ResetCmd();
+        }
+        else
+        {
+            txBuff[BYTE1] = CAN_ERROR_ANSWER;
+        }    
+    }
+    else
+    {
+        txBuff[BYTE1] = CAN_ERROR_ANSWER;
+    }
+    CAN_RMP_Send(msgID, CAN_DLC_DEFAULT, txBuff);
+}
+
+/**
+  * @brief  This function performs the response to Self Test Command
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void SelfTestCommand(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to Oring Command and Request
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void OringHandler(uint32 msgID, uint32 length, uint8 *payload)
+{
+    
+}
+
+/**
+  * @brief  This function performs the response to Change LMU Unit Number
+  *
+  * @param  None
+  * @retval None
+  * @note	None
+  */
+static void ChangeUnitNumberHandler (uint32 msgID, uint32 length, uint8 *payload)
 {
     
 }

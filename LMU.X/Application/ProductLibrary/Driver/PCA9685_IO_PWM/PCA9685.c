@@ -70,13 +70,13 @@ const struct PCA9685_INTRFACE_STRUCT PCA9685_Interf =
 void PCA9685__Initialize(void)
 {
     // Initialize PCA9685 device
-    //PCA9685_Interf.InitDevice(IO_EXP_PWM_I2C_ADDR);
+    PCA9685_Interf.InitDevice(IO_EXP_PWM_I2C_ADDR);
     
-    // Set default PCA9685 PWM frequency at 200Hz
-    //PCA9685_Interf.SetPWMFreq(IO_EXP_PWM_I2C_ADDR, PCA9685_DEFAULT_PWM_FREQUENCY);
+    // Set PCA9685 PWM frequencyHz at 400Hz
+    PCA9685_Interf.SetPWMFreq(IO_EXP_PWM_I2C_ADDR, PCA9685_PWM_FREQUENCY);
     
     // Set all output channel to 0
-    //PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, 0);
+    PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, 0);
 }
 
 /**
@@ -354,7 +354,7 @@ static uint8 PCA9685_ReadRegister(PCA9685_I2C_ADDR_TYPE deviceAddr, PCA9685_REGI
 //    PCA9685_Interf.InitDevice(IO_EXP_PWM_I2C_ADDR);
 //    
 //    // Set default PCA9685 PWM frequency at 200Hz
-//    PCA9685_Interf.SetPWMFreq(IO_EXP_PWM_I2C_ADDR, PCA9685_DEFAULT_PWM_FREQUENCY);
+//    PCA9685_Interf.SetPWMFreq(IO_EXP_PWM_I2C_ADDR, PCA9685_PWM_FREQUENCY);
 //    
 //    // Set all output channel to 0
 //    PCA9685_Interf.SetAllPWM(IO_EXP_PWM_I2C_ADDR, 0);

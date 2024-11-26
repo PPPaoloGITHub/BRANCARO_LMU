@@ -27,27 +27,6 @@ typedef enum
      IO_EXP_PWM_I2C_ADDR = 0x56,    // 0x40 for Demo Board      
 } PCA9685_I2C_ADDR_TYPE;
 
-/* Channels name */
-typedef enum
-{
-    CH0 = 0,
-    CH1,
-    CH2,
-    CH3,
-    CH4,
-    CH5,
-    CH6,
-    CH7,
-    CH8,
-    CH9,
-    CH10,
-    CH11,
-    CH12,
-    CH13,
-    CH14,
-    CH15
-} PCA9685_CHANNELS_TYPE;
-
 /* PCA9685 registers address definition */
 typedef enum
 {
