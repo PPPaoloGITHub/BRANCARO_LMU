@@ -84,24 +84,24 @@ void INTERRUPT_Initialize(void)
     IPC23bits.ADCAN4IP = 1;
     
     // C1: CAN 1 Combined Error
-    // Priority: 1
-    IPC6bits.C1IP = 1;
+    // Priority: 3
+    IPC6bits.C1IP = 3;
     
     // DMT: Dead Man Timer
-    // Priority: 1
-    IPC11bits.DMTIP = 1;
+    // Priority: 5
+    IPC11bits.DMTIP = 5;
     
     // I2C1BC: I2C1 Bus Collision
-    // Priority: 1
-    IPC16bits.I2C1BCIP = 1;
+    // Priority: 2
+    IPC16bits.I2C1BCIP = 2;
     
     // MI2C1: I2C1 Master Event
-    // Priority: 1
-    IPC4bits.MI2C1IP = 1;
+    // Priority: 2
+    IPC4bits.MI2C1IP = 2;
     
     // T1: Timer 1
-    // Priority: 1
-    IPC0bits.T1IP = 1;
+    // Priority: 4
+    IPC0bits.T1IP = 4;
     
 }
 

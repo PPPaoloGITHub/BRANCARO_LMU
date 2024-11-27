@@ -3,6 +3,9 @@
     <Connections AutoReset="0" IgnoreRTRLength="0" ProcessRTR="1">
         <Connection Name="PEAKCAN_Connection" Bus="1" Enabled="1" Protocol="0" SymbolsFileName="LMU_Symbols.sym" BitRate="28" Connection="CAN_Test@pcan_usb"/>
     </Connections>
+    <TransmitList>
+        <TransmitListItem Bus="1" Msg="ID=2359424x,Type=D,Length=8,Data=0888" Creator="User" Comment="Reset Command"/>
+    </TransmitList>
     <Files>
         <File RelativePath="Symbols\LMU_Symbols.sym"/>
     </Files>

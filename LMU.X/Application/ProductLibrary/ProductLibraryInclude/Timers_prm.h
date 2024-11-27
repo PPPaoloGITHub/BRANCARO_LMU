@@ -10,6 +10,8 @@
 #ifndef __TIMERS_PRM_H__
 #define __TIMERS_PRM_H__
 
+#include "../../../mcc_generated_files/system/interrupt.h"
+
 //=====================================================================================================================
 //-------------------------------------- PUBLIC (Constants & Defines) -------------------------------------------------
 //=====================================================================================================================
@@ -19,11 +21,11 @@
  *
  */
 #ifndef INTERRUPTS_ON_DEF
-	#define INTERRUPTS_ON_DEF()		{} //{__EI();}
+	#define INTERRUPTS_ON_DEF()		{INTERRUPT_GlobalEnable();} //{__EI();}
 #endif
 
 #ifndef INTERRUPTS_OFF_DEF
-	#define INTERRUPTS_OFF_DEF()	{} //{__DI();}
+	#define INTERRUPTS_OFF_DEF()	{INTERRUPT_GlobalDisable();} //{__DI();}
 #endif
 
 /**
@@ -54,7 +56,7 @@ typedef enum
     MS_TIMER_CANFBK_PERIOD                  = 2,
     MS_TIMER_HW_HEARBEAT                    = 3,
     MS_TIMER_RESET_CMD                      = 4,
-    MS_TIMER_SELF_TEST_CMD                  = 5,
+ //   MS_TIMER_SELF_TEST_CMD                  = 5,
             
 	//MS_TIMER_NAME1,		//Add here new hms_timers labels
 
@@ -66,7 +68,7 @@ typedef enum
  * \ MAKE SURE you adjust the #define MS_NUM to the appropriated number of items in MS_TIMER_LABEL list.
  *
  */
-#define MS_NUM 6
+#define MS_NUM 5
 
 /**
  * MILLISECOND TIMER TICK RESOLUTION

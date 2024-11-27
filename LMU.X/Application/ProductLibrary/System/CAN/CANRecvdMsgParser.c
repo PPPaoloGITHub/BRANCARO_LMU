@@ -27,37 +27,6 @@
 
 
 //-------------------------------------- PRIVATE (Variables, Constants & Defines) -------------------------------------
-#define CAN_DLC_DEFAULT     8
-#define CAN_ERROR_ANSWER    0xFF
-
-typedef enum
-{
-    CAN_COMMAND = 0x08,
-    CAN_REQUEST = 0x0A,
-    CAN_ANSWER  = 0x0E,
-    CAN_STATUS  = 0x0C,   
-}CAN_BYTE0_LIST_TYPE;
-
-typedef enum
-{
-    CAN_ON_CMD  = 0x88,
-    CAN_PWM_CMD = 0x55,
-    CAN_OFF_CMD = 0xAA,
-}CAN_CMDs_LIST_TYPE;
-
-typedef enum
-{
-    BYTE0   = 0,
-    BYTE1,
-    BYTE2,
-    BYTE3,
-    BYTE4,
-    BYTE5,
-    BYTE6,
-    BYTE7,
-    CAN_MAX_PAYLOAD = 8,
-}CAN_BYTES_NAME_LIST_TYPE;
-
 
 
 //-------------------------------------- PRIVATE (Function Prototypes) ------------------------------------------------
@@ -144,7 +113,7 @@ static void ChangeUnitNumberHandler (uint32 msgID, uint32 length, uint8 *payload
 static const PARSER_TABLE_TYPE ParserTable[] =
 {
     // can message ID,                     // pointer to function handler 
-    {eCB_PP_OUT1_ID,               &eCB1Handler            },
+    {eCB_PP_OUT1_ID,              &eCB1Handler            },
     {eCB_PP_OUT2_ID,              &eCB2Handler            },         
     {eCB_PP_OUT3_ID,              &eCB3Handler            },         
     {eCB_PP_OUT4_ID,              &eCB4Handler            },         
@@ -344,7 +313,7 @@ static void CAN_RMP_HeartBeat(void)
         txData[7] = VERSION_Interf.SwVersionGet(VERSION_MINOR);
         CAN_RMP_Interf.Send(CAN_MSG_ID_HEARTBEAT_FIRST, DLC_8, txData);
 
-        txData[0] = 1;  // default = 1; programmable with a CAN command TODO:
+        txData[0] = 0;  // default = 0; programmable with a CAN command TODO:
         txData[1] = 0;  // 
         txData[2] = 0;  //
         txData[3] = 0;  //

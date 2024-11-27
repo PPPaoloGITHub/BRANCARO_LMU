@@ -845,7 +845,7 @@ object Scene1: _Scene
     Width = 110
     Height = 40
     SignalName = 'LMU_Symbols.HeartBeat1.Logic Board Temp'
-    Digit = 49429
+    Digit = 50416
     LimitUpper = 90.000000000000000000
     LimitLower = -1.000000000000000000
     HintOptions = [hoValue, hoMin, hoMax, hoMinMaxDate, hoMinMaxTime]
@@ -864,7 +864,7 @@ object Scene1: _Scene
     SignalSettings.ValueTo = 3276.700000000000000000
     SignalSettings.ValueUnit = #176'C'
     MinMax.UseSectorCol = False
-    Value = -37.500000000000000000
+    Value = 27.200000000000000000
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11

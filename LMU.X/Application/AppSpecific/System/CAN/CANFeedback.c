@@ -70,7 +70,7 @@ void CANFBK__Initialize(void)
   */
 void CANFBK__Handler5ms (void)
 {
-    uint8 k;
+//    uint8 k;
     
     /* Transmission of CAN HeartBeat messages on CAN_BUS */
     CAN_RMP_Interf.HeartBeat();
@@ -81,10 +81,10 @@ void CANFBK__Handler5ms (void)
 
         // TODO: implement functionality to transmit more different CAN messages with a list of CAN ID...
         /* Transmit LSI Feedback */
-        for(k = 0; k < CANFBK_MAX_LSI_IDs; k++)
-        {    
-            CAN_RMP_Interf.Send((CANFBK_ID_LSI0 + k), DLC_8, lsiFbk[k].lsiFbkArray);
-        }
+//        for(k = 0; k < CANFBK_MAX_LSI_IDs; k++)
+//        {    
+//            CAN_RMP_Interf.Send((CANFBK_ID_LSI0 + k), DLC_8, lsiFbk[k].lsiFbkArray);
+//        }
     }
 }
 

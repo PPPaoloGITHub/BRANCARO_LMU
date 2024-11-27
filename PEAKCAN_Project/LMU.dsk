@@ -52,9 +52,9 @@ HexViewVisible=1
 [2]
 Name=Window1_OutputWindow
 ObjectKind={4842AE28-C870-4465-8195-8E0BC9B5DC5A}
-Visible=1
-FloatLeft=694
-FloatTop=520
+Visible=0
+FloatLeft=715
+FloatTop=547
 FloatWidth=500
 FloatHeight=198
 Style=2

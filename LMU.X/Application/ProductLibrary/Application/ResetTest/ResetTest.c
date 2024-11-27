@@ -12,6 +12,8 @@
 //-------------------------------------- Include Files ----------------------------------------------------------------
 #include <stdbool.h>
 #include "../../ProductLibraryInclude/Timers.h"
+#include "../../ProductLibraryInclude/CANRecvdMsgParser.h"
+#include "../../ProductLibraryInclude/MCP23017.h"
 
 #include "../../ProductLibraryInclude/ResetTest.h"
 
@@ -58,11 +60,6 @@ void RESET_TEST__Initialize(void)
 {
     /* HW Reset pin for I/O EXPANDER and I/O PWM EXPANDER */
     DO_RESET_SetLow();
-    
-    TIMERS__MsSet(MS_TIMER_RESET_CMD, RESET_CMD_TIME_1s);
-    TIMERS__MsSet(MS_TIMER_SELF_TEST_CMD, TEST_CMD_TIME_2s);
-    
-    
 }
 
 /**
@@ -103,6 +100,13 @@ static void RESET_TEST_ResetCmd(void)
 static void RESET_TEST_ResetCmdHandler(void)
 {
     static RST_CMD_STATUS_TYPE rstCmdStatus = RST_CMD_IDLE;
+    uint8 txBuff[CAN_MAX_PAYLOAD];
+    uint8 k;
+    
+    for(k=0; k < CAN_MAX_PAYLOAD; k++)
+    {
+        txBuff[k] = 0;
+    }
     
     switch (rstCmdStatus)
     {
@@ -113,7 +117,8 @@ static void RESET_TEST_ResetCmdHandler(void)
                 isResetCmdEnabled = FALSE;
                 TIMERS__MsSet(MS_TIMER_RESET_CMD, RESET_CMD_TIME_1s);
                 
-                //Imposto a 1 il pin I/O EXP eCB_RESET
+                //Set the I/O EXP eCB_RESET pin
+                MCP23017_Interf.WritePin(IO_EXP2_I2C_ADDR, MCP23017_PORTA, PP_OUT_RESET, TRUE);
                 rstCmdStatus = RST_CMD_EXECUTION;
             }
         break;
@@ -121,9 +126,13 @@ static void RESET_TEST_ResetCmdHandler(void)
         case RST_CMD_EXECUTION:
             if(TIMERS__MsGetStatus(MS_TIMER_RESET_CMD) == TIMERS_COMPLETED)
             {
-                //Imposto a 0 il pin I/O EXP eCB_RESET
+                //Reset the I/O EXP eCB_RESET pin
+                MCP23017_Interf.WritePin(IO_EXP2_I2C_ADDR, MCP23017_PORTA, PP_OUT_RESET, FALSE);
                 
-                // Notifico che il RestCmd è finito per inviare CAN feedback...
+                // Published Reset eCB Completed
+                txBuff[BYTE0] = CAN_STATUS;
+                txBuff[BYTE1] = CAN_OFF_CMD;
+                CAN_RMP_Interf.Send(RESET_CMD_ID, CAN_DLC_DEFAULT, txBuff);
                 rstCmdStatus = RST_CMD_END;
             }
         break;
@@ -144,5 +153,7 @@ static void RESET_TEST_ResetCmdHandler(void)
   */
 static void RESET_TEST_SelfTestCmd(void)
 {
+    
+    //TIMERS__MsSet(MS_TIMER_SELF_TEST_CMD, TEST_CMD_TIME_2s);
     
 }

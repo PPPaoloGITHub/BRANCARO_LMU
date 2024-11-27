@@ -4,7 +4,7 @@ Title="Untitled"
 {SENDRECEIVE}
 
 [HeartBeat0]
-ID=00002000h // LMU HeartBeat sent every 1s - Part1
+ID=002400A0h // LMU HeartBeat sent every 1s - Part1
 Type=Extended
 Len=8
 Var="HW_P/N_Digit1" unsigned 0,8 /ln:"Hardware Part Number" // Last 3 digit from the LMU HW Part Number BR-9070-013
@@ -17,7 +17,7 @@ Var=SW_Version_Major unsigned 48,8 -m /ln:"Software Version Major"
 Var=SW_Version_Minor unsigned 56,8 -m /ln:"Software Version Minor"
 
 [HeartBeat1]
-ID=00002001h // LMU HeartBeat sent every 1s - Part2
+ID=002400A1h // LMU HeartBeat sent every 1s - Part2
 Type=Extended
 Len=8
 Var=LMU_Unit_Number unsigned 0,8 -m /ln:"LMU Unit Number"

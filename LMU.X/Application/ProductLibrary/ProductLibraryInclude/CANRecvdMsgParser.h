@@ -18,6 +18,38 @@
 //=====================================================================================================================
 //-------------------------------------- PUBLIC (Constants & Defines) -------------------------------------------------
 //=====================================================================================================================
+#define CAN_DLC_DEFAULT     8
+#define CAN_ERROR_ANSWER    0xFF
+
+typedef enum
+{
+    CAN_COMMAND = 0x08,
+    CAN_REQUEST = 0x0A,
+    CAN_ANSWER  = 0x0E,
+    CAN_STATUS  = 0x0C,   
+}CAN_BYTE0_LIST_TYPE;
+
+typedef enum
+{
+    CAN_ON_CMD  = 0x88,
+    CAN_PWM_CMD = 0x55,
+    CAN_OFF_CMD = 0xAA,
+}CAN_CMDs_LIST_TYPE;
+
+typedef enum
+{
+    BYTE0   = 0,
+    BYTE1,
+    BYTE2,
+    BYTE3,
+    BYTE4,
+    BYTE5,
+    BYTE6,
+    BYTE7,
+    CAN_MAX_PAYLOAD = 8,
+}CAN_BYTES_NAME_LIST_TYPE;
+
+
 typedef struct CAN_MSG_OBJ CAN_OBJ_TYPE;    // Redefinition of 'struct CAN_MSG_OBJ' with 'CAN_OBJ_TYPE' 
 
 typedef void (*MsgHandler_TYPE)(uint32 msgID, uint32 length, uint8 *payload);
