@@ -20,21 +20,81 @@
 //=====================================================================================================================
 #define CAN_DLC_DEFAULT     8
 #define CAN_ERROR_ANSWER    0xFF
+#define CAN_OPERATIONS_MASK  0xFFFFFF0F
+#define CAN_PARAMETERS_MASK  0xFFFFFFF0
 
 typedef enum
 {
-    CAN_COMMAND = 0x08,
-    CAN_REQUEST = 0x0A,
-    CAN_ANSWER  = 0x0E,
-    CAN_STATUS  = 0x0C,   
-}CAN_BYTE0_LIST_TYPE;
+    CAN_CMD     = 0x8,
+    CAN_RQST    = 0xA,
+    CAN_ANSWER  = 0xC,
+    CAN_STATUS  = 0xE,   
+}CAN_OPERATIONS_TYPE;
 
 typedef enum
 {
-    CAN_ON_CMD  = 0x88,
-    CAN_PWM_CMD = 0x55,
-    CAN_OFF_CMD = 0xAA,
-}CAN_CMDs_LIST_TYPE;
+    CAN_eCB_ON_CMD   = 0x3,
+    CAN_eCB_OFF_CMD  = 0x4,
+    CAN_eCB_PWM_CMD  = 0x5,
+    CAN_eCB_RESET    = 0x6,
+    CAN_eCB_SELFTEST = 0x7,
+    CAN_eCB_REQUEST  = 0xA,
+}CAN_eCB_PARAMETERS_TYPE;
+
+typedef enum
+{
+    CAN_PGD_ON_CMD   = 0x3,
+    CAN_PGD_OFF_CMD  = 0x4,
+    CAN_PGD_PWM_CMD  = 0x5,
+    CAN_PGD_RQST     = 0xA,
+}CAN_PGD_PARAMETERS_TYPE;
+
+typedef enum
+{
+    CAN_ASYNC_PUBLISH    = 0x0,
+    CAN_PERIODIC_PUBLISH = 0x1,
+}CAN_STATUS_PARAMETERS_TYPE;
+
+typedef enum
+{
+    CAN_eCB_ALARM          = 0x0F,
+    CAN_RESET_COMPLETED    = 0x60,
+    CAN_SELFTEST_COMPLETED = 0x70,
+}CAN_BYTE0_STATUS_TYPE;
+
+typedef enum
+{
+    CAN_TEMP_RQST = 0xA,
+}CAN_TEMPERATURE_PARAMETERS_TYPE;
+
+typedef enum
+{
+    CAN_ORING_GPU_EN             = 0x1,
+    CAN_ORING_BATT_EN            = 0x2,
+    CAN_ORING_VOLTAGES_RQST      = 0x5,         
+    CAN_ORING_BUS_CURRENT_RQST   = 0x6,
+    CAN_ORING_ENABLE_STATUS_RQST = 0x7,
+}CAN_ORING_PARAMETERS_TYPE;
+
+typedef enum
+{
+    CAN_ORING_ON_CMD  = 0x03,
+    CAN_ORING_OFF_CMD = 0x04,
+}CAN_BYTE0_ORING_CMD_TYPE;
+
+typedef enum
+{
+    CAN_SET_UNIT_NUMBER = 0x1,
+    CAN_SET_CAN_BITRATE = 0x2,
+}CAN_LMU_SETTINGS_PARAMETERS_TYPE;
+
+typedef enum
+{
+    CAN_SET_125KBPS = 0x01,
+    CAN_SET_250KBPS = 0x02,
+    CAN_SET_500KBPS = 0x03,
+    CAN_SET_1MBPS   = 0x04        
+}CAN_BYTE0_CAN_BITRATE_TYPE;
 
 typedef enum
 {
@@ -62,12 +122,12 @@ typedef struct
 
 struct CAN_RMP_INTRFACE_STRUCT
 {
-    void (*Initialize)     (void);
-    void (*Handler5ms)     (void);
-    bool (*Receive)        (CAN_OBJ_TYPE *rxCanMsg);
-    void (*Send)           (uint32 msgID, uint8 length, uint8 *data);
-    void (*HeartBeat)      (void);
-    void (*Parser)         (); 
+    void  (*Initialize)     (void);
+    void  (*Handler5ms)     (void);
+    bool  (*Receive)        (CAN_OBJ_TYPE *rxCanMsg);
+    void  (*Send)           (uint32 msgID, uint8 length, uint8 *data);
+    void  (*HeartBeat)      (void);
+    uint8 (*GetLMUun)       (void);
     
 #ifdef CAN_TEST_EXECUTION
     void (*TestTx)         (void);

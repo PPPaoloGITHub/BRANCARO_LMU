@@ -1,25 +1,250 @@
 FormatVersion=6.0 // Do not edit this line!
 Title="Untitled"
 
+{ENUMS}
+Enum=ON_OFF_CMD(3="ON", // ON_CMD
+  4="OFF") // OFF_CMD
+
 {SENDRECEIVE}
 
-[HeartBeat0]
-ID=002400A0h // LMU HeartBeat sent every 1s - Part1
+[HeartBeat1]
+ID=0240A0E1h // LMU HeartBeat sent every 1s - Part1
 Type=Extended
 Len=8
 Var="HW_P/N_Digit1" unsigned 0,8 /ln:"Hardware Part Number" // Last 3 digit from the LMU HW Part Number BR-9070-013
 Var="HW_P/N_Digit2" unsigned 8,8 /ln:"Hardware Part Number" // Last 3 digit from the LMU HW Part Number BR-9070-013
 Var="HW_P/N_Digit3" unsigned 16,8 /ln:"Hardware Part Number" // Last 3 digit from the LMU HW Part Number BR-9070-013
-Var="SW_P/N_Digit1" unsigned 24,8 -m /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-002
-Var="SW_P/N_Digit2" unsigned 32,8 -m /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-002
-Var="SW_P/N_Digit3" unsigned 40,8 -m /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-002
-Var=SW_Version_Major unsigned 48,8 -m /ln:"Software Version Major"
-Var=SW_Version_Minor unsigned 56,8 -m /ln:"Software Version Minor"
+Var="LMU Unit Number" unsigned 24,8
 
-[HeartBeat1]
-ID=002400A1h // LMU HeartBeat sent every 1s - Part2
+[HeartBeat2]
+ID=0240A1E1h // LMU HeartBeat sent every 1s - Part2
 Type=Extended
 Len=8
-Var=LMU_Unit_Number unsigned 0,8 -m /ln:"LMU Unit Number"
-Var="Logic Board Temp" signed 32,16 -m /u:°C /f:0.1 /ln:"Logic Board Temperature" // Value multiplied by 10 to have 1 decimal temperature
-Var="Power Board Temp" signed 48,16 -m /u:°C /f:0.1 /ln:"Power Board Temperature" // Value multiplied by 10 to have 1 decimal temperature
+Var="SW_P/N_Digit1" unsigned 0,8 /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-005
+Var="SW_P/N_Digit2" unsigned 8,8 /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-005
+Var="SW_P/N_Digit3" unsigned 16,8 /ln:"Software Part Number" // Last 3 digit from the LMU SW Part Number BR-9074-005
+Var=SW_Version_Major unsigned 24,8
+Var=SW_Version_Minor unsigned 32,8
+
+[Temperatures]
+ID=024070CAh // LMU HeartBeat sent every 1s - Part2
+Type=Extended
+Len=8
+Var="Logic Board Temp" signed 0,16 -m /u:°C /f:0.1 /ln:"Logic Board Temperature" // Received Value divided by 10 to have 1 decimal temperature
+Var="Power Board Temp" signed 16,16 -m /u:°C /f:0.1 /ln:"Power Board Temperature" // Received Value divided by 10 to have 1 decimal temperature
+
+[TemperaturesRqst]
+ID=024070AAh // Logic & Power Board Temp. Request
+Type=Extended
+Len=8
+Var=TempRequest unsigned 0,8 // Temperature Request
+
+[ResetCmd]
+ID=02405086h // Reset Command
+Type=Extended
+Len=8
+Var=eCBReset unsigned 0,8 // eCB Reset Command
+
+[SelfTestCmd]
+ID=02405087h // Self Test Commnad
+Type=Extended
+Len=8
+Var=eCBSelfTest unsigned 0,8 // eCB Self Test Command
+
+[PGD_INRequest]
+ID=024060AAh // PGD_IN Request
+Type=Extended
+Len=8
+Var="PGD_IN Request" unsigned 0,8 // PGD_IN Request
+
+[PGD_INValues]
+ID=024060CAh
+Type=Extended
+Len=8
+Var=PGD_IN_1 bit 0,1 // PGD_IN_1 value
+Var=PGD_IN_2 bit 1,1 // PGD_IN_2 value
+Var=PGD_IN_3 bit 2,1 // PGD_IN_3 value
+Var=PGD_IN_4 bit 3,1 // PGD_IN_4 value
+Var=PGD_IN_5 bit 4,1 // PGD_IN_5
+Var=PGD_IN_6 bit 5,1 // PGD_IN_6 value
+Var=PGD_IN_7 bit 6,1 // PGD_IN_7 value
+Var=PGD_IN_8 bit 7,1 // PGD_IN_8 value
+
+[eCB1_ON]
+ID=02400183h
+Type=Extended
+Len=8
+Var=ON_CMD unsigned 0,8 /d:3 // eCB1 On commnad
+
+[eCB1_OFF]
+ID=02400184h
+Type=Extended
+Len=8
+Var=OFF_CMD unsigned 0,8 /d:4 // eCB1 Off commnad
+
+[eCB1_REQUEST]
+ID=024001AAh
+Type=Extended
+Len=8
+Var=eCB_REQUEST unsigned 0,8 /d:10 // eCB1 Request
+
+[eCB17_PWM]
+ID=02401185h
+Type=Extended
+Len=8
+Var=DutyCycle unsigned 0,8 /max:100 // eCB17 PWM DutyCycle
+
+["eCB17_PWM REQEUST"]
+ID=024011AAh
+Type=Extended
+Len=8
+Var="eCB17 PWM Request" unsigned 0,8 /d:10 // eCB17 PWM Request
+
+[PGD_OUT1_ON]
+ID=02406185h
+Type=Extended
+Len=8
+Var=PGD_OUT_ON_CMD unsigned 0,8 // PGD_OUT2 ON Command
+
+[PGD_OUT1_OFF]
+ID=02406184h
+Type=Extended
+Len=8
+Var=PGD_OUT1_OFF_CMD unsigned 0,8 /d:4 // PGD_OUT1 OFF Cmd
+
+[PGD_OUT1_Request]
+ID=024061AAh
+Type=Extended
+Len=8
+Var=PGD_OUT1_Request unsigned 0,8 /p:0 /d:10 // PGD_OUT1 Request
+
+[PGD_OUT2_ON]
+ID=02406283h
+Type=Extended
+Len=8
+Var=ON_CMD unsigned 0,8 /d:3 // PGD_OUT2 ON Command
+
+[PGD_OUT2_OFF]
+ID=02406284h
+Type=Extended
+Len=8
+Var=OFF_CMD unsigned 0,8 /d:4 // PGD_OUT2 OFF Cmd
+
+[PGD_OUT2_Request]
+ID=024062AAh
+Type=Extended
+Len=8
+Var=PGD_OUT2_Request unsigned 0,8 /p:0 /d:10 // PGD_OUT2 Request
+
+[PGD_OUT3_ON]
+ID=02406383h
+Type=Extended
+Len=8
+Var=ON_CMD unsigned 0,8 /d:3 // PGD_OUT3 ON Command
+
+[PGD_OUT3_OFF]
+ID=02406384h
+Type=Extended
+Len=8
+Var=OFF_CMD unsigned 0,8 /d:4 // PGD_OUT3 OFF Command
+
+[PGD_OUT3_Request]
+ID=024063AAh
+Type=Extended
+Len=8
+Var=PGD_OUT3_Request unsigned 0,8 /p:0 /d:10 // PGD_OUT3 Request
+
+[PGD_OUT4_ON]
+ID=02406483h
+Type=Extended
+Len=8
+Var=ON_CMD unsigned 0,8 /d:3 // PGD_OUT3 ON Command
+
+[PGD_OUT4_OFF]
+ID=02406484h
+Type=Extended
+Len=8
+Var=OFF_CMD unsigned 0,8 /d:4 // PGD_OUT3 OFF Command
+
+[PGD_OUT4_Request]
+ID=024064AAh
+Type=Extended
+Len=8
+Var=PGD_OUT4_Request unsigned 0,8 /p:0 /d:10 // PGD_OUT3 Request
+
+[ORING_GPU_EN]
+ID=02408081h
+Type=Extended
+Len=8
+Var="GPU_EN Cmd" unsigned 0,8 /e:ON_OFF_CMD // ON GPU_EN Command
+
+[ORING_BATT_EN]
+ID=02408082h
+Type=Extended
+Len=8
+Var="BATT_EN Cmd" unsigned 0,8 /e:ON_OFF_CMD // ON BATT_EN Command
+
+[ORING_VOLTAGES_RQST]
+ID=024080A5h
+Type=Extended
+Len=8
+Var=VOLTAGES_RQST unsigned 0,8 /d:5 // ORING VOLTAGES Request
+
+[ORING_BUS_CURRENT_RQST]
+ID=024080A6h
+Type=Extended
+Len=8
+Var=BUS_CURRENT_RQST unsigned 0,8 /d:6 // ORING BUS CURRENT Request
+
+[ORING_EN_STATUS_RQST]
+ID=024080A7h
+Type=Extended
+Len=8
+Var=EN_STATUS_RQST unsigned 0,8 /d:7 // EN STATUS Request
+
+[ORING_VOLTAGES]
+ID=024080C5h
+Type=Extended
+Len=8
+Var=BATTERY_VOLTAGE unsigned 0,16 -m /u:V /f:0.1
+Var=BUS_VOLTAGE unsigned 16,16 -m /u:V /f:0.1
+Var=GPU_VOLTAGE unsigned 32,16 -m /u:V /f:0.1
+
+[ORING_CURRENT]
+ID=024080C6h
+Type=Extended
+Len=8
+Var=BUS_CURRENT unsigned 0,16 -m /u:A
+
+[ORING_EN_STATUS]
+ID=024080C7h
+Type=Extended
+Len=8
+Var=GPU_ENABLE char 0,8
+Var=GPU_FEEDBACK char 8,8
+Var=BATT_ENABLE char 16,8
+Var=BATT_FEEDBACK char 24,8
+
+["STATUS PGD_OUT1"]
+ID=024061CAh
+Type=Extended
+Len=8
+Var=STATUS_PGD_OUT1 unsigned 0,8
+
+["STATUS PGD_OUT2"]
+ID=024062CAh
+Type=Extended
+Len=8
+Var=STATUS_PGD_OUT2 unsigned 0,8
+
+["STATUS PGD_OUT3"]
+ID=024063CAh
+Type=Extended
+Len=8
+Var=STATUS_PGD_OUT3 unsigned 0,8
+
+["STATUS PGD_OUT"]
+ID=024064CAh
+Type=Extended
+Len=8
+Var=STATUS_PGD_OUT4 unsigned 0,8

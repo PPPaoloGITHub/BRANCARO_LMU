@@ -4,7 +4,36 @@
         <Connection Name="PEAKCAN_Connection" Bus="1" Enabled="1" Protocol="0" SymbolsFileName="LMU_Symbols.sym" BitRate="28" Connection="CAN_Test@pcan_usb"/>
     </Connections>
     <TransmitList>
-        <TransmitListItem Bus="1" Msg="ID=2359424x,Type=D,Length=8,Data=0888" Creator="User" Comment="Reset Command"/>
+        <TransmitListItem Bus="1" Msg="ID=37777578x,Type=D,Length=8,Data=0A" CycleTime="1000" IsPaused="1" Creator="User" Comment="Logic &amp; Power Board Temperature Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37769350x,Type=D,Length=8,Data=06" Creator="User" Comment="eCB Reset Commnad"/>
+        <TransmitListItem Bus="1" Msg="ID=37769351x,Type=D,Length=8,Data=07" Creator="User" Comment="eCB Self Test Commnad"/>
+        <TransmitListItem Bus="1" Msg="ID=37773482x,Type=D,Length=8,Data=0A" Creator="User" Comment="PGD_IN Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37749123x,Type=D,Length=8,Data=03" Creator="User" Comment="eCB1 On Command"/>
+        <TransmitListItem Bus="1" Msg="ID=37749124x,Type=D,Length=8,Data=04" Creator="User" Comment="eCB1 Off Command"/>
+        <TransmitListItem Bus="1" Msg="ID=37749162x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User" Comment="eCB1 Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37753221x,Type=D,Length=8" Creator="User" Comment="eCB17 PWM Commnad"/>
+        <TransmitListItem Bus="1" Msg="ID=37753258x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User" Comment="eCB17 PWM Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37774211x,Type=D,Length=8,Data=03" Creator="User" Comment="PDG_OUT3 On Command"/>
+        <TransmitListItem Bus="1" Msg="ID=37774212x,Type=D,Length=8,Data=04" Creator="User" Comment="PDG_OUT3 Off Command"/>
+        <TransmitListItem Bus="1" Msg="ID=37774250x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User" Comment="PDG_OUT3 Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37774467x,Type=D,Length=8,Data=03" Creator="User" Comment="PDG_OUT4 On Command"/>
+        <TransmitListItem Bus="1" Msg="ID=37774468x,Type=D,Length=8,Data=04" Creator="User" Comment="PDG_OUT3 Off Command"/>
+        <TransmitListItem Bus="1" Msg="ID=37774506x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User" Comment="PDG_OUT4 Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37781669x,Type=D,Length=8,Data=05" CycleTime="250" IsPaused="1" Creator="User" Comment="Oring VOLTAGES Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37781670x,Type=D,Length=8,Data=06" CycleTime="250" IsPaused="1" Creator="User" Comment="Oring BUS CURRENT Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37781671x,Type=D,Length=8,Data=07" CycleTime="250" IsPaused="1" Creator="User" Comment="Oring EN_STATUS Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37750147x,Type=D,Length=8,Data=03" Creator="User" Comment="eCB100 ON Cmd"/>
+        <TransmitListItem Bus="1" Msg="ID=37750148x,Type=D,Length=8,Data=04" Creator="User" Comment="eCB100 OFF Cmd"/>
+        <TransmitListItem Bus="1" Msg="ID=37750186x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User" Comment="eCB100 ON Cmd"/>
+        <TransmitListItem Bus="1" Msg="ID=37773699x,Type=D,Length=8,Data=03" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37773700x,Type=D,Length=8,Data=04" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37773738x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="0" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37773955x,Type=D,Length=8,Data=03" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37773956x,Type=D,Length=8,Data=04" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37773994x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37753258x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37773701x,Type=D,Length=8,Data=04" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37773957x,Type=D,Length=8,Data=04" Creator="User" Comment="PGD_OUT2 Cmd"/>
     </TransmitList>
     <Files>
         <File RelativePath="Symbols\LMU_Symbols.sym"/>

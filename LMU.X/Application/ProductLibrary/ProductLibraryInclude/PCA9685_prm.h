@@ -20,7 +20,7 @@
 #define PCA9685_CLOCK_FREQ                 400     // [KHz] SCL I2C Clock Frequency set as Default @400KHz
                                                    // Currently this #define is not used. It's here only for reference!
 
-#define PCA9685_PWM_FREQUENCY              400     // [Hz] PWM frequency value. Set it in the range [24Hz - 1526Hz]
+#define PCA9685_PWM_FREQUENCY              100     // [Hz] PWM frequency value. Set it in the range [24Hz - 1526Hz]
 
 #define PCA9685_NUMBER_OF_DEVICES_ON_I2C     1     // Indicate how many PCA9685 devices are connected on the I2C
 

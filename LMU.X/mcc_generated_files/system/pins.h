@@ -45,6 +45,108 @@
 
 /**
  * @ingroup  pinsdriver
+ * @brief    Sets the RB12 GPIO Pin which has a custom name of DO_PGD_OUT2 to High
+ * @pre      The RB12 must be set as Output Pin             
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT2_SetHigh()          (_LATB12 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RB12 GPIO Pin which has a custom name of DO_PGD_OUT2 to Low
+ * @pre      The RB12 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT2_SetLow()           (_LATB12 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RB12 GPIO Pin which has a custom name of DO_PGD_OUT2
+ * @pre      The RB12 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT2_Toggle()           (_LATB12 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RB12 GPIO Pin which has a custom name of DO_PGD_OUT2
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT2_GetValue()         _RB12
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RB12 GPIO Pin which has a custom name of DO_PGD_OUT2 as Input
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT2_SetDigitalInput()  (_TRISB12 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RB12 GPIO Pin which has a custom name of DO_PGD_OUT2 as Output
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT2_SetDigitalOutput() (_TRISB12 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RB14 GPIO Pin which has a custom name of DO_PGD_OUT1 to High
+ * @pre      The RB14 must be set as Output Pin             
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT1_SetHigh()          (_LATB14 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Sets the RB14 GPIO Pin which has a custom name of DO_PGD_OUT1 to Low
+ * @pre      The RB14 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT1_SetLow()           (_LATB14 = 0)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Toggles the RB14 GPIO Pin which has a custom name of DO_PGD_OUT1
+ * @pre      The RB14 must be set as Output Pin
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT1_Toggle()           (_LATB14 ^= 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Reads the value of the RB14 GPIO Pin which has a custom name of DO_PGD_OUT1
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT1_GetValue()         _RB14
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RB14 GPIO Pin which has a custom name of DO_PGD_OUT1 as Input
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT1_SetDigitalInput()  (_TRISB14 = 1)
+
+/**
+ * @ingroup  pinsdriver
+ * @brief    Configures the RB14 GPIO Pin which has a custom name of DO_PGD_OUT1 as Output
+ * @param    none
+ * @return   none  
+ */
+#define DO_PGD_OUT1_SetDigitalOutput() (_TRISB14 = 0)
+
+/**
+ * @ingroup  pinsdriver
  * @brief    Sets the RC3 GPIO Pin which has a custom name of DO_RESET to High
  * @pre      The RC3 must be set as Output Pin             
  * @param    none

@@ -164,24 +164,24 @@ static void PCA9685_SetPWM(PCA9685_I2C_ADDR_TYPE deviceAddr, PCA9685_CHANNELS_TY
     writeBuffer[0] = reg;
     writeBuffer[1] = 0x00;                                  // ON_LOW               Set 'on' value to 0 so the duty cycle is completely 
                                                             //                      controlled from 'off' value (timeOff)
-    if(dutyCycle == PCA9685_MAX_DUTY_CYCLE_VALUE)
-    {
-        // Set bit 4 of ALL_LED_ON_H to have always ON
-        writeBuffer[2] = 0x00 | 0b00010000;                 // ON_HIGH register.    
-    }
-    else
+//    if(dutyCycle == PCA9685_MAX_DUTY_CYCLE_VALUE)
+//    {
+//        // Set bit 4 of ALL_LED_ON_H to have always ON
+//        writeBuffer[2] = 0x00 | 0b00010000;                 // ON_HIGH register.    
+//    }
+//    else
     {
         writeBuffer[2] = 0x00;                              // ON_HIGH register.    
     }
     
     writeBuffer[3] = (uint8)(timeOff & 0x00FF);             // OFF_LOW register
     
-    if(dutyCycle == PCA9685_MAX_DUTY_CYCLE_VALUE)
-    {
-        // Set bit 4 of ALL_LED_OFF_H to have always OFF
-        writeBuffer[4] = 0x00 | 0b00010000;                 // OFF_HIGH register
-    }
-    else
+//    if(dutyCycle == PCA9685_MAX_DUTY_CYCLE_VALUE)
+//    {
+//        // Set bit 4 of ALL_LED_OFF_H to have always OFF
+//        writeBuffer[4] = 0x00 | 0b00010000;                 // OFF_HIGH register
+//    }
+//    else
     {
         writeBuffer[4] = (uint8)((timeOff & 0x0F00) >> 8 ); // OFF_HIGH register
     }

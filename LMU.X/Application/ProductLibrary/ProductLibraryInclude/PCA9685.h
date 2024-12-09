@@ -58,7 +58,7 @@ struct PCA9685_INTRFACE_STRUCT
 //=====================================================================================================================
 //-------------------------------------- PUBLIC (Function Prototypes) -------------------------------------------------
 //=====================================================================================================================
-extern const struct PCA9685_INTRFACE_STRUCT PCA96857_Interf;
+extern const struct PCA9685_INTRFACE_STRUCT PCA9685_Interf;
 
 void PCA9685__Initialize(void);
 void PCA9685__Handler25ms(void);

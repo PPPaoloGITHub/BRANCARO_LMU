@@ -4,24 +4,25 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/C_extensions.h</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/Timers.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Driver/ADS7128_ADC_EXP/ADS7128.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/System/CAN/CANRecvdMsgParser.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/ResetTest.h</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Lsi/HW_HeartBeat/HW_HeartBeat.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/AppSpecific/System/CAN/CANFeedback.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/PCA9685_prm.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/mcc_generated_files/system/pins.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/PCA9685.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Driver/PCA9685_IO_PWM/PCA9685.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/ADCManager_prm.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Application/Main/AppMain.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/ADS7128.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/AppSpecific/AppSpecificInclude/CANFeedback.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser_prm.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser.h</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/ADCManager.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/MCP23017_prm.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/ADS7128_prm.h</file>
-            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/AppMain_prm.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Driver/MCP23017_IO_EXP/MCP23017.c</file>
+            <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Driver/ADC/ADCManager.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/ProductLibraryInclude/MCP23017.h</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/ProductLibrary/Application/ResetTest/ResetTest.c</file>
             <file>file:/C:/PAOLO/Progetti_GIT/LMU/LMU.X/Application/AppSpecific/AppSpecificInclude/CANFeedback_prm.h</file>

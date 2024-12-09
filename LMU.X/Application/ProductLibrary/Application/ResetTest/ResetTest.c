@@ -29,11 +29,12 @@ typedef enum
 }RST_CMD_STATUS_TYPE;
 
 static bool isResetCmdEnabled = FALSE;
-
+static bool isSelfTestCmdEnabled = FALSE;
 
 
 //-------------------------------------- PRIVATE (Function Prototypes) ------------------------------------------------
 static void RESET_TEST_ResetCmdHandler(void);
+static void RESET_TEST_SelfTestCmdHandler(void);
 
 static void RESET_TEST_ResetCmd(void);
 static void RESET_TEST_SelfTestCmd(void);
@@ -72,6 +73,7 @@ void RESET_TEST__Initialize(void)
 void RESET_TEST__Handler25ms(void)
 {
     RESET_TEST_ResetCmdHandler();
+    RESET_TEST_SelfTestCmdHandler();
 }
 
 
@@ -97,11 +99,24 @@ static void RESET_TEST_ResetCmd(void)
   * @retval None
   * @note	None
   */
+static void RESET_TEST_SelfTestCmd(void)
+{
+   isSelfTestCmdEnabled = TRUE; 
+}
+
+/**
+  * @brief  
+  * 
+  * @param  None
+  * @retval None
+  * @note	None
+  */
 static void RESET_TEST_ResetCmdHandler(void)
 {
     static RST_CMD_STATUS_TYPE rstCmdStatus = RST_CMD_IDLE;
     uint8 txBuff[CAN_MAX_PAYLOAD];
     uint8 k;
+    uint32 msgID;
     
     for(k=0; k < CAN_MAX_PAYLOAD; k++)
     {
@@ -130,9 +145,10 @@ static void RESET_TEST_ResetCmdHandler(void)
                 MCP23017_Interf.WritePin(IO_EXP2_I2C_ADDR, MCP23017_PORTA, PP_OUT_RESET, FALSE);
                 
                 // Published Reset eCB Completed
-                txBuff[BYTE0] = CAN_STATUS;
-                txBuff[BYTE1] = CAN_OFF_CMD;
-                CAN_RMP_Interf.Send(RESET_CMD_ID, CAN_DLC_DEFAULT, txBuff);
+                msgID = RESET_CMD_ID | (uint32)CAN_RMP_Interf.GetLMUun()<<16 | CAN_STATUS<<4 | CAN_ASYNC_PUBLISH;
+                txBuff[BYTE0] = CAN_RESET_COMPLETED;
+                
+                CAN_RMP_Interf.Send(msgID, CAN_DLC_DEFAULT, txBuff);
                 rstCmdStatus = RST_CMD_END;
             }
         break;
@@ -151,7 +167,7 @@ static void RESET_TEST_ResetCmdHandler(void)
   * @retval None
   * @note	None
   */
-static void RESET_TEST_SelfTestCmd(void)
+static void RESET_TEST_SelfTestCmdHandler(void)
 {
     
     //TIMERS__MsSet(MS_TIMER_SELF_TEST_CMD, TEST_CMD_TIME_2s);
