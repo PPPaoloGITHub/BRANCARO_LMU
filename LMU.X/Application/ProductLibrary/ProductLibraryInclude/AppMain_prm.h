@@ -18,7 +18,6 @@
 
 //! Drivers
 
-
 //! Others
 #include "Timers.h"
 #include "LED_OnBoard.h"
@@ -349,7 +348,6 @@ TASK_TYPE Interrupt_Slot0_Tasks[] =
 TASK_TYPE Interrupt_Slot1_Tasks[] =
 {
 	//NameFunction__FastHandler1ms,
-	
 
 
     //-------------------------------------------------------------------------

@@ -28,6 +28,8 @@
 
 
 //-------------------------------------- PRIVATE (Variables, Constants & Defines) -------------------------------------
+#define CAN_MAX_DUTY_CYCLE     100     // Maximum PWM Duty Cycle value
+
 typedef struct
 {
     uint8 PP_OUT_17;
@@ -44,6 +46,9 @@ typedef struct
     uint8 PP_OUT_28;
     uint8 PP_OUT_29;
     uint8 PP_OUT_30;
+    
+    uint8 PDG_OUT_1;
+    uint8 PDG_OUT_2;
 } PWM_VALUES_TYPE;
 static PWM_VALUES_TYPE pwmValue; 
 
@@ -160,72 +165,56 @@ static void LMUSettingsHandler  (uint32 msgID, uint32 length, uint8 *payload);
 static const PARSER_TABLE_TYPE ParserTable[] =
 {
     // can message ID,                     // pointer to function handler 
-    {(eCB_PP_OUT1_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB1Handler       },
-    {(eCB_PP_OUT1_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB1Handler       },
-    {(eCB_PP_OUT1_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB1Handler       },
+    {(eCB_PP_OUT1_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB1Handler       },
+    {(eCB_PP_OUT1_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB1Handler       },
      
 //    {(eCB_PP_OUT2_ID    | LMUun<<16 | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB2Handler       },
 //    {(eCB_PP_OUT2_ID    | LMUun<<16 | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB2Handler       },
 //    {(eCB_PP_OUT2_ID    | LMUun<<16 | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB2Handler       },
-    {(eCB_PP_OUT2_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB2Handler       },
-    {(eCB_PP_OUT2_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB2Handler       },
-    {(eCB_PP_OUT2_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB2Handler       },  
+    {(eCB_PP_OUT2_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB2Handler       },
+    {(eCB_PP_OUT2_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB2Handler       },  
     
-    {(eCB_PP_OUT3_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB3Handler       },
-    {(eCB_PP_OUT3_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB3Handler       },
-    {(eCB_PP_OUT3_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB3Handler       },
+    {(eCB_PP_OUT3_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB3Handler       },
+    {(eCB_PP_OUT3_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB3Handler       },
      
-    {(eCB_PP_OUT4_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB4Handler       },
-    {(eCB_PP_OUT4_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB4Handler       },
-    {(eCB_PP_OUT4_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB4Handler       },
+    {(eCB_PP_OUT4_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB4Handler       },
+    {(eCB_PP_OUT4_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB4Handler       },
              
-    {(eCB_PP_OUT5_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB5Handler       },
-    {(eCB_PP_OUT5_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB5Handler       },
-    {(eCB_PP_OUT5_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB5Handler       },
+    {(eCB_PP_OUT5_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB5Handler       },
+    {(eCB_PP_OUT5_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB5Handler       },
        
-    {(eCB_PP_OUT6_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB6Handler       },
-    {(eCB_PP_OUT6_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB6Handler       },
-    {(eCB_PP_OUT6_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB6Handler       },
+    {(eCB_PP_OUT6_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB6Handler       },
+    {(eCB_PP_OUT6_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB6Handler       },
               
-    {(eCB_PP_OUT7_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB7Handler       },
-    {(eCB_PP_OUT7_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB7Handler       },
-    {(eCB_PP_OUT7_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB7Handler       },
+    {(eCB_PP_OUT7_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB7Handler       },
+    {(eCB_PP_OUT7_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB7Handler       },
               
-    {(eCB_PP_OUT8_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB8Handler       },
-    {(eCB_PP_OUT8_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB8Handler       },
-    {(eCB_PP_OUT8_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB8Handler       },
+    {(eCB_PP_OUT8_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB8Handler       },
+    {(eCB_PP_OUT8_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB8Handler       },
          
-    {(eCB_PP_OUT9_ID    | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB9Handler       },
-    {(eCB_PP_OUT9_ID    | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB9Handler       },
-    {(eCB_PP_OUT9_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB9Handler       },
+    {(eCB_PP_OUT9_ID    | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB9Handler       },
+    {(eCB_PP_OUT9_ID    | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB9Handler       },
               
-    {(eCB_PP_OUT10_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB10Handler      },
-    {(eCB_PP_OUT10_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB10Handler      },
-    {(eCB_PP_OUT10_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB10Handler      },
+    {(eCB_PP_OUT10_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB10Handler      },
+    {(eCB_PP_OUT10_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB10Handler      },
          
-    {(eCB_PP_OUT11_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB11Handler      },
-    {(eCB_PP_OUT11_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB11Handler      },
-    {(eCB_PP_OUT11_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB11Handler      },
+    {(eCB_PP_OUT11_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB11Handler      },
+    {(eCB_PP_OUT11_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB11Handler      },
             
-    {(eCB_PP_OUT12_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB12Handler      },
-    {(eCB_PP_OUT12_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB12Handler      },
-    {(eCB_PP_OUT12_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB12Handler      },
+    {(eCB_PP_OUT12_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB12Handler      },
+     {(eCB_PP_OUT12_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),    &eCB12Handler      },
            
-    {(eCB_PP_OUT13_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB13Handler      },
-    {(eCB_PP_OUT13_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB13Handler      },
-    {(eCB_PP_OUT13_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB13Handler      },
+    {(eCB_PP_OUT13_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB13Handler      },
+    {(eCB_PP_OUT13_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB13Handler      },
             
-    {(eCB_PP_OUT14_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB14Handler      },
-    {(eCB_PP_OUT14_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB14Handler      },
-    {(eCB_PP_OUT14_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB14Handler      },
+    {(eCB_PP_OUT14_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB14Handler      },
+    {(eCB_PP_OUT14_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB14Handler      },
             
-    {(eCB_PP_OUT15_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB15Handler      },
-    {(eCB_PP_OUT15_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB15Handler      },
-    {(eCB_PP_OUT15_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB15Handler      },
+    {(eCB_PP_OUT15_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB15Handler      },
+    {(eCB_PP_OUT15_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB15Handler      },
          
-    {(eCB_PP_OUT16_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB16Handler      },
-    {(eCB_PP_OUT16_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB16Handler      },
-    {(eCB_PP_OUT16_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB16Handler      },
+    {(eCB_PP_OUT16_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB16Handler      },
+    {(eCB_PP_OUT16_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB16Handler      },
     
     {(eCB_PP_OUT17_ID   | CAN_CMD<<4  | CAN_eCB_PWM_CMD), &eCB17Handler      },
     {(eCB_PP_OUT17_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB17Handler      },
@@ -269,54 +258,46 @@ static const PARSER_TABLE_TYPE ParserTable[] =
     {(eCB_PP_OUT30_ID   | CAN_CMD<<4  | CAN_eCB_PWM_CMD), &eCB30Handler      },
     {(eCB_PP_OUT30_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB30Handler      },
             
-    {(eCB_PP_OUT31_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB31Handler      },
-    {(eCB_PP_OUT31_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB31Handler      },
-    {(eCB_PP_OUT31_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB31Handler      },
+    {(eCB_PP_OUT31_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB31Handler      },
+    {(eCB_PP_OUT31_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB31Handler      },
             
-    {(eCB_PP_OUT32_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB32Handler      },
-    {(eCB_PP_OUT32_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB32Handler      },
-    {(eCB_PP_OUT32_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB32Handler      },
+    {(eCB_PP_OUT32_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB32Handler      },
+    {(eCB_PP_OUT32_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB32Handler      },
            
-    {(eCB_PP_OUT33_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB33Handler      },
-    {(eCB_PP_OUT33_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB33Handler      },
-    {(eCB_PP_OUT33_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB33Handler      },
+    {(eCB_PP_OUT33_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB33Handler      },
+    {(eCB_PP_OUT33_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB33Handler      },
             
-    {(eCB_PP_OUT34_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB34Handler      },
-    {(eCB_PP_OUT34_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB34Handler      },
-    {(eCB_PP_OUT34_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB34Handler      },
+    {(eCB_PP_OUT34_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB34Handler      },
+    {(eCB_PP_OUT34_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB34Handler      },
             
-    {(eCB_PP_OUT35_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB35Handler      },
-    {(eCB_PP_OUT35_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB35Handler      },
-    {(eCB_PP_OUT35_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB35Handler      },
+    {(eCB_PP_OUT35_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB35Handler      },
+    {(eCB_PP_OUT35_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB35Handler      },
            
-    {(eCB_PP_OUT36_ID   | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &eCB36Handler      },
-    {(eCB_PP_OUT36_ID   | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &eCB36Handler      },
-    {(eCB_PP_OUT36_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST), &eCB36Handler      },
+    {(eCB_PP_OUT36_ID   | CAN_CMD<<4  | CAN_eCB_NORMAL_CMD),  &eCB36Handler      },
+    {(eCB_PP_OUT36_ID   | CAN_RQST<<4 | CAN_eCB_REQUEST),     &eCB36Handler      },
    
-    {(PGD_IN_ID         | CAN_RQST<<4 | CAN_eCB_REQUEST), &PgdInHandler      },         
+    {(PGD_IN_ID         | CAN_RQST<<4 | CAN_eCB_REQUEST),     &PgdInHandler      },         
        
-    {(PGD_OUT1_ID       | CAN_CMD<<4  | CAN_eCB_PWM_CMD), &PgdOut1Handler    },
-    {(PGD_OUT1_ID       | CAN_RQST<<4 | CAN_eCB_REQUEST), &PgdOut1Handler    },
+    {(PGD_OUT1_ID       | CAN_CMD<<4  | CAN_PGD_OUT_PWM_CMD), &PgdOut1Handler    },
+    {(PGD_OUT1_ID       | CAN_RQST<<4 | CAN_eCB_REQUEST),     &PgdOut1Handler    },
               
-    {(PGD_OUT2_ID       | CAN_CMD<<4  | CAN_eCB_PWM_CMD), &PgdOut2Handler    },
-    {(PGD_OUT2_ID       | CAN_RQST<<4 | CAN_eCB_REQUEST), &PgdOut2Handler    },
+    {(PGD_OUT2_ID       | CAN_CMD<<4  | CAN_PGD_OUT_PWM_CMD), &PgdOut2Handler    },
+    {(PGD_OUT2_ID       | CAN_RQST<<4 | CAN_eCB_REQUEST),     &PgdOut2Handler    },
              
-    {(PGD_OUT3_ID       | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &PgdOut3Handler    },
-    {(PGD_OUT3_ID       | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &PgdOut3Handler    },
-    {(PGD_OUT3_ID       | CAN_RQST<<4 | CAN_eCB_REQUEST), &PgdOut3Handler    },
+    {(PGD_OUT3_ID       | CAN_CMD<<4  | CAN_PGD_OUT_NORMAL_CMD), &PgdOut3Handler    },
+    {(PGD_OUT3_ID       | CAN_RQST<<4 | CAN_eCB_REQUEST),        &PgdOut3Handler    },
           
-    {(PGD_OUT4_ID       | CAN_CMD<<4  | CAN_eCB_ON_CMD),  &PgdOut4Handler    },
-    {(PGD_OUT4_ID       | CAN_CMD<<4  | CAN_eCB_OFF_CMD), &PgdOut4Handler    },
-    {(PGD_OUT4_ID       | CAN_RQST<<4 | CAN_eCB_REQUEST), &PgdOut4Handler    },
+    {(PGD_OUT4_ID       | CAN_CMD<<4  | CAN_PGD_OUT_NORMAL_CMD), &PgdOut4Handler    },
+     {(PGD_OUT4_ID       | CAN_RQST<<4 | CAN_eCB_REQUEST),       &PgdOut4Handler    },
    
     
-    {(TEMPERATURE_ID   | CAN_RQST<<4 | CAN_TEMP_RQST),    &TemperatureHandler},         
+    {(TEMPERATURE_ID   | CAN_RQST<<4 | CAN_TEMP_RQST),        &TemperatureHandler},         
 
-    {(RESET_CMD_ID     | CAN_CMD<<4  | CAN_eCB_RESET),    &ResetCommand      },         
-    {(SELF_TEST_CMD_ID | CAN_CMD<<4  | CAN_eCB_SELFTEST), &SelfTestCommand   },         
+    {(RESET_CMD_ID     | CAN_CMD<<4  | CAN_eCB_RESET),        &ResetCommand      },         
+    {(SELF_TEST_CMD_ID | CAN_CMD<<4  | CAN_eCB_SELFTEST),     &SelfTestCommand   },         
 
-    {(ORING_ID         | CAN_CMD<<4  | CAN_ORING_GPU_EN),          &OringHandler      },
-    {(ORING_ID         | CAN_CMD<<4  | CAN_ORING_BATT_EN),         &OringHandler      },
+    {(ORING_ID         | CAN_CMD<<4  | CAN_ORING_GPU_EN),             &OringHandler      },
+    {(ORING_ID         | CAN_CMD<<4  | CAN_ORING_BATT_EN),            &OringHandler      },
     {(ORING_ID         | CAN_RQST<<4 | CAN_ORING_VOLTAGES_RQST),      &OringHandler      },
     {(ORING_ID         | CAN_RQST<<4 | CAN_ORING_BUS_CURRENT_RQST),   &OringHandler      },
     {(ORING_ID         | CAN_RQST<<4 | CAN_ORING_ENABLE_STATUS_RQST), &OringHandler      },
@@ -365,7 +346,8 @@ void CAN_RMP__Handler5ms(void)
 #ifdef CAN_TEST_EXECUTION    
  	CAN_RMP_Interf.TestRx();
     CAN_RMP_Interf.TestTx();
-#endif  /* CAN_TEST_EXECUTION */    
+#endif  /* CAN_TEST_EXECUTION */  
+ 
 }
 
 
@@ -572,26 +554,19 @@ static void  CAN_RMP_eCBBodyHandler(uint32 msgID, uint32 length, uint8 *payload,
             txBuff[BYTE0] = CAN_ERROR_ANSWER;
         break;
         
-        case CAN_eCB_ON_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_ON_CMD))
+        case CAN_eCB_NORMAL_CMD:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ON_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
                 MCP23017_Interf.WritePin(eCBContext.writeI2CDeviceAddr, eCBContext.writePort, eCBContext.writePin, TRUE);
-             }
-            else
-            {
-                txBuff[BYTE0] = CAN_ERROR_ANSWER;
             }
-        break;
-       
-        case CAN_eCB_OFF_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_OFF_CMD))
+            else if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_OFF_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
                 MCP23017_Interf.WritePin(eCBContext.writeI2CDeviceAddr, eCBContext.writePort, eCBContext.writePin, FALSE);
-             }
+            }
             else
             {
                 txBuff[BYTE0] = CAN_ERROR_ANSWER;
@@ -599,7 +574,7 @@ static void  CAN_RMP_eCBBodyHandler(uint32 msgID, uint32 length, uint8 *payload,
         break;
          
         case CAN_eCB_PWM_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] <= 0x64))
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] <= CAN_MAX_DUTY_CYCLE))
             {
                 // CAN PWM Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
@@ -624,11 +599,11 @@ static void  CAN_RMP_eCBBodyHandler(uint32 msgID, uint32 length, uint8 *payload,
                     pinValue = MCP23017_Interf.ReadPin(eCBContext.writeI2CDeviceAddr, eCBContext.writePort, eCBContext.writePin);
                     if(pinValue == TRUE)
                     {
-                        txBuff[BYTE0] = CAN_eCB_ON_CMD;       //  PP_OUT value (ON or OFF)
+                        txBuff[BYTE0] = CAN_ON_CMD;       //  PP_OUT value (ON or OFF)
                     }
                     else
                     {
-                        txBuff[BYTE0] = CAN_eCB_OFF_CMD;      // PP_OUT value (ON or OFF)
+                        txBuff[BYTE0] = CAN_OFF_CMD;      // PP_OUT value (ON or OFF)
                     }
                 }
                 else
@@ -858,21 +833,14 @@ static void eCB5Handler(uint32 msgID, uint32 length, uint8 *payload)
             txBuff[BYTE0] = CAN_ERROR_ANSWER;
         break;
         
-        case CAN_eCB_ON_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_ON_CMD))
+        case CAN_eCB_NORMAL_CMD:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ON_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
                 MCP23017_Interf.WritePin(IO_EXP4_I2C_ADDR, MCP23017_PORTB, DO_PP_OUT_5_ENABLE, TRUE);
              }
-            else
-            {
-                txBuff[BYTE0] = CAN_ERROR_ANSWER;
-            }
-        break;
-       
-        case CAN_eCB_OFF_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_OFF_CMD))
+            else if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_OFF_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
@@ -893,11 +861,11 @@ static void eCB5Handler(uint32 msgID, uint32 length, uint8 *payload)
                 pinValue = MCP23017_Interf.ReadPin(IO_EXP4_I2C_ADDR, MCP23017_PORTB, DO_PP_OUT_5_ENABLE);
                 if(pinValue == TRUE)
                 {
-                    txBuff[BYTE0] = CAN_eCB_ON_CMD;       //  PP_OUT value (ON or OFF)
+                    txBuff[BYTE0] = CAN_ON_CMD;       //  PP_OUT value (ON or OFF)
                 }
                 else
                 {
-                    txBuff[BYTE0] = CAN_eCB_OFF_CMD;      // PP_OUT value (ON or OFF)
+                    txBuff[BYTE0] = CAN_OFF_CMD;      // PP_OUT value (ON or OFF)
                 }
                 
                 // Read eCB Fault pin: PP_OUT fault (0 = OK or 1 = FAULT)
@@ -1866,9 +1834,7 @@ static void PgdInHandler(uint32 msgID, uint32 length, uint8 *payload)
         txBuff[k] = 0;
     }
     
-    txBuff[BYTE0] = CAN_ANSWER;
-    
-    if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_RQST))
+    if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_PGD_RQST))
     {
          // CAN Request OK:
         txBuff[BYTE0]  =  MCP23017_Interf.ReadPin(IO_EXP5_I2C_ADDR, MCP23017_PORTA, DI_PGD_IN_1_STATUS);
@@ -1882,13 +1848,13 @@ static void PgdInHandler(uint32 msgID, uint32 length, uint8 *payload)
     }
     else
     {
-        txBuff[BYTE1] = CAN_ERROR_ANSWER;
+        txBuff[BYTE0] = CAN_ERROR_ANSWER;
     }
     CAN_RMP_Send(txMsgID, CAN_DLC_DEFAULT, txBuff);
 }
 
 /**
-  * @brief  This function performs the response to PDG_OUT1 Command and Request
+  * @brief  This function performs the response to PDG_OUT1 PWM Command and Request
   *
   * @param  None
   * @retval None
@@ -1897,11 +1863,9 @@ static void PgdInHandler(uint32 msgID, uint32 length, uint8 *payload)
 static void PgdOut1Handler(uint32 msgID, uint32 length, uint8 *payload)
 {
     uint8  txBuff[CAN_MAX_PAYLOAD];
-    bool   pinValue;
     uint8  k;
     uint32 txMsgID;
-    CAN_eCB_PARAMETERS_TYPE selectedAction;
-    
+    CAN_PGD_PARAMETERS_TYPE selectedAction;
     
     txMsgID = (msgID & CAN_OPERATIONS_MASK) | CAN_ANSWER<<4;
      
@@ -1915,29 +1879,19 @@ static void PgdOut1Handler(uint32 msgID, uint32 length, uint8 *payload)
     switch(selectedAction)
     {
         default:
-
-        case CAN_eCB_SELFTEST:
-        case CAN_eCB_RESET:
-            txBuff[BYTE0] = CAN_ERROR_ANSWER;
+        case CAN_PGD_OUT_NORMAL_CMD:
+             txBuff[BYTE0] = CAN_ERROR_ANSWER;
         break;
         
-        case CAN_eCB_PWM_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_ON_CMD))
+        case CAN_PGD_OUT_PWM_CMD:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] <= CAN_MAX_DUTY_CYCLE))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
-                DO_PGD_OUT1_SetHigh();
-            }
-            else
-            {
-                txBuff[BYTE0] = CAN_ERROR_ANSWER;
-            }
-
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_OFF_CMD))
-            {
-                // CAN Command OK:
-                txBuff[BYTE0] = payload[BYTE0];
-                DO_PGD_OUT1_SetLow();
+                
+                // Set Duty Cycle value
+                // TODO: chiamare funzione per impostare Duty Cycle su PDG_OUT1 --> DO_PGD_OUT1_SetHigh();
+                pwmValue.PDG_OUT_1 = payload[BYTE0];
             }
             else
             {
@@ -1945,21 +1899,11 @@ static void PgdOut1Handler(uint32 msgID, uint32 length, uint8 *payload)
             }
         break;
         
-        case CAN_eCB_REQUEST:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_REQUEST))
+        case CAN_PGD_RQST:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_PGD_RQST))
             {
-                // CAN Request OK:
- 
-                // Read pin value
-                pinValue = DO_PGD_OUT1_GetValue();
-                if(pinValue == TRUE)
-                {
-                    txBuff[BYTE0] = CAN_eCB_ON_CMD;       //  PP_OUT value (ON or OFF)
-                }
-                else
-                {
-                    txBuff[BYTE0] = CAN_eCB_OFF_CMD;      // PP_OUT value (ON or OFF)
-                }
+                // CAN Request OK: Read Duty Cycle value
+                txBuff[BYTE0] = pwmValue.PDG_OUT_1;        
             }
             else
             {
@@ -1971,7 +1915,7 @@ static void PgdOut1Handler(uint32 msgID, uint32 length, uint8 *payload)
 }
 
 /**
-  * @brief  This function performs the response to PDG_OUT2 Command and Request
+  * @brief  This function performs the response to PDG_OUT2 PWM Command and Request
   *
   * @param  None
   * @retval None
@@ -1980,11 +1924,9 @@ static void PgdOut1Handler(uint32 msgID, uint32 length, uint8 *payload)
 static void PgdOut2Handler(uint32 msgID, uint32 length, uint8 *payload)
 {
     uint8  txBuff[CAN_MAX_PAYLOAD];
-    bool   pinValue;
     uint8  k;
     uint32 txMsgID;
-    CAN_eCB_PARAMETERS_TYPE selectedAction;
-    
+    CAN_PGD_PARAMETERS_TYPE selectedAction;
     
     txMsgID = (msgID & CAN_OPERATIONS_MASK) | CAN_ANSWER<<4;
      
@@ -1998,29 +1940,19 @@ static void PgdOut2Handler(uint32 msgID, uint32 length, uint8 *payload)
     switch(selectedAction)
     {
         default:
- 
-        case CAN_eCB_SELFTEST:
-        case CAN_eCB_RESET:
-            txBuff[BYTE0] = CAN_ERROR_ANSWER;
+        case CAN_PGD_OUT_NORMAL_CMD:
+             txBuff[BYTE0] = CAN_ERROR_ANSWER;
         break;
         
-        case CAN_eCB_PWM_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_ON_CMD))
+        case CAN_PGD_OUT_PWM_CMD:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] <= CAN_MAX_DUTY_CYCLE))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
-                DO_PGD_OUT2_SetHigh();
-            }
-            else
-            {
-                txBuff[BYTE0] = CAN_ERROR_ANSWER;
-            }
-
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_OFF_CMD))
-            {
-                // CAN Command OK:
-                txBuff[BYTE0] = payload[BYTE0];
-                DO_PGD_OUT2_SetLow();
+                
+                // Set Duty Cycle value
+                // TODO: chiamare funzione per impostare Duty Cycle su PDG_OUT2 --> DO_PGD_OUT2_SetHigh();
+                pwmValue.PDG_OUT_2 = payload[BYTE0];
             }
             else
             {
@@ -2028,21 +1960,11 @@ static void PgdOut2Handler(uint32 msgID, uint32 length, uint8 *payload)
             }
         break;
         
-        case CAN_eCB_REQUEST:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_REQUEST))
+        case CAN_PGD_RQST:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_PGD_RQST))
             {
-                // CAN Request OK:
- 
-                // Read pin value
-                pinValue = DO_PGD_OUT2_GetValue();
-                if(pinValue == TRUE)
-                {
-                    txBuff[BYTE0] = CAN_eCB_ON_CMD;       //  PP_OUT value (ON or OFF)
-                }
-                else
-                {
-                    txBuff[BYTE0] = CAN_eCB_OFF_CMD;      // PP_OUT value (ON or OFF)
-                }
+                // CAN Request OK: Read Duty Cycle value
+                txBuff[BYTE0] = pwmValue.PDG_OUT_2;        
             }
             else
             {
@@ -2068,7 +1990,6 @@ static void PgdOut3Handler(uint32 msgID, uint32 length, uint8 *payload)
     uint32 txMsgID;
     CAN_eCB_PARAMETERS_TYPE selectedAction;
     
-    
     txMsgID = (msgID & CAN_OPERATIONS_MASK) | CAN_ANSWER<<4;
      
     for(k=0; k < CAN_MAX_PAYLOAD; k++)
@@ -2081,27 +2002,18 @@ static void PgdOut3Handler(uint32 msgID, uint32 length, uint8 *payload)
     switch(selectedAction)
     {
         default:
-        case CAN_eCB_PWM_CMD: 
-        case CAN_eCB_SELFTEST:
-        case CAN_eCB_RESET:
+        case CAN_PGD_OUT_PWM_CMD: 
             txBuff[BYTE0] = CAN_ERROR_ANSWER;
         break;
         
-        case CAN_eCB_ON_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_ON_CMD))
+        case CAN_PGD_OUT_NORMAL_CMD:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ON_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
                 MCP23017_Interf.WritePin(IO_EXP5_I2C_ADDR, MCP23017_PORTB, DO_PGD_OUT_3_ENABLE, TRUE);
             }
-            else
-            {
-                txBuff[BYTE0] = CAN_ERROR_ANSWER;
-            }
-        break;
-       
-        case CAN_eCB_OFF_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_OFF_CMD))
+            else if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_OFF_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
@@ -2113,20 +2025,18 @@ static void PgdOut3Handler(uint32 msgID, uint32 length, uint8 *payload)
             }
         break;
         
-        case CAN_eCB_REQUEST:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_REQUEST))
+        case CAN_PGD_RQST:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_PGD_RQST))
             {
-                // CAN Request OK:
- 
-                // Read pin value
+                // CAN Request OK: Read pin value
                 pinValue = MCP23017_Interf.ReadPin(IO_EXP5_I2C_ADDR, MCP23017_PORTB, DO_PGD_OUT_3_ENABLE);
                 if(pinValue == TRUE)
                 {
-                    txBuff[BYTE0] = CAN_eCB_ON_CMD;       //  PP_OUT value (ON or OFF)
+                    txBuff[BYTE0] = CAN_ON_CMD;       //  PGD_OUT value (ON or OFF)
                 }
                 else
                 {
-                    txBuff[BYTE0] = CAN_eCB_OFF_CMD;      // PP_OUT value (ON or OFF)
+                    txBuff[BYTE0] = CAN_OFF_CMD;      // PGD_OUT value (ON or OFF)
                 }
             }
             else
@@ -2153,7 +2063,6 @@ static void PgdOut4Handler(uint32 msgID, uint32 length, uint8 *payload)
     uint32 txMsgID;
     CAN_eCB_PARAMETERS_TYPE selectedAction;
     
-    
     txMsgID = (msgID & CAN_OPERATIONS_MASK) | CAN_ANSWER<<4;
      
     for(k=0; k < CAN_MAX_PAYLOAD; k++)
@@ -2166,27 +2075,18 @@ static void PgdOut4Handler(uint32 msgID, uint32 length, uint8 *payload)
     switch(selectedAction)
     {
         default:
-        case CAN_eCB_PWM_CMD: 
-        case CAN_eCB_SELFTEST:
-        case CAN_eCB_RESET:
+        case CAN_PGD_OUT_PWM_CMD: 
             txBuff[BYTE0] = CAN_ERROR_ANSWER;
         break;
         
-        case CAN_eCB_ON_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_ON_CMD))
+        case CAN_PGD_OUT_NORMAL_CMD:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ON_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
                 MCP23017_Interf.WritePin(IO_EXP5_I2C_ADDR, MCP23017_PORTB, DO_PGD_OUT_4_ENABLE, TRUE);
             }
-            else
-            {
-                txBuff[BYTE0] = CAN_ERROR_ANSWER;
-            }
-        break;
-       
-        case CAN_eCB_OFF_CMD:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_OFF_CMD))
+            else if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_OFF_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
@@ -2198,8 +2098,8 @@ static void PgdOut4Handler(uint32 msgID, uint32 length, uint8 *payload)
             }
         break;
         
-        case CAN_eCB_REQUEST:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_eCB_REQUEST))
+        case CAN_PGD_RQST:
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_PGD_RQST))
             {
                 // CAN Request OK:
  
@@ -2207,11 +2107,11 @@ static void PgdOut4Handler(uint32 msgID, uint32 length, uint8 *payload)
                 pinValue = MCP23017_Interf.ReadPin(IO_EXP5_I2C_ADDR, MCP23017_PORTB, DO_PGD_OUT_4_ENABLE);
                 if(pinValue == TRUE)
                 {
-                    txBuff[BYTE0] = CAN_eCB_ON_CMD;       //  PP_OUT value (ON or OFF)
+                    txBuff[BYTE0] = CAN_ON_CMD;       //  PGD_OUT value (ON or OFF)
                 }
                 else
                 {
-                    txBuff[BYTE0] = CAN_eCB_OFF_CMD;      // PP_OUT value (ON or OFF)
+                    txBuff[BYTE0] = CAN_OFF_CMD;      // PGD_OUT value (ON or OFF)
                 }
             }
             else
@@ -2370,13 +2270,13 @@ static void OringHandler(uint32 msgID, uint32 length, uint8 *payload)
         break;
         
         case CAN_ORING_GPU_EN:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ORING_ON_CMD))
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ON_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
                 MCP23017_Interf.WritePin(IO_EXP5_I2C_ADDR, MCP23017_PORTA, DO_ORING_GPU_ENABLE, TRUE);
             }
-            else if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ORING_OFF_CMD))
+            else if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_OFF_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
@@ -2389,13 +2289,13 @@ static void OringHandler(uint32 msgID, uint32 length, uint8 *payload)
         break;
          
         case CAN_ORING_BATT_EN:
-            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ORING_ON_CMD))
+            if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ON_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
                 MCP23017_Interf.WritePin(IO_EXP5_I2C_ADDR, MCP23017_PORTA, DO_ORING_BATT_ENABLE, TRUE);
             }
-            else if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_ORING_OFF_CMD))
+            else if((length == CAN_DLC_DEFAULT) && (payload[BYTE0] == CAN_OFF_CMD))
             {
                 // CAN Command OK:
                 txBuff[BYTE0] = payload[BYTE0];
@@ -2459,44 +2359,44 @@ static void OringHandler(uint32 msgID, uint32 length, uint8 *payload)
                 pinValue = MCP23017_Interf.ReadPin(IO_EXP5_I2C_ADDR, MCP23017_PORTA, DO_ORING_GPU_ENABLE);
                 if(pinValue == TRUE)
                 {
-                    txBuff[BYTE0] = CAN_eCB_ON_CMD;       // GPU_ENABLE value (ON or OFF)
+                    txBuff[BYTE0] = CAN_ON_CMD;       // GPU_ENABLE value (ON or OFF)
                 }
                 else
                 {
-                    txBuff[BYTE0] = CAN_eCB_OFF_CMD;      // GPU_ENABLE value (ON or OFF)
+                    txBuff[BYTE0] = CAN_OFF_CMD;      // GPU_ENABLE value (ON or OFF)
                 }
                 
                 // Read GPU_EN_FEEDBACK Pin
                 pinValue = MCP23017_Interf.ReadPin(IO_EXP5_I2C_ADDR, MCP23017_PORTA, DI_ORING_GPU_EN_FEEDBACK);
                 if(pinValue == TRUE)
                 {
-                    txBuff[BYTE1] = CAN_eCB_ON_CMD;       // GPU_EN_FEEDBACK value (ON or OFF)
+                    txBuff[BYTE1] = CAN_ON_CMD;       // GPU_EN_FEEDBACK value (ON or OFF)
                 }
                 else
                 {
-                    txBuff[BYTE1] = CAN_eCB_OFF_CMD;      // GPU_EN_FEEDBACK value (ON or OFF)
+                    txBuff[BYTE1] = CAN_OFF_CMD;      // GPU_EN_FEEDBACK value (ON or OFF)
                 }
                 
                 // Read BATT_ENABLE Pin
                 pinValue = MCP23017_Interf.ReadPin(IO_EXP5_I2C_ADDR, MCP23017_PORTA, DO_ORING_BATT_ENABLE);
                 if(pinValue == TRUE)
                 {
-                    txBuff[BYTE2] = CAN_eCB_ON_CMD;       // BATT_ENABLE value (ON or OFF)
+                    txBuff[BYTE2] = CAN_ON_CMD;       // BATT_ENABLE value (ON or OFF)
                 }
                 else
                 {
-                    txBuff[BYTE2] = CAN_eCB_OFF_CMD;      // BATT_ENABLE value (ON or OFF)
+                    txBuff[BYTE2] = CAN_OFF_CMD;      // BATT_ENABLE value (ON or OFF)
                 }
                 
                 // Read BATT_FEEDBACK Pin
                 pinValue = MCP23017_Interf.ReadPin(IO_EXP5_I2C_ADDR, MCP23017_PORTB, DI_ORING_BATT_EN_FEEDBACK);
                 if(pinValue == TRUE)
                 {
-                    txBuff[BYTE3] = CAN_eCB_ON_CMD;       // BATT_FEEDBACK value (ON or OFF)
+                    txBuff[BYTE3] = CAN_ON_CMD;       // BATT_FEEDBACK value (ON or OFF)
                 }
                 else
                 {
-                    txBuff[BYTE3] = CAN_eCB_OFF_CMD;      // BATT_FEEDBACK value (ON or OFF)
+                    txBuff[BYTE3] = CAN_OFF_CMD;      // BATT_FEEDBACK value (ON or OFF)
                 }
             }
             else

@@ -33,20 +33,24 @@ typedef enum
 
 typedef enum
 {
-    CAN_eCB_ON_CMD   = 0x3,
-    CAN_eCB_OFF_CMD  = 0x4,
-    CAN_eCB_PWM_CMD  = 0x5,
-    CAN_eCB_RESET    = 0x6,
-    CAN_eCB_SELFTEST = 0x7,
-    CAN_eCB_REQUEST  = 0xA,
+    CAN_eCB_NORMAL_CMD  = 0x2,
+    CAN_eCB_PWM_CMD     = 0x5,
+    CAN_eCB_RESET       = 0x6,
+    CAN_eCB_SELFTEST    = 0x7,
+    CAN_eCB_REQUEST     = 0xA,
 }CAN_eCB_PARAMETERS_TYPE;
 
 typedef enum
 {
-    CAN_PGD_ON_CMD   = 0x3,
-    CAN_PGD_OFF_CMD  = 0x4,
-    CAN_PGD_PWM_CMD  = 0x5,
-    CAN_PGD_RQST     = 0xA,
+    CAN_ON_CMD  = 0x03,
+    CAN_OFF_CMD = 0x04,
+}CAN_BYTE0_CMD_TYPE;
+
+typedef enum
+{
+    CAN_PGD_OUT_NORMAL_CMD  = 0x2,
+    CAN_PGD_OUT_PWM_CMD     = 0x5,
+    CAN_PGD_RQST            = 0xA,
 }CAN_PGD_PARAMETERS_TYPE;
 
 typedef enum
@@ -75,12 +79,6 @@ typedef enum
     CAN_ORING_BUS_CURRENT_RQST   = 0x6,
     CAN_ORING_ENABLE_STATUS_RQST = 0x7,
 }CAN_ORING_PARAMETERS_TYPE;
-
-typedef enum
-{
-    CAN_ORING_ON_CMD  = 0x03,
-    CAN_ORING_OFF_CMD = 0x04,
-}CAN_BYTE0_ORING_CMD_TYPE;
 
 typedef enum
 {
