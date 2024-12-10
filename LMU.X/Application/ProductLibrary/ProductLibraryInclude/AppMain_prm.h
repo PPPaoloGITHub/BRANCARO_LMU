@@ -26,14 +26,12 @@
 #include "CANRecvdMsgParser.h"
 #include "../../AppSpecific/AppSpecificInclude/CANFeedback.h"
 #include "ADCManager.h"
-#include "DigitalInput.h"
-#include "DigitalOutput.h"
 #include "EEPROM24LC512.h"
 #include "MCP23017.h"
 #include "PCA9685.h"
 #include "ADS7128.h"
 #include "ResetTest.h"
-
+#include "SwPWM.h"
 
 //--- include APIxxx and APIyyy diagnostic
 //#include "APIxxxDebug.h"		/* TODO: @PP */
@@ -148,7 +146,8 @@ TASK_TYPE Initialization_Tasks[] =
 {
     //ModuleName__Initialize,
 	TIMERS__Initialize,
-	LED_ONB__Initialize,
+	SWPWM__Initialize,
+    LED_ONB__Initialize,
     HW_HEARTBEAT__Initialize,
     VERSION__Initialize,
     CAN_RMP__Initialize,
@@ -159,6 +158,7 @@ TASK_TYPE Initialization_Tasks[] =
     PCA9685__Initialize,
     ADS7128__Initialize,
     RESET_TEST__Initialize,
+    
     
     //APIyyySystem__Initialize,
 #if (APIxxxDEBUG_TIMING == ENABLED)
@@ -314,7 +314,7 @@ TASK_TYPE Every_Interrupt_Tasks[] =
 {
     //NameFunction__FastHandler250us,
 	//Lsi__FastHandler,
-    
+    SWPWM__Handler250us,
 
     //-------------------------------------------------------------------------
     // Mandatory NULL_TASK must be at the end of the list

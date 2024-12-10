@@ -20,6 +20,7 @@
 #include "../../ProductLibraryInclude/PCA9685.h"
 #include "../../ProductLibraryInclude/ADS7128.h"
 #include "../../ProductLibraryInclude/ResetTest.h"
+#include "../../ProductLibraryInclude/SwPWM.h"
 
 #include "../../ProductLibraryInclude/CANRecvdMsgParser.h"
 
@@ -324,6 +325,11 @@ void CAN_RMP__Initialize(void)
     
     // TODO: load LMUun from the EEPROM
     LMUun = 0;
+    
+    // Set SWPWM_PGD_OUT1, PGD_OUT_1 as PWM pin: info about PGD_OUT_1 are in SwPWM_prm.h file
+    SWPWM_Interf.SetChannel(SWPWM_PGD_OUT1, 0, 100);
+    // Set SWPWM_PGD_OUT2, PGD_OUT_2 as PWM pin: info about PGD_OUT_2 are in SwPWM_prm.h file
+    SWPWM_Interf.SetChannel(SWPWM_PGD_OUT2, 0, 100);
 }
 
 /**
@@ -1890,7 +1896,7 @@ static void PgdOut1Handler(uint32 msgID, uint32 length, uint8 *payload)
                 txBuff[BYTE0] = payload[BYTE0];
                 
                 // Set Duty Cycle value
-                // TODO: chiamare funzione per impostare Duty Cycle su PDG_OUT1 --> DO_PGD_OUT1_SetHigh();
+                SWPWM_Interf.UpdateDutyCycle(SWPWM_PGD_OUT1, payload[BYTE0]);
                 pwmValue.PDG_OUT_1 = payload[BYTE0];
             }
             else
@@ -1951,7 +1957,7 @@ static void PgdOut2Handler(uint32 msgID, uint32 length, uint8 *payload)
                 txBuff[BYTE0] = payload[BYTE0];
                 
                 // Set Duty Cycle value
-                // TODO: chiamare funzione per impostare Duty Cycle su PDG_OUT2 --> DO_PGD_OUT2_SetHigh();
+                SWPWM_Interf.UpdateDutyCycle(SWPWM_PGD_OUT2, payload[BYTE0]);
                 pwmValue.PDG_OUT_2 = payload[BYTE0];
             }
             else

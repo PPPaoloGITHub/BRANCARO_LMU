@@ -26,14 +26,13 @@
         <TransmitListItem Bus="1" Msg="ID=37750148x,Type=D,Length=8,Data=04" Creator="User" Comment="eCB100 OFF Cmd"/>
         <TransmitListItem Bus="1" Msg="ID=37750186x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User" Comment="eCB100 ON Cmd"/>
         <TransmitListItem Bus="1" Msg="ID=37773699x,Type=D,Length=8,Data=03" Creator="User"/>
-        <TransmitListItem Bus="1" Msg="ID=37773700x,Type=D,Length=8,Data=04" Creator="User"/>
-        <TransmitListItem Bus="1" Msg="ID=37773738x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="0" Creator="User"/>
-        <TransmitListItem Bus="1" Msg="ID=37773955x,Type=D,Length=8,Data=03" Creator="User"/>
-        <TransmitListItem Bus="1" Msg="ID=37773956x,Type=D,Length=8,Data=04" Creator="User"/>
+        <TransmitListItem Bus="1" Msg="ID=37773738x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User"/>
         <TransmitListItem Bus="1" Msg="ID=37773994x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User"/>
         <TransmitListItem Bus="1" Msg="ID=37753258x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User"/>
-        <TransmitListItem Bus="1" Msg="ID=37773701x,Type=D,Length=8,Data=04" Creator="User"/>
-        <TransmitListItem Bus="1" Msg="ID=37773957x,Type=D,Length=8,Data=04" Creator="User" Comment="PGD_OUT2 Cmd"/>
+        <TransmitListItem Bus="1" Msg="ID=37773701x,Type=D,Length=8,Data=19" Creator="User" Comment="PGD_OUT1 Cmd"/>
+        <TransmitListItem Bus="1" Msg="ID=37773738x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User" Comment="PGD_OUT1 Request"/>
+        <TransmitListItem Bus="1" Msg="ID=37773957x,Type=D,Length=8,Data=50" Creator="User" Comment="PGD_OUT2 Cmd"/>
+        <TransmitListItem Bus="1" Msg="ID=37773994x,Type=D,Length=8,Data=0A" CycleTime="250" IsPaused="1" Creator="User" Comment="PGD_OUT2 Request"/>
     </TransmitList>
     <Files>
         <File RelativePath="Symbols\LMU_Symbols.sym"/>

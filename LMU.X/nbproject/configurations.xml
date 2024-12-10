@@ -68,8 +68,6 @@
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/Timers.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/Timers_prm.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/LED_OnBoard.h</itemPath>
-        <itemPath>Application/ProductLibrary/ProductLibraryInclude/DigitalInput.h</itemPath>
-        <itemPath>Application/ProductLibrary/ProductLibraryInclude/DigitalOutput.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/CANRecvdMsgParser_prm.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/MCP23017.h</itemPath>
@@ -85,6 +83,7 @@
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/PCA9685_prm.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/ResetTest.h</itemPath>
         <itemPath>Application/ProductLibrary/ProductLibraryInclude/SwPWM.h</itemPath>
+        <itemPath>Application/ProductLibrary/ProductLibraryInclude/SwPWM_prm.h</itemPath>
       </logicalFolder>
       <itemPath>main.h</itemPath>
     </logicalFolder>
@@ -168,16 +167,6 @@
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="Lsi" displayName="Lsi" projectFiles="true">
-            <logicalFolder name="DigitalInput"
-                           displayName="DigitalInput"
-                           projectFiles="true">
-              <itemPath>Application/ProductLibrary/Lsi/DigitalInput/DigitalInput.c</itemPath>
-            </logicalFolder>
-            <logicalFolder name="DigitalOutput"
-                           displayName="DigitalOutput"
-                           projectFiles="true">
-              <itemPath>Application/ProductLibrary/Lsi/DigitalOutput/DigitalOutput.c</itemPath>
-            </logicalFolder>
             <logicalFolder name="HW_HeartBeat"
                            displayName="HW_HeartBeat"
                            projectFiles="true">
